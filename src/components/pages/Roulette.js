@@ -2282,6 +2282,7 @@ function EveryTimeMG() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
     const [output, setOutput] = useState([]);
 
     const handleChange = (event) => {
@@ -2296,16 +2297,124 @@ function EveryTimeMG() {
         setValue3(event.target.value);
     };
 
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value2, value3);
+        anotherFunction(value, value2, value3, value4);
     };
     
-    const anotherFunction = (spins, roll, unit) => {
+    const anotherFunction = (spins, roll, unit, levels) => {
         const data = [];
-        for (let i = 0; i < spins; i++) {
+        let unit_level = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1028];;
+        let level_count = 0;
+        let low_bet = Number(unit);
+        let high_bet = Number(unit) * 2;
+        let curr_profit = Number(roll);
+        let stop_flag = 0;
+        let i = 0;
+        
+        for (i = 0; i < spins; i++) {
+            var n = Math.floor(Math.random() * 37);
+            const row = {};
+            row.spinNumber = i + 1;
+            row.actualNumber = n;
+            row.betLow = "$ " + low_bet;
+            row.betHigh = "$ " + high_bet;
+
+            if (n === 0) {
+                row.wonOrLoss = 'Loss';
+                row.bankroll = "$ " + Number(roll) - ((Number(low_bet) + Number(high_bet)));
+                low_bet *= 2;
+                high_bet *= 2;
+                data.push(row);
+                continue;
+            }
+            
+            if (low_bet > high_bet && n >= 1 && n <= 18) {
+                row.wonOrLoss = 'Win';
+                level_count = 0;
+            } else if (high_bet > low_bet && n >= 19 && n <= 36) {
+                row.wonOrLoss = 'Win';
+                level_count = 0;
+            } else {
+                row.wonOrLoss = 'Loss';
+                level_count += 1;
+            }
+
+            if (n >= 19 && n <= 36) {
+                curr_profit = Number(curr_profit) + (Number(high_bet) - Number(low_bet));
+                high_bet = Number(unit);
+                low_bet *= 2;
+            } else {
+                curr_profit = (Number(curr_profit) - Number(high_bet)) + Number(low_bet);
+                high_bet *= 2;
+                low_bet = Number(unit);
+            }
+
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+            if (level_count === Number(levels)) {
+                level_count = 0;
+                if (low_bet > high_bet) {
+                    low_bet = Number(unit) * 2;
+                } else {
+                    high_bet = Number(unit) * 2;
+                }
+            }
+            if ((unit_level[levels] * Number(unit)) > Number(roll)) {
+                stop_flag = 1;
+                break;
+            }
+        }
+        i += 1;
+        while (stop_flag === 0) {
+            n = Math.floor(Math.random() * 37);
+            const row = {};
+            row.spinNumber = i;
             i += 1;
-            continue;
+            row.actualNumber = n;
+            if (Number(low_bet) > Number(high_bet)) {
+                if (n >= 1 && n <= 18) {
+                    curr_profit = Number(curr_profit) + Number(low_bet);
+                    row.betLow = "$ " + Number(low_bet);
+                    row.betHigh = "$ 0";
+                    row.wonOrLoss = 'Win';
+                    row.bankroll = "$ " + Number(curr_profit);
+                    data.push(row);
+                    break;
+                } else {
+                    curr_profit = Number(curr_profit) - Number(low_bet);
+                    row.betLow = "$ " + Number(low_bet);
+                    row.betHigh = "$ 0";
+                    row.wonOrLoss = 'Loss';
+                    low_bet *= 2;
+                }
+            } else {
+                if (n >= 19 && n <= 36) {
+                    curr_profit = Number(curr_profit) + Number(high_bet);
+                    row.betLow = "$ 0";
+                    row.betHigh = "$ " + Number(high_bet);
+                    row.wonOrLoss = 'Win';
+                    row.bankroll = "$ " + Number(curr_profit);
+                    data.push(row);
+                    break;
+                } else {
+                    curr_profit = Number(curr_profit) - Number(high_bet);
+                    row.betLow = "$ 0";
+                    row.betHigh = "$ " + Number(high_bet);
+                    row.wonOrLoss = 'Loss';
+                    high_bet *= 2;
+                }
+            }
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+            level_count += 1;
+            if (level_count >= levels) {
+                break;
+            }
         }
         setOutput(data);
     };
@@ -2334,9 +2443,10 @@ function EveryTimeMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2357,7 +2467,8 @@ function EveryTimeMG() {
                             <tr key={index}>
                                 <td>{row.spinNumber}</td>
                                 <td>{row.actualNumber}</td>
-                                <td>{row.betAmount}</td>
+                                <td>{row.betLow}</td>
+                                <td>{row.betHigh}</td>
                                 <td>{row.wonOrLoss}</td>
                                 <td>{row.bankroll}</td>
                             </tr>
@@ -2512,7 +2623,7 @@ Done - 2 Dozen MG
 Done - 1 Until
 Done - 1 Until with 3 level martingale
 Done - Tai Fighter
-     - Everytime MG
+Done - Everytime MG --- Error with zero's ---
 Done - Chamba 2.0 MG
 */
 
