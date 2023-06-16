@@ -224,11 +224,12 @@ function Martingale() {
     
     const anotherFunction = (spins, roll, unit, levels) => {
         const data = [];
-        let unit_level = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1028];
+        let unit_level = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1028, 2056, 4112];
         let level_count = 0;
         let high_bet = Number(unit);
         let curr_profit = Number(roll);
         let i = 0;
+        let curr_result = 0;
         
         for (i = 0; i < spins; i++) {
             var n = Math.floor(Math.random() * 37);
@@ -239,11 +240,13 @@ function Martingale() {
 
             if (n >= 19 && n <= 36) {
                 row.wonOrLoss = 'Win';
+                curr_result = 1;
                 curr_profit = Number(curr_profit) + Number(high_bet);
                 high_bet = Number(unit);
                 level_count = 0;
             } else {
                 row.wonOrLoss = 'Loss';
+                curr_result = 0;
                 curr_profit = Number(curr_profit) - Number(high_bet);
                 high_bet *= 2;
                 level_count += 1;
@@ -252,7 +255,7 @@ function Martingale() {
             row.bankroll = "$ " + Number(curr_profit);
             data.push(row);
 
-            if (level_count === Number(levels)) {
+            if (level_count === (Number(levels) + 1)) {
                 level_count = 0;
                 high_bet = Number(unit);
                 if ((unit_level[levels] * Number(unit)) > Number(curr_profit)) {
@@ -263,7 +266,7 @@ function Martingale() {
 
         i += 1;
 
-        while (true) {
+        while (!curr_result) {
             n = Math.floor(Math.random() * 37);
             const row = {};
             row.spinNumber = i;
@@ -284,6 +287,9 @@ function Martingale() {
             }
             row.bankroll = "$ " + Number(curr_profit);
             data.push(row);
+            if (level_count === Number(levels) + 1) {
+                break;
+            }
         }
         setOutput(data);
     };
@@ -381,7 +387,7 @@ function Hopscotch() {
                     const row = {};
                     row.spinNumber = i + 1;
                     row.actualNumber = n;
-                    row.betAmount = "$ " + (Number(unit) * incremental);
+                    row.betAmount = "$ " + (Number(unit) * incremental) + " -- (19-36)";
                     row.wonOrLoss = 'Win';
                     roll = Number(roll) + (Number(unit) * incremental);
                     row.bankroll = "$ " + roll;
@@ -392,7 +398,7 @@ function Hopscotch() {
                         const row = {};
                         row.spinNumber = i + 1;
                         row.actualNumber = n;
-                        row.betAmount = "$ " + (Number(unit) * 2 * incremental);
+                        row.betAmount = "$ " + (Number(unit) * 2 * incremental) + " -- Dozens";
                         row.wonOrLoss = 'Win';
                         roll = Number(roll) + (Number(unit) * incremental);
                         row.bankroll = "$ " + roll;
@@ -403,7 +409,7 @@ function Hopscotch() {
                         const row = {};
                         row.spinNumber = i + 1;
                         row.actualNumber = n;
-                        row.betAmount = "$ " + (Number(unit) * 2 * incremental);
+                        row.betAmount = "$ " + (Number(unit) * 2 * incremental) + " -- Dozens";
                         row.wonOrLoss = 'Loss';
                         roll = Number(roll) - (Number(unit) * 2 * incremental);
                         row.bankroll = "$ " + roll;
@@ -414,7 +420,7 @@ function Hopscotch() {
                     const row = {};
                     row.spinNumber = i + 1;
                     row.actualNumber = n;
-                    row.betAmount = "$ " + (Number(unit) * incremental);
+                    row.betAmount = "$ " + (Number(unit) * incremental) + " -- (19-36)";
                     row.wonOrLoss = 'Loss';
                     roll = Number(roll) - (Number(unit) * incremental);
                     row.bankroll = "$ " + roll;
@@ -463,7 +469,7 @@ function Hopscotch() {
                             <tr>
                             <th>Spin</th>
                             <th>Number</th>
-                            <th>Bet Amount</th>
+                            <th>Bet</th>
                             <th>Won/Loss</th>
                             <th>Bankroll</th>
                             </tr>
@@ -867,148 +873,92 @@ function DoubleLoss() {
     };
     
     const anotherFunction = (spins, roll, unit, levels) => {
-        let total_units = [1, 2, 6, 18, 54, 162];
-		const data = [];
-		for (let i = 0; i < spins; i++) {
-			var n = Math.floor(Math.random() * 37);
-			if (n >= 19 && n <= 36) {
-				const row = {};
-				row.spinNumber = i + 1;
-				row.actualNumber = n;
-				row.betAmount = "$ " + Number(unit);
-				row.wonOrLoss = 'Win';
-				roll = Number(roll) + Number(unit);
-				row.bankroll = "$ " + roll;
-				data.push(row);
-			} else {
-				const row = {};
-				row.spinNumber = i + 1;
-				row.actualNumber = n;
-				row.betAmount = "$ " + Number(unit);
-				row.wonOrLoss = 'Loss';
-				roll = Number(roll) - Number(unit);
-				row.bankroll = "$ " + roll;
-				data.push(row);
-				if (Number(levels) === 0)
-					continue;
-				n = Math.floor(Math.random() * 37);
-				i += 1;
-				if (n >= 19 && n <= 36) {
-					const row = {};
-					row.spinNumber = i + 1;
-					row.actualNumber = n;
-					row.betAmount = "$ " + (Number(unit) * 2);
-					row.wonOrLoss = 'Win';
-					roll = Number(roll) + (Number(unit) * 2);
-					row.bankroll = "$ " + roll;
-					data.push(row);
-				} else {
-					const row = {};
-					row.spinNumber = i + 1;
-					row.actualNumber = n;
-					row.betAmount = "$ " + (Number(unit) * 2);
-					row.wonOrLoss = 'Loss';
-					roll = Number(roll) - (Number(unit) * 2);
-					row.bankroll = "$ " + roll;
-					data.push(row);
-					if (Number(levels) === 1)
-						continue;
-					n = Math.floor(Math.random() * 37);
-					i += 1;
-					if (n >= 19 && n <= 36) {
-						const row = {};
-						row.spinNumber = i + 1;
-						row.actualNumber = n;
-						row.betAmount = "$ " + (Number(unit) * 6);
-						row.wonOrLoss = 'Win';
-						roll = Number(roll) + (Number(unit) * 6);
-						row.bankroll = "$ " + roll;
-						data.push(row);
-					} else {
-						const row = {};
-						row.spinNumber = i + 1;
-						row.actualNumber = n;
-						row.betAmount = "$ " + (Number(unit) * 6);
-						row.wonOrLoss = 'Loss';
-						roll = Number(roll) - (Number(unit) * 6);
-						row.bankroll = "$ " + roll;
-						data.push(row);
-						if (Number(levels) === 2)
-							continue;
-						n = Math.floor(Math.random() * 37);
-						i += 1;
-						if (n >= 19 && n <= 36) {
-							const row = {};
-							row.spinNumber = i + 1;
-							row.actualNumber = n;
-							row.betAmount = "$ " + (Number(unit) * 18);
-							row.wonOrLoss = 'Win';
-							roll = Number(roll) + (Number(unit) * 18);
-							row.bankroll = "$ " + roll;
-							data.push(row);
-                        } else {
-							const row = {};
-							row.spinNumber = i + 1;
-							row.actualNumber = n;
-							row.betAmount = "$ " + (Number(unit) * 18);
-							row.wonOrLoss = 'Loss';
-							roll = Number(roll) - (Number(unit) * 18);
-							row.bankroll = "$ " + roll;
-							data.push(row);
-							if (Number(levels) === 3)
-								continue;
-							n = Math.floor(Math.random() * 37);
-							i += 1;
-							if (n >= 19 && n <= 36) {
-								const row = {};
-								row.spinNumber = i + 1;
-								row.actualNumber = n;
-								row.betAmount = "$ " + (Number(unit) * 54);
-								row.wonOrLoss = 'Win';
-								roll = Number(roll) + (Number(unit) * 54);
-								row.bankroll = "$ " + roll;
-								data.push(row);
-                            } else {
-								const row = {};
-								row.spinNumber = i + 1;
-								row.actualNumber = n;
-								row.betAmount = "$ " + (Number(unit) * 54);
-								row.wonOrLoss = 'Loss';
-								roll = Number(roll) - (Number(unit) * 54);
-								row.bankroll = "$ " + roll;
-								data.push(row);
-								if (Number(levels) === 4)
-									continue;
-								n = Math.floor(Math.random() * 37);
-								i += 1;
-								if (n >= 19 && n <= 36) {
-									const row = {};
-									row.spinNumber = i + 1;
-									row.actualNumber = n;
-									row.betAmount = "$ " + (Number(unit) * 162);
-									row.wonOrLoss = 'Win';
-									roll = Number(roll) + (Number(unit) * 162);
-									row.bankroll = "$ " + roll;
-									data.push(row);
-                                } else {
-									const row = {};
-									row.spinNumber = i + 1;
-									row.actualNumber = n;
-									row.betAmount = "$ " + (Number(unit) * 162);
-									row.wonOrLoss = 'Loss';
-									roll = Number(roll) - (Number(unit) * 162);
-									row.bankroll = "$ " + roll;
-									data.push(row);
-								}
-							}
-						}
-					}
-				}
-			}
-            if (roll < (total_units[levels] * Number(unit))) {
+        const data = [];
+        let unit_level = [1, 2, 6, 18, 54, 162, 486, 1458, 4374, 13122];
+        let level_count = 0;
+        let high_bet = Number(unit);
+        let curr_profit = Number(roll);
+        let i = 0;
+        let curr_result = 0;
+        
+        for (i = 0; i < spins; i++) {
+            var n = Math.floor(Math.random() * 37);
+            const row = {};
+            row.spinNumber = i + 1;
+            row.actualNumber = n;
+            row.betAmount = "$ " + high_bet;
+
+            if (Number(level_count) > 0) {
+                if (n >= 19 && n <= 36) {
+                    row.wonOrLoss = 'Win';
+                    curr_result = 1;
+                    curr_profit = Number(curr_profit) + Number(high_bet);
+                    high_bet = Number(unit);
+                    level_count = 0;
+                } else {
+                    row.wonOrLoss = 'Loss';
+                    curr_result = 0;
+                    curr_profit = Number(curr_profit) - Number(high_bet);
+                    high_bet *= 3;
+                    level_count += 1;
+                }
+            }
+
+            if (level_count === 0) {
+                if (n >= 19 && n <= 36) {
+                    row.wonOrLoss = 'Win';
+                    curr_result = 1;
+                    curr_profit = Number(curr_profit) + Number(high_bet);
+                    high_bet = Number(unit);
+                    level_count = 0;
+                } else {
+                    row.wonOrLoss = 'Loss';
+                    curr_result = 0;
+                    curr_profit = Number(curr_profit) - Number(high_bet);
+                    high_bet *= 2;
+                    level_count += 1;
+                }
+            }
+
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+
+            if (level_count === (Number(levels) + 1)) {
+                level_count = 0;
+                high_bet = Number(unit);
+                if ((unit_level[levels] * Number(unit)) > Number(curr_profit)) {
+                    break;
+                }
+            }
+        }
+
+        i += 1;
+
+        while (!curr_result) {
+            n = Math.floor(Math.random() * 37);
+            const row = {};
+            row.spinNumber = i;
+            i += 1;
+            row.actualNumber = n;
+            row.betAmount = "$ " + Number(high_bet);
+            if (n >= 19 && n <= 36) {
+                row.wonOrLoss = 'Win';
+                curr_profit = Number(curr_profit) + Number(high_bet);
+                row.bankroll = "$ " + Number(curr_profit);
+                data.push(row);
+                break;
+            } else {
+                row.wonOrLoss = 'Loss';
+                curr_profit = Number(curr_profit) - Number(high_bet);
+                high_bet *= 3;
+                level_count += 1;
+            }
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+            if (level_count === Number(levels) + 1) {
                 break;
             }
-		}
+        }
         setOutput(data);
     };
 
@@ -1180,6 +1130,7 @@ function Rumple() {
 
 function Chamba() {
     const [value, setValue] = useState('');
+    const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
     const [output, setOutput] = useState([]);
 
@@ -1187,18 +1138,22 @@ function Chamba() {
         setValue(event.target.value);
     };
       
+    const handleChange2 = (event) => {
+        setValue2(event.target.value);
+    };
+
     const handleChange3 = (event) => {
         setValue3(event.target.value);
     };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value3);
+        anotherFunction(value, value2, value3);
     };
     
-    const anotherFunction = (spins, unit) => {
+    const anotherFunction = (spins, roll, unit) => {
         const data = [];
-        let roll = 70 * Number(unit);
+        let curr_profit = Number(roll);
         for (let i = 0; i < spins; i++) {
             const row = {};
             var n = Math.floor(Math.random() * 37);
@@ -1207,20 +1162,20 @@ function Chamba() {
             row.betAmount = "$ " + (Number(unit) * 35);
             if ((n >= 1 && n <= 4) || n === 6 || n === 7 || (n >= 9 && n <= 16) || n === 18 || n === 19 || (n >= 21 && n <= 24) || n === 28 || n === 30 || n === 31 || n === 33) {
                 row.wonOrLoss = 'Win';
-                roll = Number(roll) + (Number(unit) * 7);
+                curr_profit = Number(curr_profit) + (Number(unit) * 7);
             } else if ((n >= 25 && n <= 27) || (n >= 34 && n <= 36)) {
                 row.wonOrLoss = 'Win';
-                roll = Number(roll) + Number(unit);
+                curr_profit = Number(curr_profit) + Number(unit);
             } else if (n === 5 || n === 8 || n === 17 || n === 20 || n === 29 || n === 32) {
                 row.wonOrLoss = 'Loss';
-                roll = Number(roll) - (Number(unit) * 29);
+                curr_profit = Number(curr_profit) - (Number(unit) * 29);
             } else {
                 row.wonOrLoss = 'Loss';
-                roll = Number(roll) - (Number(unit) * 35);
+                curr_profit = Number(curr_profit) - (Number(unit) * 35);
             }
-            row.bankroll = "$ " + roll;
+            row.bankroll = "$ " + curr_profit;
             data.push(row);
-            if (roll < Number(unit) * 35) {
+            if (curr_profit < Number(unit) * 35) {
                 break;
             }
         }
@@ -1251,8 +1206,8 @@ function Chamba() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    <p>*** Bankroll will be automatically set to 70 times the unit size to cover a loss ***</p>
                     # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
@@ -1512,6 +1467,7 @@ function TwoDozenMG() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
     const [output, setOutput] = useState([]);
 
     const handleChange = (event) => {
@@ -1526,98 +1482,81 @@ function TwoDozenMG() {
         setValue3(event.target.value);
     };
 
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value2, value3);
+        anotherFunction(value, value2, value3, value4);
     };
     
-    const anotherFunction = (spins, roll, unit) => {
+    const anotherFunction = (spins, roll, unit, levels) => {
         const data = [];
-        for (let i = 0; i < spins; i++) {
+        let unit_level = [1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683];
+        let level_count = 0;
+        let curr_profit = Number(roll);
+        let bet_unit = Number(unit);
+        let i = 0;
+        let curr_result = 0;
+        
+        for (i = 0; i < spins; i++) {
             var n = Math.floor(Math.random() * 37);
-            if (n % 3 !== 0) {
-                const row = {};
-                row.spinNumber = i + 1;
-                row.actualNumber = n;
-                row.betAmount = "$ " + (Number(unit) * 2);
+            const row = {};
+            row.spinNumber = i + 1;
+            row.actualNumber = n;
+            row.betAmount = "$ " + Number(bet_unit);
+
+            if ((n % 3) !== 0) {
                 row.wonOrLoss = 'Win';
-                roll = Number(roll) + Number(unit);
-                row.bankroll = "$ " + roll;
-                data.push(row);
+                curr_result = 1;
+                curr_profit = Number(curr_profit) + Number(bet_unit);
+                bet_unit = Number(unit);
+                level_count = 0;
             } else {
-                const row = {};
-                row.spinNumber = i + 1;
-                row.actualNumber = n;
-                row.betAmount = "$ " + (Number(unit) * 2);
                 row.wonOrLoss = 'Loss';
-                roll = Number(roll) - (Number(unit) * 2);
-                row.bankroll = "$ " + roll;
-                data.push(row);
-                n = Math.floor(Math.random() * 37);
-                i += 1;
-                if (n % 3 !== 0) {
-                    const row = {};
-                    row.spinNumber = i + 1;
-                    row.actualNumber = n;
-                    row.betAmount = "$ " + (Number(unit) * 6);
-                    row.wonOrLoss = 'Win';
-                    roll = Number(roll) + (Number(unit) * 3);
-                    row.bankroll = "$ " + roll;
-                    data.push(row);
-                } else {
-                    const row = {};
-                    row.spinNumber = i + 1;
-                    row.actualNumber = n;
-                    row.betAmount = "$ " + (Number(unit) * 6);
-                    row.wonOrLoss = 'Loss';
-                    roll = Number(roll) - (Number(unit) * 6);
-                    row.bankroll = "$ " + roll;
-                    data.push(row);
-                    n = Math.floor(Math.random() * 37);
-                    i += 1;
-                    if (n % 3 !== 0) {
-                        const row = {};
-                        row.spinNumber = i + 1;
-                        row.actualNumber = n;
-                        row.betAmount = "$ " + (Number(unit) * 18);
-                        row.wonOrLoss = 'Win';
-                        roll = Number(roll) + (Number(unit) * 9);
-                        row.bankroll = "$ " + roll;
-                        data.push(row);
-                    } else {
-                        const row = {};
-                        row.spinNumber = i + 1;
-                        row.actualNumber = n;
-                        row.betAmount = "$ " + (Number(unit) * 18);
-                        row.wonOrLoss = 'Loss';
-                        roll = Number(roll) - (Number(unit) * 18);
-                        row.bankroll = "$ " + roll;
-                        data.push(row);
-                        n = Math.floor(Math.random() * 37);
-                        i += 1;
-                        if (n % 3 !== 0) {
-                            const row = {};
-                            row.spinNumber = i + 1;
-                            row.actualNumber = n;
-                            row.betAmount = "$ " + (Number(unit) * 54);
-                            row.wonOrLoss = 'Win';
-                            roll = Number(roll) + (Number(unit) * 27);
-                            row.bankroll = "$ " + roll;
-                            data.push(row);
-                        } else {
-                            const row = {};
-                            row.spinNumber = i + 1;
-                            row.actualNumber = n;
-                            row.betAmount = "$ " + (Number(unit) * 54);
-                            row.wonOrLoss = 'Loss';
-                            roll = Number(roll) - (Number(unit) * 54);
-                            row.bankroll = "$ " + roll;
-                            data.push(row);
-                        }
-                    }
+                curr_result = 0;
+                curr_profit = Number(curr_profit) - (Number(bet_unit) * 2);
+                bet_unit *= 3;
+                level_count += 1;
+            }
+
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+
+            if (level_count === (Number(levels) + 1)) {
+                level_count = 0;
+                bet_unit = Number(unit);
+                if ((unit_level[levels] * Number(unit)) > Number(curr_profit)) {
+                    break;
                 }
             }
-            if (roll < (Number(unit) * 80)) {
+        }
+
+        i += 1;
+
+        while (!curr_result) {
+            n = Math.floor(Math.random() * 37);
+            const row = {};
+            row.spinNumber = i;
+            i += 1;
+            row.actualNumber = n;
+            row.betAmount = "$ " + Number(bet_unit);
+            if (n >= 19 && n <= 36) {
+                row.wonOrLoss = 'Win';
+                curr_profit = Number(curr_profit) + Number(bet_unit);
+                row.bankroll = "$ " + Number(curr_profit);
+                data.push(row);
+                break;
+            } else {
+                row.wonOrLoss = 'Loss';
+                curr_profit = Number(curr_profit) - (Number(bet_unit) * 2);
+                bet_unit *= 3;
+                level_count += 1;
+            }
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+            if (level_count === Number(levels) + 1) {
                 break;
             }
         }
@@ -1648,9 +1587,10 @@ function TwoDozenMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
