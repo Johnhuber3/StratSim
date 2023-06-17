@@ -662,9 +662,27 @@ function MGLover() {
                 <p>Martingale Lover</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy starts by placing a 1 unit bet on every outside bet. When each bet wins you clear it and don't bet it agian. Martingale all the losing bets. Stop when all bets have won. 
+                    This strategy starts by placing a 1 unit bet on every outside bet. When each bet wins you clear it and don't bet it agian. Martingale all the losing bets. Stop when all bets have won.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Spin #1: Bet $10 on each of the 12 outside bets: (1-18), Even, Red, Black, Odd, (19-36), 1st 12, 2nd 12, 3rd 12, 1st column, 2nd column, and 3rd column.</li>
+                        <li>Spin #2: Bet $20 on each of the outside bets that did not win.</li>
+                        <li>Spin #3: Bet $40 on each of the outside bets that have not won yet. Same process as bet 2.</li>
+                        <li>Spin #4,5,6...so on: Continue to double the bet on every outside bet that has not won until all 12 have won.</li>
+                    </ul>
+                    Once a outside bet wins you don't continue to bet it anymore. Only keep betting on the bets that have yet to win. Once all 12 outside bets have won then you are done.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Unit Size: How much is your original bet going to be on each of the 12 outside bets befroe any doubling.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -2128,16 +2146,35 @@ function OneUntilMG() {
                 <p>Bet one number until it comes with a three level Martingale</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy is the same as the original 1 until except for every 35 spins without the number coming you double your bet. So for the first 35 spins you bet 1 unit. If the number does not come then from spins 36-52 you bet 2 units, 4 units for spins 53-69, and 8 units for spins 70-86. You stop after the number comes. Using this betting strategy as long as the number comes within the first 86 spins then you make a profit.
+                    This strategy is the same as the original 1 until except for after the first 35 spins without the number coming you double your bet every 17 spins. So for the first 35 spins you bet 1 unit. If the number does not come then from spins 36-52 you bet 2 units, 4 units for spins 53-69, and 8 units for spins 70-86. You stop after the number comes. Using this betting strategy as long as the number comes within the first 86 spins then you make a profit.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Spins 1 - 35: Place a $10 bet on the number you picked.</li>
+                        <li>Spins 36 - 52: Place a $20 bet on the number you picked.</li>
+                        <li>Spins 53 - 69: Place a $40 bet on the number you picked.</li>
+                        <li>Spins 70 - 86: Place a $80 bet on the number you picked.</li>
+                    </ul>
+                    You will place the same bet for every spin until the number comes up. Once the number comes and you win then you are done. 
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Number to bet: This is the number 0-36 that you will be betting on to come up.</li>
+                        <li>Unit size: How much you are betting on the number straight up from spins 1 - 35 before you start doubling.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Anything using the Martingale system should be used with caution as it leaves you vulnerable to a large loss. If we take a $10 unit for example if the number does not come after 86 spins then you will take a loss of $2,730. However the odds are low. So if you want a high percentage strategy and willing to risk a big loss then this is a good strategy. Similar to the original version I would not play this system for long. Considering this one allows for 105 spins I would say you could get a away with playing this for maybe 3 rounds. I wouldn't advise doing this for a long time but in the short term it could be a good play. Martingales should be played quick. In and out.
+                    Anything using the Martingale system should be used with caution as it leaves you vulnerable to a large loss. If we take a $10 unit for example if the number does not come after 86 spins then you will take a loss of $2,730. However, the odds are low. So if you want a high percentage strategy and willing to risk a big loss then this is a good strategy. Similar to the original version I would not play this system for long. Considering this one allows for 86 spins I would say you could get a away with playing this for maybe 3 rounds. I wouldn't advise doing this for a long time but in the short term it could be a good play. Martingales should be played quick. In and out.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -2643,7 +2680,7 @@ function Chamba2MG() {
 /*
 Done - Martingale
      - Hopscotch
-     - MG Lover
+Done - MG Lover
      - Boardwalk
 Done - Double Loss
 Done - Rumple
@@ -2653,7 +2690,7 @@ Done - MVP
 Done - 2 Dozen MG
 Done - 1 Until
 Done - Romanovsky
-     - 1 Until with 3 level martingale
+Done - 1 Until with 3 level martingale
 Done - Tai Fighter
      - Everytime MG
      - Chamba 2.0 MG
