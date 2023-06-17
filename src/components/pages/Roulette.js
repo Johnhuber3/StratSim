@@ -1550,7 +1550,7 @@ function TwoDozenMG() {
             const row = {};
             row.spinNumber = i + 1;
             row.actualNumber = n;
-            row.betAmount = "$ " + Number(bet_unit);
+            row.betAmount = "$ " + (Number(bet_unit) * 2);
 
             if ((n % 3) !== 0) {
                 row.wonOrLoss = 'Win';
@@ -1586,7 +1586,7 @@ function TwoDozenMG() {
             row.spinNumber = i;
             i += 1;
             row.actualNumber = n;
-            row.betAmount = "$ " + Number(bet_unit);
+            row.betAmount = "$ " + (Number(bet_unit) * 2);
             if (n >= 19 && n <= 36) {
                 row.wonOrLoss = 'Win';
                 curr_profit = Number(curr_profit) + Number(bet_unit);
@@ -1614,9 +1614,31 @@ function TwoDozenMG() {
                 <p>Two Doezen Martingale</p>
             </div>
             <div className="r-intro-box-info">
+            <h2>Overview:</h2>
                 <p>
-                    This strategy involves betting on two dozens and when you lose you triple Martingale. There are 3 levels of Martingale.
+                    This strategy involves betting on two dozens and when you lose you triple Martingale.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this.
+                    <ul>
+                        <li>Bet 1: $10 on dozen 1, $10 on dozen 2, so $20 total bet. Do this until you lose.</li>
+                        <li>Bet 2: $30 on dozen 1, $30 on dozen 2, so $60 total bet. This is the 1st level of Martingale.</li>
+                        <li>Bet 3: $90 on dozen 1, $90 on dozen 2, so $180 total bet. 2nd level of Martingale.</li>
+                        <li>Bet 4: $270 on dozen 1, $270 on dozen 2, so $540 total bet. same process as bet 3.</li>
+                        <li>Bet 5: $810 on dozen 1, $810 on dozen 2, so $1620 total bet. For 4 levels this is the final bet no matter what. Win or lose.</li>
+                    </ul>
+                    You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to keep triple Martingaleing your bet. Basically, for this system the first time you triple your bet each time you lose. If at any point you win, go back to the original bet size for the next spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be. In this system it's your first bet on each dozen before any Martingaleing.</li>
+                        <li>Levels: How many times do you want to keep tripleing your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 2 + 6 + 18 + 54 = 80 units worth of bets. 1 unit on each doezen so 2 untis total for original bet then 6, 18, and 54 for 3 levels of triple Martingale.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
