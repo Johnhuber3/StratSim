@@ -300,8 +300,20 @@ function Martingale() {
                 <p>Martingale System</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    The Martingale system is arguably the most well known betting system. The system involes having a base unit and everytime you lose you double your bet. Once you win go back to your base unit. Everytime you win it comes down to a profit of your base unit. 
+                    The Martingale system is arguably the most well known betting system. The system involes having a base unit and everytime you lose you double your bet. Once you win go back down to your base unit. Everytime you win it comes out to a profit of your base unit. 
+                </p>
+                <h2>How to play:</h2>
+                <p>
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Bet 1: $10, do this until you lose.</li>
+                        <li>Bet 2: $20, this is the 1st level of Martingale. If you win then your next bet will go back to $10.</li>
+                        <li>Bet 3: $40, same process as bet 2.</li>
+                        <li>Bet 4: $80, for 3 levels this is the final bet no matter what. Win or lose.</li>
+                    </ul>
+                    You will do this same process for whatever amount of levels that you choose. But the number of levels just corresponds to how many times you will continue to double you bet.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -309,7 +321,7 @@ function Martingale() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Everyone will tell you to not play the Martingale system because it will always get you eventually. But in the short term I think it is good.
+                    Everyone will tell you to not play the Martingale system because it will always get you eventually. But in the short term I think it is a good in and out system with a high chance of winning.
                 </p>
             </div>
             <div className="r-intro-box-title">
