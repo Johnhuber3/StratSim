@@ -1120,16 +1120,34 @@ function Rumple() {
                 <p>Rumple</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves beting 1 unit of 6 different corners. Just make sure that none of the corners overlap.
+                    This strategy involves betting 1 unit on 6 different corners. Just make sure thar none of the corner bets overlap. If a corner bet wins then you win a profit of 1 unit and it all corner bets lose then you lose 6 units.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $10 bet on 6 corners of your choice as long as there is not overlap.</li>
+                        <li>Example 6 corner bets: [1,2,4,5], [8,9,11,12], [13,14,16,17], [20,21,23,24], [25,26,28,29], [32,33,35,36].</li>
+                    </ul>
+                    You will do the same bet every spin regardless if you win or lose the previous spin. You can change which corners you play ever spin if you want so long as you make sure there is no over lap in the corner bets.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much are you placing on each individual corner bet.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Whatever, another flat bet system. I don't recomend this one.
+                    This is a flat betting system with no 2nd step which I typically wouldn't go for myself. However, it is a very simple system so if that is what you're after then this could be good. Also, if you just want to collect some casino comps then this could be good as well. 
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1138,9 +1156,9 @@ function Rumple() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1233,16 +1251,35 @@ function Chamba() {
                 <p>Chamba</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing a 1 unit bet on 30 numbers straigh up. Leaving 7 numbers open on a Euro wheel. On top of that you play Chamba 2.0 which is betting on two dozens with 2 units on each and a 1 unit bet on a double street that covers the 2 open numbers in the third dozen that were not covered by the straight up bets. By doing this you will win something on every number except for 0. Not every number will be profit but it will minimize loss on non straight up hits. 
+                    This strategy involves placing a 1 unit bet on 30 numbers straigh up. Leaving 7 numbers open on a Euro wheel. On top of that you play Chamba 2.0 which is betting on two dozens with 2 units on each and a 1 unit bet on a double street that covers the 2 open numbers in the third dozen that were not covered by the straight up bets. By doing this you will win something on every number except for 0. Not every number will be profit but it will minimize loss on non straight up hits.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $10 bet on every number straight up except for: [0,5,8,17,20,29,32].</li>
+                        <li>Place a $20 bet on 1st $ and 2nd dozen each.</li>
+                        <li>Place a $10 bet on th double street of: [28,29,30,31,32,33].</li>
+                    </ul>
+                    You will place the same bet for every spin regardless if you win or lose the previous spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much are you placing on each individual number straight up. Also the amount for the double street.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Idk I usually don't like systems that cover the entire board. 
+                    I usually don't like systems that cover the entire board because I feel it is usually a bit unecessary and is a bit too much. I probably wouldn't recomend this system. It is also a flat bet system which I am also not a fan of. 
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1654,6 +1691,7 @@ function TwoDozenMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
+                    <p>*** For this simulation bets will be placed on the 1st and 2nd columns. Not betting the column with 3, 6, 9, 12, etc. ***</p>
                     Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
@@ -2514,22 +2552,22 @@ function Chamba2MG() {
 }
 
 /*
-Done - Romanovsky
+     - Romanovsky
 Done - Martingale
-Done - Hopscotch
-Done - MG Lover
-Done - Boardwalk
+     - Hopscotch
+     - MG Lover
+     - Boardwalk
 Done - Double Loss
 Done - Rumple
 Done - Chamba
-Done - Chamba 2.0 + Rumple
-Done - MVP
+     - Chamba 2.0 + Rumple
+     - MVP
 Done - 2 Dozen MG
-Done - 1 Until
-Done - 1 Until with 3 level martingale
-Done - Tai Fighter
-Done - Everytime MG --- Error with zero's ---
-Done - Chamba 2.0 MG
+     - 1 Until
+     - 1 Until with 3 level martingale
+     - Tai Fighter
+     - Everytime MG
+     - Chamba 2.0 MG
 */
 
 /* 
