@@ -315,13 +315,22 @@ function Martingale() {
                     </ul>
                     You will do this same process for whatever amount of levels that you choose. But the number of levels just corresponds to how many times you will continue to double you bet.
                 </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be. In this system how much is your first bet before any doubling.</li>
+                        <li>Levels: How many times do you want to keep doubling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 4 + 8 = 15 units worth of bets. 1 for original then 2, 4, and 8 for 3 levels of Martingale.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Everyone will tell you to not play the Martingale system because it will always get you eventually. But in the short term I think it is a good in and out system with a high chance of winning.
+                    Everyone will tell you not to play the Martingale system because it will always get you eventually. But in the short term I think it is a good in and out system with a high chance of winning.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -330,6 +339,7 @@ function Martingale() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
+                    <p>*** For this simulation bets will be placed on the (19-36) outside bet ***</p>
                     Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
