@@ -1384,16 +1384,35 @@ function Chamba2PR() {
                 <p>Chamba 2.0 plus Rumple</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves playing two strategies at the same time. First you play Chamba 2.0 betting 10 units each on 1st and 2nd dozens with 5 units on a double street in the 3rd dozen. On top of that play Rumple with 1 unit on each of the six corners. This is a flat bet system.
+                    This strategy involves playing two strategies at the same time. You play Chamba 2.0 betting 10 units on the 1st and 2nd dozens each with 5 units on a double street in the 3rd dozen. On top of that you play Rumple with 1 unit on six corners each. This is a flat bet system.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $10 bet on 6 corners individually. See the Rumple section for more information if still unsure.</li>
+                        <li>Place a $100 bet on the 1st & 2nd dozen each.</li>
+                        <li>Place a $50 bet on a double street in the 3rd dozen.</li>
+                    </ul>
+                    You will place the same bet for every spin regardless if you win or lose the previous spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much are you placing on each corner individually.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Whatever, another flat bet system.
+                    This is another flat bet system which I am not a fan of. It is also more complicated than other flat bet systems since it involves playing two systems at the same time. It covers a large portion of the board Similar to Chamba and I feel it is a bit unecessary.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1402,9 +1421,9 @@ function Chamba2PR() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1492,16 +1511,32 @@ function MVP() {
                 <p>MVP System</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves betting 1 unit on every number except 4 of them. By doing this you bet on 33 numbers. If you avoid the 4 numbers that you pick then you will win a profit of 3 units. This strategy is done one at a time.
+                    This strategy involves betting 1 unit on every number except 4 of them. By doing this you bet on 33 numbers. If you avoid the 4 numbers that you pick then you will win a profit of 3 units. This strategy is a one spin system.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $10 bet on every number except for the 4 numbers that you selected to leave open.</li>
+                    </ul>
+                    You will place the same bet for every spin regardless if you win or lose the previous spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>1st, 2nd, 3rd, and 4th #: These are the 4 numbers on the board that you will not bet.</li>
+                        <li>Unit size: How much you are betting on each number straight up.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This strategy is a true gamble. Walk up to a table slelect 4 numbers and hope they don't come for a quick profit. However, the downside is that if one of those numbers come you are out 33 units.
+                    This strategy is a true gamble. Walk up to a table, slelect 4 numbers and hope they don't come up for a quick profit. However, the downside is that if one of those numbers come up you are out 33 units.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1514,7 +1549,7 @@ function MVP() {
                     2nd #: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     3rd #: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     4th #: <input className='input-box' type="text" value={value4} onChange={handleChange4} /><br />
-                    Unit amount: <input className='input-box' type="text" value={value5} onChange={handleChange5} />
+                    Unit size: <input className='input-box' type="text" value={value5} onChange={handleChange5} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1892,9 +1927,27 @@ function Romanovsky() {
                 <p>Romanovsky</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing 3 units on two dozen then 1 unit on two corners each. Total 8 units. Any winning number results in a profit of 1 unit. There are 6 whacks or 5 on Euro. 
+                    This strategy involves placing 3 units on two dozen then 1 unit on two different corner bets each. Total 8 units. Any winning number results in a profit of 1 unit. There are 6 whacks or 5 on Euro.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $30 bet on the 1st & 2nd dozen each.</li>
+                        <li>Place a $10 bet on two non overlapping corner bets in the 3rd dozen. Usually: [25,26,28,29] & [32,33,35,36].</li>
+                    </ul>
+                    You will place the same bet for every spin regardless if you won or lost on the previous spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much are you placing on each corner individually and 1/3 of each dozen bet.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -2167,16 +2220,35 @@ function TaiFighter() {
                 <p>Tai Fighter</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
                     This strategy involves for left to right placing 6 units on a double street, 4 units on a corner, 11 units on the middle dozen, 4 units on a corner and 6 units on a double street. Flat bet system.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $60 bet on 2 different double streets. Usually the first and last. [1-6] & [31-36].</li>
+                        <li>Place a $40 bet on 2 different corner bets each. Usually [7,8,10,11] & [25,26,28,29].</li>
+                        <li>Place a $110 bet on the 2nd dozen.</li>
+                    </ul>
+                    You will place the same bet for every spin regardless if you win or lose on the previous spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: The unit size will be 1/6 of the double street bet, 1/4 of the corner bet, and 1/11 of the dozen bet.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Whatever, another flat bet system. I reccomend it over Rumple though.
+                    Another flat bet system. I think this one is better than a lot of other flat bet systems and while covering a lot of the board still is remains relatively simple. If you are going to play a flat bet system then this is not a terrible one. That being said, I would not play this system personally since I don't like flat bet systems.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -2185,9 +2257,9 @@ function TaiFighter() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2552,7 +2624,6 @@ function Chamba2MG() {
 }
 
 /*
-     - Romanovsky
 Done - Martingale
      - Hopscotch
      - MG Lover
@@ -2560,12 +2631,13 @@ Done - Martingale
 Done - Double Loss
 Done - Rumple
 Done - Chamba
-     - Chamba 2.0 + Rumple
-     - MVP
+Done - Chamba 2.0 + Rumple
+Done - MVP
 Done - 2 Dozen MG
      - 1 Until
+Done - Romanovsky
      - 1 Until with 3 level martingale
-     - Tai Fighter
+Done - Tai Fighter
      - Everytime MG
      - Chamba 2.0 MG
 */
