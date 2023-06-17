@@ -990,9 +990,31 @@ function DoubleLoss() {
                 <p>Double your loss Martingale</p>
             </div>
             <div className="r-intro-box-info">
+            <h2>Overview:</h2>
                 <p>
                     This strategy is the same as regular Martingale system however instead of doubleing your bet each time you lose you double your entire amount lost to that point.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this.
+                    <ul>
+                        <li>Bet 1: $10, do this until you lose.</li>
+                        <li>Bet 2: $20, this is the 1st level of Martingale. Current loss to this point is $10 so our bet is $20.</li>
+                        <li>Bet 3: $60, 2nd level of Martingale. Current loss to this point is $10 + $20 = $30, so our bet is $60.</li>
+                        <li>Bet 4: $180, same process as bet 3.</li>
+                        <li>Bet 5: $540, for 4 levels this is the final bet no matter what. Win or lose.</li>
+                    </ul>
+                    You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to double your loss. Basically for this system the first time you lose you double your bet and everytime after that you triple it. If at any point you win you got back to the original bet size for the next spin.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be. In this system it's your first bet before any Martingaleing.</li>
+                        <li>Levels: How many times do you want to keep doubling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 6 + 18 = 27 units worth of bets. 1 for original then 2, 6, and 18 for 3 levels of double your loss Martingale.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -1008,6 +1030,7 @@ function DoubleLoss() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
+                    <p>*** For this simulation bets will be placed on the (19-36) outside bet ***</p>
                     Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
