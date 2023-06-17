@@ -1821,9 +1821,26 @@ function AnyUntil() {
                 <p>Bet one number until it comes</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
                     This strategy involves picking a single number and betting it every spin until it comes up. You place 1 unit each spin. If the number comes within 35 spins then you make a profit. The earlier it comes the better. Every spin after 35 that it takes to come up you lose an additional 1 unit. I would recomend having atleast 70 units available.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Place a $10 bet on the number you picked.</li>
+                    </ul>
+                    You will place the same bet for every spin until the number comes up.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Number to bet: The number 0-36 that you will be betting on to come up.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit size: How much you are betting on the number straight up each spin.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -1841,7 +1858,7 @@ function AnyUntil() {
                     <p>Enter some values to get started</p>
                     Number to bet: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2634,7 +2651,7 @@ Done - Chamba
 Done - Chamba 2.0 + Rumple
 Done - MVP
 Done - 2 Dozen MG
-     - 1 Until
+Done - 1 Until
 Done - Romanovsky
      - 1 Until with 3 level martingale
 Done - Tai Fighter
