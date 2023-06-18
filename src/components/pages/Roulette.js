@@ -463,17 +463,22 @@ function Hopscotch() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy is a two step system that repeats as long as you keep winning. The first step is to bet 1 unit on an even money bet such as black. If that wins step 2 is to bet on two dozens placing 1 unit on each. Step 3 is to collect 1 unit and repeat from step one but this time starting with 2 units and so on. if you lose at any point go back to step one at 1 unit. 
+                    This strategy is a two step system that loops as long as you keep winning. The first step is to bet 1 unit on an even money bet such as black. If that wins step 2 is to bet on two dozens placing 1 unit on each. Step 3 is to collect 1 unit and repeat from step one but this time starting with 2 units and so on. if you lose at any point go back to step one at 1 unit. 
                 </p>
                 <h2>How to play:</h2>
                 <p>
                     If you are doing this with a base unit of $10 then it would look like this.
                     <ul>
-                        <li>Step 1: Bet $20 on 1st dozen, $20 on 2nd dozen, $10 on a double street in 3rd dozen. Do this until you lose.</li>
-                        <li>Step 2: Bet $100 on 1st dozen, $100 on 2nd dozen, $50 on a double street in 3rd dozen. This the final step win or lose.</li>
-                        <li>Step 3: If you wanted to you could go even further if you lost on step 1 and step 2 and quintuple your bets again. This can get expensive.</li>
+                        <li>Step 1: Bet $10 on and outside even money bet such as: Red, Black, Even, Odd, (1-18) or (19-36). Do this until you win.</li>
+                        <li>Step 2: Bet $10 each on 2 dozens.</li>
+                        <li>Step 3: Collect $10 and bet $20 on an even money bet.</li>
+                        <li>Step 4: Bet $20 each on 2 dozens.</li>
+                        <li>Step 5: Collect $20 and bet $40 on an even money bet.</li>
+                        <li>Step 6: Bet $40 each on 2 dozens.</li>
+                        <li>Step 7: Collect $40 and bet $80 on an even money bet.</li>
+                        <li>Step 8 Plus: Continue this cycle doubling your bet each pass until you lose.</li>
                     </ul>
-                    If you win at any step you reset back down to step 1. It is only advised to go to step 2 but if you really wanted to you can go to a step 3 which in the case of a $10 initinal unit size you would be betting $500 on 1st dozen, $500 on 2nd dozen, and $250 on the 3rd dozen.
+                    If you lose at any step you reset back down to step 1.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -2734,7 +2739,7 @@ function Chamba2MG() {
 
 /*
 Done - Martingale
-     - Hopscotch
+Done - Hopscotch
 Done - MG Lover
 Done - Boardwalk
 Done - Double Loss
