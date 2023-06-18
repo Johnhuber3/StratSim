@@ -461,9 +461,27 @@ function Hopscotch() {
                 <p>Hopscotch</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
                     This strategy is a two step system that repeats as long as you keep winning. The first step is to bet 1 unit on an even money bet such as black. If that wins step 2 is to bet on two dozens placing 1 unit on each. Step 3 is to collect 1 unit and repeat from step one but this time starting with 2 units and so on. if you lose at any point go back to step one at 1 unit. 
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are doing this with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Step 1: Bet $20 on 1st dozen, $20 on 2nd dozen, $10 on a double street in 3rd dozen. Do this until you lose.</li>
+                        <li>Step 2: Bet $100 on 1st dozen, $100 on 2nd dozen, $50 on a double street in 3rd dozen. This the final step win or lose.</li>
+                        <li>Step 3: If you wanted to you could go even further if you lost on step 1 and step 2 and quintuple your bets again. This can get expensive.</li>
+                    </ul>
+                    If you win at any step you reset back down to step 1. It is only advised to go to step 2 but if you really wanted to you can go to a step 3 which in the case of a $10 initinal unit size you would be betting $500 on 1st dozen, $500 on 2nd dozen, and $250 on the 3rd dozen.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Unit size: How much your original bet will be. It will be 1/2 of the dozen bet and the same as the double street bet.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -831,9 +849,28 @@ function Boardwalk() {
                 <p>Boardwalk</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing a 1 unit bet on a dozen. once it wins then bet 3 units on a 2nd dozen. if that wins bet 9 units on a 3rd dozen. If that comes you win 27 units and reset down to 1 unit for the nex spin. If you lose at any step you reset back to the first step. 
+                    This strategy involves placing a 1 unit bet on a dozen. once it wins then bet 3 units on a 2nd dozen. if that wins bet 9 units on a 3rd dozen. If that comes you win 27 units and reset down to 1 unit for the nex spin. If you lose at any step you reset back to the first step.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are doing this with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Step 1: Bet $10 on 1st dozen. Do this until you win.</li>
+                        <li>Step 2: Bet $30 on 2nd dozen.</li>
+                        <li>Step 3: Bet $90 on 3rd dozen.</li>
+                    </ul>
+                    If you lose at any step you reset back down to step 1. If you win steps 1, 2, and 3 then you win collectt all of the winning and reset back down to step 1.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit size: How much your original bet will be. It will be the amount you place on the 1st dozen on step 1.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -849,9 +886,9 @@ function Boardwalk() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2699,7 +2736,7 @@ function Chamba2MG() {
 Done - Martingale
      - Hopscotch
 Done - MG Lover
-     - Boardwalk
+Done - Boardwalk
 Done - Double Loss
 Done - Rumple
 Done - Chamba
