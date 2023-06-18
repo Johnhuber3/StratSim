@@ -2536,16 +2536,37 @@ function EveryTimeMG() {
                 <p>Win every spin Martingale</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves playing two Martingale systems at the same time that are betting against themselves. By doing this as long as there is some back and forth ocassionally you will win 1 unit every spin you last.
+                    This strategy involves playing two Martingale systems at the same time that are betting against themselves. By doing this as long as there is some back and forth ocassionally you will win 1 unit every spin you last. This system is the hardest one for people to understand. I even played this at a casino and the dealer questioned what I was doing and thought that I didn't know how to play Roulette. So this system will deffinitely get some weird looks or comments. However, If you understand what is happening you will realize the reason for it.
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    First you need to determine how many levels of Martingale you will be doing. Next pick and even money bet and its opposite. For example Red and Black. If you are doing this with a base unit of $10 then it would look like this:
+                    <ul>
+                        <li>You Double the losing bet and reset the winning bet down the the base unit.</li>
+                        <li>Step 1: Bet $10 on Red, $20 on Black.</li>
+                        <li>Step 2: if Red won then bet $10 on Red, $40 on Black. If Black won then bet $10 on Black and $20 on Red.</li>
+                        <li>Step 3: If a 0 comes up then double both bets.</li>
+                    </ul>
+                    Repeat the process of doubling the losing side and reseting the winning side to the base unit.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit size: How much your original bet will be before any doubling.</li>
+                        <li>Levels: How many time you are going to double your bet on a losing streak.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This is a great system.
+                    This is a great system. Just trust.
                 </p>
             </div>
             <div className="r-intro-box-title">
