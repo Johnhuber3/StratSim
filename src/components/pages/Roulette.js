@@ -2624,9 +2624,27 @@ function Chamba2MG() {
                 <p>Chamba 2.0 Martingale</p>
             </div>
             <div className="r-intro-box-info">
+                <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing 2 units on the first two dozens each and 1 unit on a double street in the 3rd dozen. If you lose then quintuple Martingale to 10 units on the first 2 dozens each and 5 units on a double street in the 3rd dozen.
+                    This strategy involves placing 2 units on the first two dozens each and 1 unit on a double street in the 3rd dozen. If you lose then quintuple Martingale to 10 units on the first 2 dozens each and 5 units on a double street in the 3rd dozen. 
                 </p>
+                <h2>How to play:</h2>
+                <p>
+                    If you are doing this with a base unit of $10 then it would look like this.
+                    <ul>
+                        <li>Step 1: Bet $20 on 1st dozen, $20 on 2nd dozen, $10 on a double street in 3rd dozen. Do this until you lose.</li>
+                        <li>Step 2: Bet $100 on 1st dozen, $100 on 2nd dozen, $50 on a double street in 3rd dozen. This the final step win or lose.</li>
+                        <li>Step 3: If you wanted to you could go even further if you lost on step 1 and step 2 and quintuple your bets again. This can get expensive.</li>
+                    </ul>
+                    If you win at any step you reset back down to step 1. It is only advised to go to step 2 but if you really wanted to you can go to a step 3 which in the case of a $10 initinal unit size you would be betting $500 on 1st dozen, $500 on 2nd dozen, and $250 on the 3rd dozen.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Spins: How many spins you want to simulate.</li>
+                        <li>Unit size: How much your original bet will be. It will be 1/2 of the dozen bet and the same as the double street bet.</li>
+                    </ul>
+                </p><br />
             </div>
             <div className="r-intro-box-title">
                 <p>Recommendation</p>
@@ -2643,8 +2661,8 @@ function Chamba2MG() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** Bankroll will be automatically set to 30 units to cover 1 level of Martingale ***</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2693,7 +2711,7 @@ Done - Romanovsky
 Done - 1 Until with 3 level martingale
 Done - Tai Fighter
      - Everytime MG
-     - Chamba 2.0 MG
+Done - Chamba 2.0 MG
 */
 
 /* 
