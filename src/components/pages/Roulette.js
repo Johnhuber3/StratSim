@@ -306,14 +306,14 @@ function Martingale() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this.
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this:
                     <ul>
-                        <li>Bet 1: $10, do this until you lose.</li>
-                        <li>Bet 2: $20, this is the 1st level of Martingale. If you win then your next bet will go back to $10.</li>
-                        <li>Bet 3: $40, same process as bet 2.</li>
-                        <li>Bet 4: $80, for 3 levels this is the final bet no matter what. Win or lose.</li>
+                        <li>Step 1: $10, do this until you lose.</li>
+                        <li>Step 2: $20, this is the 1st level of Martingale. If you win then your next bet will go back to $10.</li>
+                        <li>Step 3: $40, same process as bet 2.</li>
+                        <li>Step 4: $80, for 3 levels this is the final bet no matter what. Win or lose.</li>
                     </ul>
-                    You will do this same process for whatever amount of levels that you choose. But the number of levels just corresponds to how many times you will continue to double you bet.
+                    You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to double you bet.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -321,7 +321,7 @@ function Martingale() {
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
                         <li>Unit Size: How much is your original bet going to be. In this system how much is your first bet before any doubling.</li>
-                        <li>Levels: How many times do you want to keep doubling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 4 + 8 = 15 units worth of bets. 1 for original then 2, 4, and 8 for 3 levels of Martingale.</li>
+                        <li>Levels: How many times you want to keep doubling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 4 + 8 = 15 units worth of bets. 1 for original then 2, 4, and 8 for 3 levels of Martingale.</li>
                     </ul>
                 </p><br />
             </div>
@@ -467,7 +467,7 @@ function Hopscotch() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are doing this with a base unit of $10 then it would look like this.
+                    If you are doing this with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Step 1: Bet $10 on and outside even money bet such as: Red, Black, Even, Odd, (1-18) or (19-36). Do this until you win.</li>
                         <li>Step 2: Bet $10 each on 2 dozens.</li>
@@ -493,7 +493,7 @@ function Hopscotch() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This is a grinder system. You won't win a lot but you also won't lose a lot. Potentially a good system if you are trying to get hotel comps or something like that and want to be betting money consistently but don't want to risk losing a lot of money. I think the downfall to this system is that there is no cash out point. You just keep climbing. When you are a few levels in and lose it takes a large porion of your profits with it. I think it would be better if after the 3rd or 4th level you took the profit and reset down to 1 unit.
+                    This is a grinder system. You won't win a lot but you also won't lose a lot. Potentially a good system if you are trying to get hotel comps or something like that and want to be betting money consistently but don't want to risk losing a lot of money. I think the downfall to this system is that there is no cash out point. You just keep climbing. When you are a few levels in and lose it takes a large portion of your profits with it. I think it would be better if after the 3rd or 4th level you took the profit and reset down to 1 unit.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -691,14 +691,14 @@ function MGLover() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this.
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing three levels of Martingale with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Spin #1: Bet $10 on each of the 12 outside bets: (1-18), Even, Red, Black, Odd, (19-36), 1st 12, 2nd 12, 3rd 12, 1st column, 2nd column, and 3rd column.</li>
                         <li>Spin #2: Bet $20 on each of the outside bets that did not win.</li>
                         <li>Spin #3: Bet $40 on each of the outside bets that have not won yet. Same process as bet 2.</li>
                         <li>Spin #4,5,6...so on: Continue to double the bet on every outside bet that has not won until all 12 have won.</li>
                     </ul>
-                    Once a outside bet wins you don't continue to bet it anymore. Only keep betting on the bets that have yet to win. Once all 12 outside bets have won then you are done.
+                    Once an outside bet wins you don't continue to bet it anymore. Only keep betting on the bets that have yet to win. Once all 12 outside bets have won then you are done.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -712,7 +712,7 @@ function MGLover() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This is an exiting system. You are gaurunteed to place some big bets and start to get nervous about losing a lot of money. However, if you can survive you will come out with a nice profit.
+                    This is an exiting system. You are gauranteed to place some big bets and start to get nervous about losing a lot of money. However, if you can survive you will come out with a nice profit.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -856,17 +856,17 @@ function Boardwalk() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing a 1 unit bet on a dozen. once it wins then bet 3 units on a 2nd dozen. if that wins bet 9 units on a 3rd dozen. If that comes you win 27 units and reset down to 1 unit for the nex spin. If you lose at any step you reset back to the first step.
+                    This strategy involves placing a 1 unit bet on a dozen. Once it wins then bet 3 units on a 2nd dozen. if that wins bet 9 units on a 3rd dozen. If that comes you win 27 units and reset down to 1 unit for the next spin. If you lose at any step you reset back down to the first step.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are doing this with a base unit of $10 then it would look like this.
+                    If you are doing this with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Step 1: Bet $10 on 1st dozen. Do this until you win.</li>
                         <li>Step 2: Bet $30 on 2nd dozen.</li>
                         <li>Step 3: Bet $90 on 3rd dozen.</li>
                     </ul>
-                    If you lose at any step you reset back down to step 1. If you win steps 1, 2, and 3 then you win collectt all of the winning and reset back down to step 1.
+                    If you lose at any step you reset back down to step 1. If you win steps 1, 2, and 3 then you win. Collect all of the winnings and reset back down to step 1.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -882,7 +882,7 @@ function Boardwalk() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This system is okay. It is good for being able to turn 1 unit into 27 units with only 3 reasonable wins. However, it is also a bit of a grinder system and I'm not a big fan of those. You can allow yourself many chances at it given it is just 1 unit per spin you are risking. 
+                    This system is okay. It is good for being able to turn 1 unit into 27 units with only 3 reasonable wins. However, it is also a bit of a grinder system and I am not a big fan of those. You can allow yourself many chances since it is just 1 unit per spin you are risking. 
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1052,17 +1052,17 @@ function DoubleLoss() {
             <div className="r-intro-box-info">
             <h2>Overview:</h2>
                 <p>
-                    This strategy is the same as regular Martingale system however instead of doubleing your bet each time you lose you double your entire amount lost to that point.
+                    This strategy is the same as regular Martingale system however instead of doubling your bet each time you lose you double your entire amount lost to that point.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this.
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this:
                     <ul>
-                        <li>Bet 1: $10, do this until you lose.</li>
-                        <li>Bet 2: $20, this is the 1st level of Martingale. Current loss to this point is $10 so our bet is $20.</li>
-                        <li>Bet 3: $60, 2nd level of Martingale. Current loss to this point is $10 + $20 = $30, so our bet is $60.</li>
-                        <li>Bet 4: $180, same process as bet 3.</li>
-                        <li>Bet 5: $540, for 4 levels this is the final bet no matter what. Win or lose.</li>
+                        <li>Step 1: $10, do this until you lose.</li>
+                        <li>Step 2: $20, this is the 1st level of Martingale. Current loss to this point is $10 so our bet is $20.</li>
+                        <li>Step 3: $60, 2nd level of Martingale. Current loss to this point is $10 + $20 = $30, so our bet is $60.</li>
+                        <li>Step 4: $180, same process as bet 3.</li>
+                        <li>Step 5: $540, for 4 levels this is the final bet no matter what. Win or lose.</li>
                     </ul>
                     You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to double your loss. Basically for this system the first time you lose you double your bet and everytime after that you triple it. If at any point you win you got back to the original bet size for the next spin.
                 </p>
@@ -1072,7 +1072,7 @@ function DoubleLoss() {
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
                         <li>Unit Size: How much is your original bet going to be. In this system it's your first bet before any Martingaleing.</li>
-                        <li>Levels: How many times do you want to keep doubling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 6 + 18 = 27 units worth of bets. 1 for original then 2, 6, and 18 for 3 levels of double your loss Martingale.</li>
+                        <li>Levels: How many times you want to keep doubling your loss on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 1 + 2 + 6 + 18 = 27 units worth of bets. 1 for original then 2, 6, and 18 for 3 levels of double your loss Martingale.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1182,23 +1182,23 @@ function Rumple() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves betting 1 unit on 6 different corners. Just make sure thar none of the corner bets overlap. If a corner bet wins then you win a profit of 1 unit and it all corner bets lose then you lose 6 units.
+                    This strategy involves betting 1 unit on 6 different corners. Just make sure that none of the corner bets overlap. If a corner bet wins then you win a profit of 1 unit and if all corner bets lose then you lose 6 units.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $10 bet on 6 corners of your choice as long as there is not overlap.</li>
                         <li>Example 6 corner bets: [1,2,4,5], [8,9,11,12], [13,14,16,17], [20,21,23,24], [25,26,28,29], [32,33,35,36].</li>
                     </ul>
-                    You will do the same bet every spin regardless if you win or lose the previous spin. You can change which corners you play ever spin if you want so long as you make sure there is no over lap in the corner bets.
+                    You will do the same bet every spin regardless if you won or lost the previous spin. You can change which corners you play every spin if you want so long as you make sure there is no overlap in the corner bets.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much are you placing on each individual corner bet.</li>
+                        <li>Unit Size: How much you are placing on each individual corner bet.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1207,7 +1207,7 @@ function Rumple() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This is a flat betting system with no 2nd step which I typically wouldn't go for myself. However, it is a very simple system so if that is what you're after then this could be good. Also, if you just want to collect some casino comps then this could be good as well. 
+                    This is a flat bet system with no 2nd step which I typically wouldn't go for myself. However, it is a very simple system so if that is what you're after then this could be good. Also, if you just want to collect some casino comps then this could be good as well. 
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1313,24 +1313,24 @@ function Chamba() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing a 1 unit bet on 30 numbers straigh up. Leaving 7 numbers open on a Euro wheel. On top of that you play Chamba 2.0 which is betting on two dozens with 2 units on each and a 1 unit bet on a double street that covers the 2 open numbers in the third dozen that were not covered by the straight up bets. By doing this you will win something on every number except for 0. Not every number will be profit but it will minimize loss on non straight up hits.
+                    This strategy involves placing a 1 unit bet on 30 numbers straight up. Leaving 7 numbers open on a Euro wheel. On top of that you play Chamba 2.0 which is betting on two dozens with 2 units on each and a 1 unit bet on a double street that covers the 2 open numbers in the third dozen that were not covered by the straight up bets. By doing this you will win something on every number except for 0. Not every number will be profit but it will minimize loss on non straight up hits.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $10 bet on every number straight up except for: [0,5,8,17,20,29,32].</li>
-                        <li>Place a $20 bet on 1st $ and 2nd dozen each.</li>
-                        <li>Place a $10 bet on th double street of: [28,29,30,31,32,33].</li>
+                        <li>Place a $20 bet on 1st & 2nd dozen each.</li>
+                        <li>Place a $10 bet on the double street of: [28,29,30,31,32,33].</li>
                     </ul>
-                    You will place the same bet for every spin regardless if you win or lose the previous spin.
+                    You will place the same bet for every spin regardless if you won or lost the previous spin.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much are you placing on each individual number straight up. Also the amount for the double street.</li>
+                        <li>Unit Size: How much you are placing on each individual number straight up. Also the amount for the double street.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1450,20 +1450,20 @@ function Chamba2PR() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $10 bet on 6 corners individually. See the Rumple section for more information if still unsure.</li>
-                        <li>Place a $100 bet on the 1st & 2nd dozen each.</li>
+                        <li>Place a $100 bet on the 1st & 2nd dozens each.</li>
                         <li>Place a $50 bet on a double street in the 3rd dozen.</li>
                     </ul>
-                    You will place the same bet for every spin regardless if you win or lose the previous spin.
+                    You will place the same bet for every spin regardless if you won or lost the previous spin.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much are you placing on each corner individually.</li>
+                        <li>Unit Size: How much you are placing on each corner individually.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1573,15 +1573,14 @@ function MVP() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves betting 1 unit on every number except 4 of them. By doing this you bet on 33 numbers. If you avoid the 4 numbers that you pick then you will win a profit of 3 units. This strategy is a one spin system.
+                    This strategy involves betting 1 unit on every number except 4 of them. By doing this you bet on 33 numbers. If you avoid the 4 numbers that you picked then you will win a profit of 3 units. This strategy is a one spin system.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $10 bet on every number except for the 4 numbers that you selected to leave open.</li>
                     </ul>
-                    You will place the same bet for every spin regardless if you win or lose the previous spin.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -1596,7 +1595,7 @@ function MVP() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This strategy is a true gamble. Walk up to a table, slelect 4 numbers and hope they don't come up for a quick profit. However, the downside is that if one of those numbers come up you are out 33 units.
+                    This strategy is a true gamble. Walk up to a table, select 4 numbers and hope they don't come up for a quick profit. However, the downside is that if one of those numbers come up you are out 33 units.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -1752,23 +1751,23 @@ function TwoDozenMG() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this.
+                    First you need to determine how many levels of Martingale you will be doing. For example, If you are doing four levels of Martingale with a base unit size of $10 then it would look like this:
                     <ul>
-                        <li>Bet 1: $10 on dozen 1, $10 on dozen 2, so $20 total bet. Do this until you lose.</li>
-                        <li>Bet 2: $30 on dozen 1, $30 on dozen 2, so $60 total bet. This is the 1st level of Martingale.</li>
-                        <li>Bet 3: $90 on dozen 1, $90 on dozen 2, so $180 total bet. 2nd level of Martingale.</li>
-                        <li>Bet 4: $270 on dozen 1, $270 on dozen 2, so $540 total bet. same process as bet 3.</li>
-                        <li>Bet 5: $810 on dozen 1, $810 on dozen 2, so $1620 total bet. For 4 levels this is the final bet no matter what. Win or lose.</li>
+                        <li>Step 1: $10 on dozen 1, $10 on dozen 2, so $20 total bet. Do this until you lose.</li>
+                        <li>Step 2: $30 on dozen 1, $30 on dozen 2, so $60 total bet. This is the 1st level of Martingale.</li>
+                        <li>Step 3: $90 on dozen 1, $90 on dozen 2, so $180 total bet. 2nd level of Martingale.</li>
+                        <li>Step 4: $270 on dozen 1, $270 on dozen 2, so $540 total bet. same process as bet 3.</li>
+                        <li>Step 5: $810 on dozen 1, $810 on dozen 2, so $1620 total bet. For 4 levels this is the final bet no matter what. Win or lose.</li>
                     </ul>
-                    You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to keep triple Martingaleing your bet. Basically, for this system the first time you triple your bet each time you lose. If at any point you win, go back to the original bet size for the next spin.
+                    You will do this same process for whatever amount of levels that you choose. The number of levels just corresponds to how many times you will continue to keep tripling your bet. Basically, for this system you triple your bet each time you lose. If at any point you win, go back to the original bet size for the next spin.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be. In this system it's your first bet on each dozen before any Martingaleing.</li>
-                        <li>Levels: How many times do you want to keep tripleing your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 2 + 6 + 18 + 54 = 80 units worth of bets. 1 unit on each doezen so 2 untis total for original bet then 6, 18, and 54 for 3 levels of triple Martingale.</li>
+                        <li>Unit Size: How much is your original bet going to be. In this system it's your first bet on each dozen before any Martingales.</li>
+                        <li>Levels: How many times you want to keep tripling your bet on a losing streak. Your bankroll should be able to cover the amount needed to place all the bets. If you have 3 levels you will need to cover 2 + 6 + 18 + 54 = 80 units worth of bets. 1 unit on each doezen so 2 untis total for original bet then 6, 18, and 54 for 3 levels of triple Martingale.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1887,7 +1886,7 @@ function AnyUntil() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $10 bet on the number you picked.</li>
                     </ul>
@@ -1907,7 +1906,7 @@ function AnyUntil() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    This system should only be used 1 time. I would not advise playing this strategy all day. However, I have myself played this system and think it is not bad. It provides many chances and the opportunity to win big off of a small wager. If you get lucky and the number comes up early you win a large profit. And if it comes much later you can get away with minimal loss. I think if you don't want to be bothered with a complicated system then this is good. I personally played strategy while on vacation in Monte Carlo, Monaco and the number came on just the 2nd spin. I got lucky and was rewarded with a large profit. However, the important part is that I walked away after it came up and took the profit.
+                    This system should only be used 1 time. I would not advise playing this strategy all day. However, I have myself played this system and think it is not bad. It provides many chances and the opportunity to win big off of a small wager. If you get lucky and the number comes up early you win a large profit. If it comes much later you can get away with minimal loss. I think if you don't want to be bothered with a complicated system then this is good. I personally played this strategy while on vacation in Monte Carlo, Monaco and the number came on just the 2nd spin. I got lucky and was rewarded with a large profit. However, the important part is that I walked away after it came up and took the profit.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -2006,13 +2005,13 @@ function Romanovsky() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves placing 3 units on two dozen then 1 unit on two different corner bets each. Total 8 units. Any winning number results in a profit of 1 unit. There are 6 whacks or 5 on Euro.
+                    This strategy involves placing 3 units on two dozens each then 1 unit on two different corner bets each. Total 8 units. Any winning number results in a profit of 1 unit. There are 6 whacks or 5 on Euro.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
-                        <li>Place a $30 bet on the 1st & 2nd dozen each.</li>
+                        <li>Place a $30 bet on the 1st & 2nd dozens each.</li>
                         <li>Place a $10 bet on two non overlapping corner bets in the 3rd dozen. Usually: [25,26,28,29] & [32,33,35,36].</li>
                     </ul>
                     You will place the same bet for every spin regardless if you won or lost on the previous spin.
@@ -2022,7 +2021,7 @@ function Romanovsky() {
                     <ul>
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much are you placing on each corner individually and 1/3 of each dozen bet.</li>
+                        <li>Unit Size: How much you are placing on each corner individually and 1/3 of each dozen bet.</li>
                     </ul>
                 </p><br />
             </div>
@@ -2194,7 +2193,7 @@ function OneUntilMG() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Spins 1 - 35: Place a $10 bet on the number you picked.</li>
                         <li>Spins 36 - 52: Place a $20 bet on the number you picked.</li>
@@ -2318,17 +2317,17 @@ function TaiFighter() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves for left to right placing 6 units on a double street, 4 units on a corner, 11 units on the middle dozen, 4 units on a corner and 6 units on a double street. Flat bet system.
+                    This strategy involves from left to right placing 6 units on a double street, 4 units on a corner, 11 units on the middle dozen, 4 units on a corner and 6 units on a double street. Flat bet system. Make sure no bets overlap.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are playing this systems with a base unit of $10 then it would look like this.
+                    If you are playing this system with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Place a $60 bet on 2 different double streets. Usually the first and last. [1-6] & [31-36].</li>
                         <li>Place a $40 bet on 2 different corner bets each. Usually [7,8,10,11] & [25,26,28,29].</li>
                         <li>Place a $110 bet on the 2nd dozen.</li>
                     </ul>
-                    You will place the same bet for every spin regardless if you win or lose on the previous spin.
+                    You will place the same bet for every spin regardless if you won or lost on the previous spin.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
@@ -2344,7 +2343,7 @@ function TaiFighter() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Another flat bet system. I think this one is better than a lot of other flat bet systems and while covering a lot of the board still is remains relatively simple. If you are going to play a flat bet system then this is not a terrible one. That being said, I would not play this system personally since I don't like flat bet systems.
+                    Another flat bet system. I think this one is better than a lot of other flat bet systems and while covering a lot of the board it still remains relatively simple. If you are going to play a flat bet system then this is not a terrible one. That being said, I would not play this system personally since I don't like flat bet systems.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -2538,13 +2537,13 @@ function EveryTimeMG() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    This strategy involves playing two Martingale systems at the same time that are betting against themselves. By doing this as long as there is some back and forth ocassionally you will win 1 unit every spin you last. This system is the hardest one for people to understand. I even played this at a casino and the dealer questioned what I was doing and thought that I didn't know how to play Roulette. So this system will deffinitely get some weird looks or comments. However, If you understand what is happening you will realize the reason for it.
+                    This strategy involves playing two Martingale systems at the same time that are betting against themselves. By doing this as long as there is some back and forth ocassionally you will win 1 unit every spin you survive. This system is the hardest one for people to understand. I even played this at a casino and the dealer questioned what I was doing and thought that I didn't know how to play Roulette. So this system will deffinitely get some weird looks or comments. However, If you understand what is happening you will realize the reason for it.
                 </p>
                 <h2>How to play:</h2>
                 <p>
                     First you need to determine how many levels of Martingale you will be doing. Next pick and even money bet and its opposite. For example Red and Black. If you are doing this with a base unit of $10 then it would look like this:
                     <ul>
-                        <li>You Double the losing bet and reset the winning bet down the the base unit.</li>
+                        <li>You double the losing bet and reset the winning bet down the the base unit.</li>
                         <li>Step 1: Bet $10 on Red, $20 on Black.</li>
                         <li>Step 2: if Red won then bet $10 on Red, $40 on Black. If Black won then bet $10 on Black and $20 on Red.</li>
                         <li>Step 3: If a 0 comes up then double both bets.</li>
@@ -2557,7 +2556,7 @@ function EveryTimeMG() {
                         <li>Spins: How many spins you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
                         <li>Unit size: How much your original bet will be before any doubling.</li>
-                        <li>Levels: How many time you are going to double your bet on a losing streak.</li>
+                        <li>Levels: How many times you are going to double your bet on a losing streak.</li>
                     </ul>
                 </p><br />
             </div>
@@ -2693,13 +2692,13 @@ function Chamba2MG() {
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    If you are doing this with a base unit of $10 then it would look like this.
+                    If you are doing this with a base unit of $10 then it would look like this:
                     <ul>
                         <li>Step 1: Bet $20 on 1st dozen, $20 on 2nd dozen, $10 on a double street in 3rd dozen. Do this until you lose.</li>
-                        <li>Step 2: Bet $100 on 1st dozen, $100 on 2nd dozen, $50 on a double street in 3rd dozen. This the final step win or lose.</li>
+                        <li>Step 2: Bet $100 on 1st dozen, $100 on 2nd dozen, $50 on a double street in the 3rd dozen. This the final step win or lose.</li>
                         <li>Step 3: If you wanted to you could go even further if you lost on step 1 and step 2 and quintuple your bets again. This can get expensive.</li>
                     </ul>
-                    If you win at any step you reset back down to step 1. It is only advised to go to step 2 but if you really wanted to you can go to a step 3 which in the case of a $10 initinal unit size you would be betting $500 on 1st dozen, $500 on 2nd dozen, and $250 on the 3rd dozen.
+                    If you win at any step you reset back down to step 1. It is only advised to go to step 2 but if you really wanted to you can go to a step 3 which in the case of a $10 initinal unit size you would be betting $500 on the 1st dozen, $500 on the 2nd dozen, and $250 on a double street in the 3rd dozen.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
