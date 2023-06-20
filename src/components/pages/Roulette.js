@@ -1,9 +1,10 @@
 import { Footer } from "../Footer";
 import '../Roulette.css';
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Roulette() {
+
     const [isShown, setIsShown] = useState(false);
     const [isShown2, setIsShown2] = useState(false);
     const [isShown3, setIsShown3] = useState(false);
@@ -23,7 +24,6 @@ export default function Roulette() {
 
     const handleClick = event => {
         setIsShown(current => !current);
-        // setIsShown(true);
     };
 
     const handleClick2 = event2 => {

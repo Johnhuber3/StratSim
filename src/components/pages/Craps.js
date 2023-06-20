@@ -1,7 +1,31 @@
 import { Footer } from "../Footer";
 import '../Roulette.css';
+import React from 'react';
+import { useState } from 'react';
 
 export default function Craps() {
+
+    const [isShown, setIsShown] = useState(false);
+    const [isShown2, setIsShown2] = useState(false);
+    const [isShown3, setIsShown3] = useState(false);
+    const [isShown4, setIsShown4] = useState(false);
+
+    const handleClick = event => {
+        setIsShown(current => !current);
+    };
+
+    const handleClick2 = event2 => {
+        setIsShown2(current => !current);
+    }
+
+    const handleClick3 = event2 => {
+        setIsShown3(current => !current);
+    }
+
+    const handleClick4 = event2 => {
+        setIsShown4(current => !current);
+    }
+
     return (
         <>
             <nav className="r-page">
@@ -50,11 +74,473 @@ export default function Craps() {
                 <div className="r-intro-box-title">
                     <p>Simulator</p>
                 </div>
-                <div className="r-intro-box-info">
-                    <p>Coming Soon</p>
+                <div className="r-strat-box-info">
+                    <p>Click on a system to try it out:</p>
+                    <div className="buttons">
+                        <button style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick}>See Saw Go</button>
+                        <button style={{ backgroundColor: isShown2 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick2}>Field MG</button>
+                        <button style={{ backgroundColor: isShown3 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick3}>Place Holder</button>
+                        <button style={{ backgroundColor: isShown4 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick4}>Place Holder</button>
+                    </div>
                 </div>
+                {isShown && <SeeSawGo />}
+                {isShown2 && <FieldMG />}
+                {isShown3 && <Place1 />}
+                {isShown4 && <Place2 />}
             </nav>
             <Footer />
         </>
+    )
+}
+
+function SeeSawGo() {
+    const [value, setValue] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [output, setOutput] = useState([]);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+      
+    const handleChange2 = (event) => {
+        setValue2(event.target.value);
+    };
+      
+    const handleChange3 = (event) => {
+        setValue3(event.target.value);
+    };
+
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        anotherFunction(value, value2, value3, value4);
+    };
+    
+    const anotherFunction = (spins, roll, unit, levels) => {
+        const data = [];
+        
+        setOutput(data);
+    };
+
+    return (
+        <div>
+            <div className="r-intro-box-title">
+                <p>See Saw Go</p>
+            </div>
+            <div className="r-intro-box-info">
+                <h2>Overview:</h2>
+                <p>
+                    Description 
+                </p>
+                <h2>How to play:</h2>
+                <p>
+                    Playing with a base unit of $10 then it would look like this:
+                    <ul>
+                        <li>Step 1: </li>
+                        <li>Step 2: </li>
+                        <li>Step 3: </li>
+                        <li>Step 4: </li>
+                    </ul>
+                    You will do this same process.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Shooters: </li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be.</li>
+                    </ul>
+                </p><br />
+            </div>
+            <div className="r-intro-box-title">
+                <p>Recommendation</p>
+            </div>
+            <div className="r-intro-box-info">
+                <p>
+                    Will fill in later
+                </p>
+            </div>
+            <div className="r-intro-box-title">
+                <p>Simulation</p>
+            </div>
+            <div className="r-sim-box-info">
+                <form onSubmit={handleFormSubmit}>
+                    <p>Enter some values to get started</p>
+                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <br /><br />
+                    <button type="submit" className="sub-button">Simulate</button>
+                </form>
+                <div>
+                    <table className="output-table">
+                        <thead>
+                            <tr>
+                            <th>Spin</th>
+                            <th>Number</th>
+                            <th>Bet Amount</th>
+                            <th>Won/Loss</th>
+                            <th>Bankroll</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {output.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.spinNumber}</td>
+                                <td>{row.actualNumber}</td>
+                                <td>{row.betAmount}</td>
+                                <td>{row.wonOrLoss}</td>
+                                <td>{row.bankroll}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function FieldMG() {
+    const [value, setValue] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [output, setOutput] = useState([]);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+      
+    const handleChange2 = (event) => {
+        setValue2(event.target.value);
+    };
+      
+    const handleChange3 = (event) => {
+        setValue3(event.target.value);
+    };
+
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        anotherFunction(value, value2, value3, value4);
+    };
+    
+    const anotherFunction = (spins, roll, unit, levels) => {
+        const data = [];
+        
+        setOutput(data);
+    };
+
+    return (
+        <div>
+            <div className="r-intro-box-title">
+                <p>Field Bet Martingale</p>
+            </div>
+            <div className="r-intro-box-info">
+                <h2>Overview:</h2>
+                <p>
+                    Description 
+                </p>
+                <h2>How to play:</h2>
+                <p>
+                    Playing with a base unit of $10 then it would look like this:
+                    <ul>
+                        <li>Step 1: </li>
+                        <li>Step 2: </li>
+                        <li>Step 3: </li>
+                        <li>Step 4: </li>
+                    </ul>
+                    You will do this same process.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Shooters: </li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be.</li>
+                    </ul>
+                </p><br />
+            </div>
+            <div className="r-intro-box-title">
+                <p>Recommendation</p>
+            </div>
+            <div className="r-intro-box-info">
+                <p>
+                    Will fill in later
+                </p>
+            </div>
+            <div className="r-intro-box-title">
+                <p>Simulation</p>
+            </div>
+            <div className="r-sim-box-info">
+                <form onSubmit={handleFormSubmit}>
+                    <p>Enter some values to get started</p>
+                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <br /><br />
+                    <button type="submit" className="sub-button">Simulate</button>
+                </form>
+                <div>
+                    <table className="output-table">
+                        <thead>
+                            <tr>
+                            <th>Spin</th>
+                            <th>Number</th>
+                            <th>Bet Amount</th>
+                            <th>Won/Loss</th>
+                            <th>Bankroll</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {output.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.spinNumber}</td>
+                                <td>{row.actualNumber}</td>
+                                <td>{row.betAmount}</td>
+                                <td>{row.wonOrLoss}</td>
+                                <td>{row.bankroll}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function Place1() {
+    const [value, setValue] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [output, setOutput] = useState([]);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+      
+    const handleChange2 = (event) => {
+        setValue2(event.target.value);
+    };
+      
+    const handleChange3 = (event) => {
+        setValue3(event.target.value);
+    };
+
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        anotherFunction(value, value2, value3, value4);
+    };
+    
+    const anotherFunction = (spins, roll, unit, levels) => {
+        const data = [];
+        
+        setOutput(data);
+    };
+
+    return (
+        <div>
+            <div className="r-intro-box-title">
+                <p>Place Holder</p>
+            </div>
+            <div className="r-intro-box-info">
+                <h2>Overview:</h2>
+                <p>
+                    Description 
+                </p>
+                <h2>How to play:</h2>
+                <p>
+                    Playing with a base unit of $10 then it would look like this:
+                    <ul>
+                        <li>Step 1: </li>
+                        <li>Step 2: </li>
+                        <li>Step 3: </li>
+                        <li>Step 4: </li>
+                    </ul>
+                    You will do this same process.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Shooters: </li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be.</li>
+                    </ul>
+                </p><br />
+            </div>
+            <div className="r-intro-box-title">
+                <p>Recommendation</p>
+            </div>
+            <div className="r-intro-box-info">
+                <p>
+                    Will fill in later
+                </p>
+            </div>
+            <div className="r-intro-box-title">
+                <p>Simulation</p>
+            </div>
+            <div className="r-sim-box-info">
+                <form onSubmit={handleFormSubmit}>
+                    <p>Enter some values to get started</p>
+                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <br /><br />
+                    <button type="submit" className="sub-button">Simulate</button>
+                </form>
+                <div>
+                    <table className="output-table">
+                        <thead>
+                            <tr>
+                            <th>Spin</th>
+                            <th>Number</th>
+                            <th>Bet Amount</th>
+                            <th>Won/Loss</th>
+                            <th>Bankroll</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {output.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.spinNumber}</td>
+                                <td>{row.actualNumber}</td>
+                                <td>{row.betAmount}</td>
+                                <td>{row.wonOrLoss}</td>
+                                <td>{row.bankroll}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function Place2() {
+    const [value, setValue] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [output, setOutput] = useState([]);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+      
+    const handleChange2 = (event) => {
+        setValue2(event.target.value);
+    };
+      
+    const handleChange3 = (event) => {
+        setValue3(event.target.value);
+    };
+
+    const handleChange4 = (event) => {
+        setValue4(event.target.value);
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        anotherFunction(value, value2, value3, value4);
+    };
+    
+    const anotherFunction = (spins, roll, unit, levels) => {
+        const data = [];
+        
+        setOutput(data);
+    };
+
+    return (
+        <div>
+            <div className="r-intro-box-title">
+                <p>Place Holder</p>
+            </div>
+            <div className="r-intro-box-info">
+                <h2>Overview:</h2>
+                <p>
+                    Description 
+                </p>
+                <h2>How to play:</h2>
+                <p>
+                    Playing with a base unit of $10 then it would look like this:
+                    <ul>
+                        <li>Step 1: </li>
+                        <li>Step 2: </li>
+                        <li>Step 3: </li>
+                        <li>Step 4: </li>
+                    </ul>
+                    You will do this same process.
+                </p>
+                <h2>Input fields for simulator:</h2>
+                <p>
+                    <ul>
+                        <li>Shooters: </li>
+                        <li>Bankroll: How much money you are bringing to the table.</li>
+                        <li>Unit Size: How much is your original bet going to be.</li>
+                    </ul>
+                </p><br />
+            </div>
+            <div className="r-intro-box-title">
+                <p>Recommendation</p>
+            </div>
+            <div className="r-intro-box-info">
+                <p>
+                    Will fill in later
+                </p>
+            </div>
+            <div className="r-intro-box-title">
+                <p>Simulation</p>
+            </div>
+            <div className="r-sim-box-info">
+                <form onSubmit={handleFormSubmit}>
+                    <p>Enter some values to get started</p>
+                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
+                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <br /><br />
+                    <button type="submit" className="sub-button">Simulate</button>
+                </form>
+                <div>
+                    <table className="output-table">
+                        <thead>
+                            <tr>
+                            <th>Spin</th>
+                            <th>Number</th>
+                            <th>Bet Amount</th>
+                            <th>Won/Loss</th>
+                            <th>Bankroll</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {output.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.spinNumber}</td>
+                                <td>{row.actualNumber}</td>
+                                <td>{row.betAmount}</td>
+                                <td>{row.wonOrLoss}</td>
+                                <td>{row.bankroll}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     )
 }
