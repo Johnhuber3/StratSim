@@ -92,12 +92,11 @@ export default function Craps() {
         </>
     )
 }
-
+// still issues with stopping point and need to do a dry run to verify correctness - https://www.youtube.com/watch?v=jtYQfXjQ4rQ
 function SeeSawGo() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
-    const [value4, setValue4] = useState('');
     const [output, setOutput] = useState([]);
 
     const handleChange = (event) => {
@@ -112,18 +111,154 @@ function SeeSawGo() {
         setValue3(event.target.value);
     };
 
-    const handleChange4 = (event) => {
-        setValue4(event.target.value);
-    };
-
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value2, value3, value4);
+        anotherFunction(value, value2, value3);
     };
     
-    const anotherFunction = (spins, roll, unit, levels) => {
+    const anotherFunction = (shooters, rack, multiplier) => {
         const data = [];
-        
+        let outcomes = [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12];
+        let round_count = 0;
+        let curr_rack = Number(rack);
+        let i = 1;
+        let roll = 0;
+        let r = 0;
+
+        while (Number(round_count) < Number(shooters)) {
+            let row = {};
+            r = Math.floor(Math.random() * 36);
+            roll = outcomes[r];
+            row.spinNumber = i;
+            i += 1;
+            row.rollNumber = Number(roll);
+            row.betAmount = '$ ' + Number(multiplier) * 48; // fill this in with correct number
+            if (roll >= 6 && roll <= 8) {
+                if (roll === 6 || roll === 8) {
+                    curr_rack += Number(multiplier) * 28;
+                    row.wonOrLoss = 'Win';
+                    row.bankroll = '$ ' + Number(curr_rack);
+                    data.push(row);
+                    row = {};
+                    r = Math.floor(Math.random() * 36);
+                    roll = outcomes[r];
+                    row.spinNumber = i;
+                    i += 1;
+                    row.rollNumber = Number(roll);
+                    row.betAmount = '$ ' + Number(multiplier) * 78; // fill this in with correct number
+                    while (roll < 4 || roll > 8) {
+                        row.wonOrLoss = '';
+                        row.bankroll = '$ ' + Number(curr_rack);
+                        data.push(row);
+                        row = {}
+                        r = Math.floor(Math.random() * 36);
+                        roll = outcomes[r];
+                        row.spinNumber = i;
+                        i += 1;
+                        row.rollNumber = Number(roll);
+                        row.betAmount = '$ ' + Number(multiplier) * 78; // fill this in with correct number
+                    }
+                    if (roll === 5 || roll === 6 || roll === 8) {
+                        curr_rack += Number(multiplier) * 28;
+                        row.wonOrLoss = 'Win';
+                        row.bankroll = '$ ' + Number(curr_rack);
+                        data.push(row);
+                    } else if (roll === 4) {
+                        curr_rack += Number(multiplier) * 18;
+                        row.wonOrLoss = 'Win';
+                        row.bankroll = '$ ' + Number(curr_rack); 
+                        data.push(row);
+                        row = {};
+                        r = Math.floor(Math.random() * 36);
+                        roll = outcomes[r];
+                        row.spinNumber = i;
+                        i += 1;
+                        row.rollNumber = Number(roll);
+                        row.betAmount = '$ ' + Number(multiplier) * 116; // fill this in with correct number
+                        while (roll < 4 || roll > 10) {
+                            row.wonOrLoss = '';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
+                            r = Math.floor(Math.random() * 36);
+                            roll = outcomes[r];
+                            row.spinNumber = i;
+                            i += 1;
+                            row.rollNumber = Number(roll);
+                            row.betAmount = '$ ' + Number(multiplier) * 116; // fill this in with correct number
+                        }
+                        if (roll === 5 || roll === 6 || roll === 8 || roll === 9) {
+                            curr_rack += Number(multiplier) * 28;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
+                            round_count += 1;
+                            row = {};
+                            row.spinNumber = '---';
+                            row.rollNumber = '---';
+                            row.betAmount = '---';
+                            row.wonOrLoss = '---';
+                            row.bankroll = '---';
+                            data.push(row);
+                        } else if (roll === 4 || roll === 10) {
+                            curr_rack += Number(multiplier) * 18;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
+                            round_count += 1;
+                            row = {};
+                            row.spinNumber = '---';
+                            row.rollNumber = '---';
+                            row.betAmount = '---';
+                            row.wonOrLoss = '---';
+                            row.bankroll = '---';
+                            data.push(row);
+                        } else {
+                            curr_rack -= Number(multiplier) * 116;
+                            round_count += 1;
+                            row.wonOrLoss = 'Loss';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
+                            row = {};
+                            row.spinNumber = '---';
+                            row.rollNumber = '---';
+                            row.betAmount = '---';
+                            row.wonOrLoss = '---';
+                            row.bankroll = '---';
+                            data.push(row);
+                        }
+                    } else if (roll === 7) {
+                        curr_rack -= Number(multiplier) * 78;
+                        round_count += 1;
+                        row = {};
+                        row.spinNumber = '---';
+                        row.rollNumber = '---';
+                        row.betAmount = '---';
+                        row.wonOrLoss = '---';
+                        row.bankroll = '---';
+                        data.push(row);
+                        continue;
+                    }
+                } else {
+                    curr_rack -= Number(multiplier) * 48;
+                    round_count += 1;
+                    row.wonOrLoss = 'Loss';
+                    row.bankroll = '$ ' + Number(curr_rack);
+                    data.push(row);
+                    row = {};
+                    row.spinNumber = '---';
+                    row.rollNumber = '---';
+                    row.betAmount = '---';
+                    row.wonOrLoss = '---';
+                    row.bankroll = '---';
+                    data.push(row);
+                }
+            } else {
+                row.wonOrLoss = '';
+                row.bankroll = '$ ' + Number(curr_rack);
+                data.push(row);
+                continue;
+            }
+        }
         setOutput(data);
     };
 
@@ -153,7 +288,7 @@ function SeeSawGo() {
                     <ul>
                         <li>Shooters: </li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be.</li>
+                        <li>Unit Size: How much is your original bet going to be. Must be divisble.</li>
                     </ul>
                 </p><br />
             </div>
@@ -173,7 +308,7 @@ function SeeSawGo() {
                     <p>Enter some values to get started</p>
                     Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -181,8 +316,8 @@ function SeeSawGo() {
                     <table className="output-table">
                         <thead>
                             <tr>
-                            <th>Spin</th>
-                            <th>Number</th>
+                            <th>Roll #</th>
+                            <th>Outcome</th>
                             <th>Bet Amount</th>
                             <th>Won/Loss</th>
                             <th>Bankroll</th>
@@ -192,7 +327,7 @@ function SeeSawGo() {
                             {output.map((row, index) => (
                             <tr key={index}>
                                 <td>{row.spinNumber}</td>
-                                <td>{row.actualNumber}</td>
+                                <td>{row.rollNumber}</td>
                                 <td>{row.betAmount}</td>
                                 <td>{row.wonOrLoss}</td>
                                 <td>{row.bankroll}</td>
@@ -234,10 +369,48 @@ function FieldMG() {
         anotherFunction(value, value2, value3, value4);
     };
     
-    const anotherFunction = (spins, roll, unit, levels) => {
-        const data = [];
-        
-        setOutput(data);
+    const anotherFunction = (rolls, roll, unit, levels) => {
+        let outcomes = [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12];
+
+        let n = Math.floor(Math.random() * 36);
+        let roll_result = outcomes[n];
+        const data = {};
+        let level = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+        let i = 0;
+        let bet_amount = 0;
+        let curr_profit = roll;
+
+        while (true) {
+            let row = {};
+            let n = Math.floor(Math.random() * 36);
+            roll_result = outcomes[n];
+            row.spinNumber = i;
+            i += 1;
+            row.actualNumber = roll_result;
+
+            if (roll_result <= 4 || roll_result >= 9) {
+                bet_amount = Number(unit);
+                row.betAmount = Number(bet_amount);
+                row.wonOrLost = 'Win';
+                if (roll_result === 2 || roll_result === 12) {
+                    curr_profit += (Number(bet_amount) * 2);
+                } else {
+                    curr_profit += Number(bet_amount);
+                }
+                row.bankroll = curr_profit;
+            } else {
+                bet_amount *= 2;
+                row.betAmount = Number(bet_amount);
+                row.wonOrLost = 'Lost';
+                curr_profit -= Number(bet_amount);
+                row.bankroll = curr_profit;
+            }
+            data.push(row);
+            if (roll < (Number(unit) * level[levels])) {
+                break;
+            }
+        }
+        setOutput(data)
     };
 
     return (
@@ -284,9 +457,10 @@ function FieldMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                    Rolls: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
                     Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -294,8 +468,8 @@ function FieldMG() {
                     <table className="output-table">
                         <thead>
                             <tr>
-                            <th>Spin</th>
-                            <th>Number</th>
+                            <th>Roll #</th>
+                            <th>Outcome</th>
                             <th>Bet Amount</th>
                             <th>Won/Loss</th>
                             <th>Bankroll</th>
