@@ -374,42 +374,88 @@ function FieldMG() {
 
         let n = Math.floor(Math.random() * 36);
         let roll_result = outcomes[n];
-        const data = {};
+        const data = [];
         let level = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
-        let i = 0;
-        let bet_amount = 0;
-        let curr_profit = roll;
+        let i = 1;
+        let bet_amount = Number(unit);
+        let curr_profit = Number(roll);
+        let curr_result = 0;
+        let level_count = 0;
 
-        while (true) {
+        for (i = 0; i < Number(rolls); i++) {
             let row = {};
             let n = Math.floor(Math.random() * 36);
             roll_result = outcomes[n];
-            row.spinNumber = i;
-            i += 1;
+            row.spinNumber = i + 1;
             row.actualNumber = roll_result;
+            row.betAmount = "$ " + Number(bet_amount);
 
             if (roll_result <= 4 || roll_result >= 9) {
-                bet_amount = Number(unit);
-                row.betAmount = Number(bet_amount);
-                row.wonOrLost = 'Win';
+                row.wonOrLoss = 'Win';
+                curr_result = 1;
+                level_count = 0;
                 if (roll_result === 2 || roll_result === 12) {
                     curr_profit += (Number(bet_amount) * 2);
                 } else {
                     curr_profit += Number(bet_amount);
                 }
-                row.bankroll = curr_profit;
+                bet_amount = Number(unit);
             } else {
-                bet_amount *= 2;
-                row.betAmount = Number(bet_amount);
-                row.wonOrLost = 'Lost';
+                row.wonOrLoss = 'Loss';
+                level_count += 1;
+                curr_result = 0;
                 curr_profit -= Number(bet_amount);
-                row.bankroll = curr_profit;
+                bet_amount *= 2;
             }
+            row.bankroll = "$ " + curr_profit;
             data.push(row);
-            if (roll < (Number(unit) * level[levels])) {
+            if (level_count === (Number(levels) + 1)) {
+                level_count = 0;
+                bet_amount = Number(unit);
+                curr_result = 0;
+                curr_result = 1;
+                if ((level[levels] * Number(unit)) > Number(curr_profit)) {
+                    curr_result = 1;
+                    break;
+                }
+            }
+        }
+
+        i += 1;
+
+        while (!curr_result) {
+            n = Math.floor(Math.random() * 36);
+            roll_result = outcomes[n];
+            const row = {};
+            row.spinNumber = i;
+            i += 1;
+            row.actualNumber = roll_result;
+            row.betAmount = "$ " + Number(bet_amount);
+            if (roll_result <= 4 || roll_result >= 9) {
+                row.wonOrLoss = 'Win';
+                level_count = 0;
+                if (roll_result === 2 || roll_result === 12) {
+                    curr_profit += (Number(bet_amount) * 2);
+                } else {
+                    curr_profit += Number(bet_amount);
+                }
+                row.bankroll = "$ " + Number(curr_profit);
+                data.push(row);
+                bet_amount = Number(unit);
+                break;
+            } else {
+                row.wonOrLoss = 'Loss';
+                level_count += 1;
+                curr_profit -= Number(bet_amount);
+                bet_amount *= 2;
+            }
+            row.bankroll = "$ " + Number(curr_profit);
+            data.push(row);
+            if (level_count === Number(levels) + 1) {
                 break;
             }
         }
+
         setOutput(data)
     };
 
@@ -471,7 +517,7 @@ function FieldMG() {
                             <th>Roll #</th>
                             <th>Outcome</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Win/Loss</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
