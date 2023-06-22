@@ -573,13 +573,13 @@ function TwoAndOut() {
         let r = 0;
         let p = 0;
         let s = 0;
-        let w = 0;
+        // let w = 0;
 
         // 9:5 7:5 7:6     25 25 30 30 25 25     5 5 6 6 5 5 
         while (Number(round_count) < Number(shooters)) {
             p = 0;
             s = 0;
-            w = 0;
+            // w = 0;
             while (true) {
                 let row = {};
                 r = Math.floor(Math.random() * 36);
@@ -592,7 +592,7 @@ function TwoAndOut() {
                     // make a row for just the point
                     row.betAmount = 'Point is ' + Number(point);
                     row.wonOrLoss = '';
-                    row.bankroll = Number(curr_rack);
+                    row.bankroll = '$ ' + Number(curr_rack);
                     data.push(row);
                     while (true) {
                         let row = {};
@@ -605,27 +605,27 @@ function TwoAndOut() {
                         if (roll === 7) {
                             curr_rack -= Number(multiplier) * 32;
                             row.wonOrLoss = 'Loss';
-                            row.bankroll = Number(curr_rack);
+                            row.bankroll = '$ ' + Number(curr_rack);
                             data.push(row);
                             s = 1;
                             break;
                         }
                         if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
                             row.wonOrLoss = '';
-                            row.bankroll = Number(curr_rack);
+                            row.bankroll = '$ ' + Number(curr_rack);
                             data.push(row);
                             continue;
                         }
                         if (roll === 4 || roll === 10) {
                             curr_rack += Number(multiplier) * 9;
                             row.wonOrLoss = 'Win';
-                            row.bankroll = Number(curr_rack);
+                            row.bankroll = '$ ' + Number(curr_rack);
                             data.push(row);
                         }
                         else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
                             curr_rack += Number(multiplier) * 7;
                             row.wonOrLoss = 'Win';
-                            row.bankroll = Number(curr_rack);
+                            row.bankroll = '$ ' + Number(curr_rack);
                             data.push(row);
                         }
                         if (roll === point) {
@@ -643,21 +643,21 @@ function TwoAndOut() {
                             if (roll === 7) {
                                 curr_rack -= Number(multiplier) * 32;
                                 row.wonOrLoss = 'Loss';
-                                row.bankroll = Number(curr_rack);
+                                row.bankroll = '$ ' + Number(curr_rack);
                                 data.push(row);
                                 s = 1;
                                 break;
                             }
                             if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
                                 row.wonOrLoss = '';
-                                row.bankroll = Number(curr_rack);
+                                row.bankroll = '$ ' + Number(curr_rack);
                                 data.push(row);
                                 continue;
                             }
                             if (roll === 4 || roll === 10) {
                                 curr_rack += Number(multiplier) * 9;
                                 row.wonOrLoss = 'Win';
-                                row.bankroll = Number(curr_rack);
+                                row.bankroll = '$ ' + Number(curr_rack);
                                 data.push(row);
                                 // w = 1;
                                 break;
@@ -665,7 +665,7 @@ function TwoAndOut() {
                             else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
                                 curr_rack += Number(multiplier) * 7;
                                 row.wonOrLoss = 'Win';
-                                row.bankroll = Number(curr_rack);
+                                row.bankroll = '$ ' + Number(curr_rack);
                                 data.push(row);
                                 // w = 1;
                                 break;
@@ -676,7 +676,7 @@ function TwoAndOut() {
                 } else {
                     row.betAmount = 'No bet';
                     row.wonOrLoss = '';
-                    row.bankroll = Number(curr_rack);
+                    row.bankroll = '$ ' + Number(curr_rack);
                     data.push(row);
                     continue;
                 }    
@@ -778,7 +778,7 @@ function TwoAndOut() {
         </div>
     )
 }
-
+// looks good just need to do some dry runs to make sure
 function TwoAndRegress() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
@@ -807,84 +807,142 @@ function TwoAndRegress() {
         let outcomes = [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12];
         let round_count = 0;
         let curr_rack = Number(rack);
+        let point = 0;
         let i = 1;
-        let sh = 0;
         let roll = 0;
         let r = 0;
-        rack = 160; // remove this later or fix
         let p = 0;
         let s = 0;
-        let w = 0;
+        // let w = 0;
 
-        // 9:5 7:5 7:6     25 25 30 30 25 25
-        // After 2 wins regress to 64 across     10 10 12 12 10 10
-        while (sh < shooters) {
+        // 9:5 7:5 7:6     25 25 30 30 25 25     5 5 6 6 5 5 
+        // After 2 wins regress to 64 across     10 10 12 12 10 10  ->  5 5 6 6 5 5 
+        while (Number(round_count) < Number(shooters)) {
             p = 0;
             s = 0;
-            w = 0;
+            // w = 0;
             while (true) {
+                let row = {};
                 r = Math.floor(Math.random() * 36);
                 roll = outcomes[r];
-                let point = roll;
+                row.spinNumber = i;
+                i += 1;
+                row.rollNumber = Number(roll);
+                point = roll;
                 if (roll >= 4 && roll <= 10 && roll !== 7) {
+                    row.betAmount = 'Point is ' + Number(point);
+                    row.wonOrLoss = '';
+                    row.bankroll = '$ ' + Number(curr_rack);
+                    data.push(row);
                     while (true) {
+                        let row = {};
                         r = Math.floor(Math.random() * 36);
                         roll = outcomes[r];
+                        row.spinNumber = i;
+                        i += 1;
+                        row.rollNumber = Number(roll);
+                        row.betAmount = '$ ' + Number(multiplier) * 64;
                         if (roll === 7) {
-                            rack -= 160;
+                            curr_rack -= Number(multiplier) * 64;
+                            row.wonOrLoss = 'Loss';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
                             s = 1;
                             break;
                         }
                         if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                            row.wonOrLoss = '';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
                             continue;
                         }
                         if (roll === 4 || roll === 10) {
-                            rack += 45;
+                            curr_rack += Number(multiplier) * 18;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
                         }
                         else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
-                            rack += 35;
+                            curr_rack += Number(multiplier) * 14;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = '$ ' + Number(curr_rack);
+                            data.push(row);
                         }
                         if (roll === point) {
                             p = 1;
                             break;
                         }
                         while (true) {
+                            let row = {};
                             r = Math.floor(Math.random() * 36);
                             roll = outcomes[r];
+                            row.spinNumber = i;
+                            i += 1;
+                            row.rollNumber = Number(roll);
+                            row.betAmount = '$ ' + Number(multiplier) * 64;
                             if (roll === 7) {
-                                rack -= 160;
+                                curr_rack -= Number(multiplier) * 64;
+                                row.wonOrLoss = 'Loss';
+                                row.bankroll = '$ ' + Number(curr_rack);
+                                data.push(row);
                                 s = 1;
                                 break;
                             }
-                            if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                            else if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                row.wonOrLoss = '';
+                                row.bankroll = '$ ' + Number(curr_rack);
+                                data.push(row);
                                 continue;
                             }
-                            if (roll === 4 || roll === 10) {
-                                rack += 45;
+                            else if (roll === 4 || roll === 10) {
+                                curr_rack += Number(multiplier) * 18;
+                                row.wonOrLoss = 'Win';
+                                row.bankroll = '$ ' + Number(curr_rack);
+                                data.push(row);
                             }
                             else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
-                                rack += 35;
+                                curr_rack += Number(multiplier) * 14;
+                                row.wonOrLoss = 'Win';
+                                row.bankroll = '$ ' + Number(curr_rack);
+                                data.push(row);
                             }
                             if (roll === point) {
                                 p = 1;
                                 break;
                             }
                             while (true) {
+                                let row = {};
                                 r = Math.floor(Math.random() * 36);
                                 roll = outcomes[r];
+                                row.spinNumber = i;
+                                i += 1;
+                                row.rollNumber = Number(roll);
+                                row.betAmount = '$ ' + Number(multiplier) * 32;
                                 if (roll === 7) {
-                                    rack -= 64;
+                                    curr_rack -= Number(multiplier) * 32;
                                     s = 1;
+                                    row.wonOrLoss = 'Loss';
+                                    row.bankroll = '$ ' + Number(curr_rack);
+                                    data.push(row);
                                     break;
                                 }
-                                if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                else if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                    row.wonOrLoss = '';
+                                    row.bankroll = '$ ' + Number(curr_rack);
+                                    data.push(row);
                                     continue;
                                 }
-                                if (roll === 4 || roll === 10) {
-                                    rack += 18;
+                                else if (roll === 4 || roll === 10) {
+                                    curr_rack += Number(multiplier) * 9;
+                                    row.wonOrLoss = 'Win';
+                                    row.bankroll = '$ ' + Number(curr_rack);
+                                    data.push(row);
                                 }
                                 else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
-                                    rack += 14;
+                                    curr_rack += Number(multiplier) * 7;
+                                    row.wonOrLoss = 'Win';
+                                    row.bankroll = '$ ' + Number(curr_rack);
+                                    data.push(row);
                                 }
                                 if (roll === point) {
                                     p = 1;
@@ -896,24 +954,29 @@ function TwoAndRegress() {
                         break;
                     }
                 } else {
+                    row.betAmount = 'No bet';
+                    row.wonOrLoss = '';
+                    row.bankroll = '$ ' + Number(curr_rack);
+                    data.push(row);
                     continue;
                 }    
                 break;
             }
-            
-            /*
-            print()
-            if (p == 1):
-                print('Point won\nRack: ', rack, '\n')
-            if (s == 1):
-                print('Seven out\nRack: ', rack, '\n')
-            if (w == 1):
-                print('Winner\nRack: ', rack, '\n')
-            */
+            round_count += 1;
+            let row = {};
+            row.spinNumber = '-------';
+            row.rollNumber = '------';
+            row.betAmount = '-------';
+            row.wonOrLoss = '-------';
+            row.bankroll = '-------';
+            if (p === 1) {
+                row.spinNumber = 'Point won';
+            }
+            if (s === 1) {
+                row.betAmount = 'Seven out';
+            }
+            data.push(row);
         }
-
-        // print()
-        // print('Final rack after', int(shooters), 'shooters: ', rack)
         setOutput(data);
     };
 
@@ -982,7 +1045,7 @@ function TwoAndRegress() {
                             {output.map((row, index) => (
                             <tr key={index}>
                                 <td>{row.spinNumber}</td>
-                                <td>{row.actualNumber}</td>
+                                <td>{row.rollNumber}</td>
                                 <td>{row.betAmount}</td>
                                 <td>{row.wonOrLoss}</td>
                                 <td>{row.bankroll}</td>
