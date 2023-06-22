@@ -79,14 +79,14 @@ export default function Craps() {
                     <div className="buttons">
                         <button style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick}>See Saw Go</button>
                         <button style={{ backgroundColor: isShown2 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick2}>Field MG</button>
-                        <button style={{ backgroundColor: isShown3 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick3}>Place Holder</button>
-                        <button style={{ backgroundColor: isShown4 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick4}>Place Holder</button>
+                        <button style={{ backgroundColor: isShown3 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick3}>2 & Out</button>
+                        <button style={{ backgroundColor: isShown4 ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick4}>2 & Regress</button>
                     </div>
                 </div>
                 {isShown && <SeeSawGo />}
                 {isShown2 && <FieldMG />}
-                {isShown3 && <Place1 />}
-                {isShown4 && <Place2 />}
+                {isShown3 && <TwoAndOut />}
+                {isShown4 && <TwoAndRegress />}
             </nav>
             <Footer />
         </>
@@ -340,7 +340,7 @@ function SeeSawGo() {
         </div>
     )
 }
-
+// need to do dry runs to verify accuracy
 function FieldMG() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
@@ -538,12 +538,11 @@ function FieldMG() {
         </div>
     )
 }
-
-function Place1() {
+// looks good just need to do some dry runs to make sure
+function TwoAndOut() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
-    const [value4, setValue4] = useState('');
     const [output, setOutput] = useState([]);
 
     const handleChange = (event) => {
@@ -558,18 +557,146 @@ function Place1() {
         setValue3(event.target.value);
     };
 
-    const handleChange4 = (event) => {
-        setValue4(event.target.value);
-    };
-
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value2, value3, value4);
+        anotherFunction(value, value2, value3);
     };
     
-    const anotherFunction = (spins, roll, unit, levels) => {
+    const anotherFunction = (shooters, rack, multiplier) => {
         const data = [];
-        
+        let outcomes = [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12];
+        let round_count = 0;
+        let curr_rack = Number(rack);
+        let point = 0;
+        let i = 1;
+        let roll = 0;
+        let r = 0;
+        let p = 0;
+        let s = 0;
+        let w = 0;
+
+        // 9:5 7:5 7:6     25 25 30 30 25 25     5 5 6 6 5 5 
+        while (Number(round_count) < Number(shooters)) {
+            p = 0;
+            s = 0;
+            w = 0;
+            while (true) {
+                let row = {};
+                r = Math.floor(Math.random() * 36);
+                roll = outcomes[r];
+                row.spinNumber = i;
+                i += 1;
+                row.rollNumber = Number(roll);
+                point = roll;
+                if (roll >= 4 && roll <= 10 && roll !== 7) {
+                    // make a row for just the point
+                    row.betAmount = 'Point is ' + Number(point);
+                    row.wonOrLoss = '';
+                    row.bankroll = Number(curr_rack);
+                    data.push(row);
+                    while (true) {
+                        let row = {};
+                        r = Math.floor(Math.random() * 36);
+                        roll = outcomes[r];
+                        row.spinNumber = i;
+                        i += 1;
+                        row.rollNumber = Number(roll);
+                        row.betAmount = '$ ' + Number(multiplier) * 32;
+                        if (roll === 7) {
+                            curr_rack -= Number(multiplier) * 32;
+                            row.wonOrLoss = 'Loss';
+                            row.bankroll = Number(curr_rack);
+                            data.push(row);
+                            s = 1;
+                            break;
+                        }
+                        if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                            row.wonOrLoss = '';
+                            row.bankroll = Number(curr_rack);
+                            data.push(row);
+                            continue;
+                        }
+                        if (roll === 4 || roll === 10) {
+                            curr_rack += Number(multiplier) * 9;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = Number(curr_rack);
+                            data.push(row);
+                        }
+                        else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
+                            curr_rack += Number(multiplier) * 7;
+                            row.wonOrLoss = 'Win';
+                            row.bankroll = Number(curr_rack);
+                            data.push(row);
+                        }
+                        if (roll === point) {
+                            p = 1;
+                            break;
+                        }
+                        while (true) {
+                            let row = {};
+                            r = Math.floor(Math.random() * 36);
+                            roll = outcomes[r];
+                            row.spinNumber = i;
+                            i += 1;
+                            row.rollNumber = Number(roll);
+                            row.betAmount = '$ ' + Number(multiplier) * 32;
+                            if (roll === 7) {
+                                curr_rack -= Number(multiplier) * 32;
+                                row.wonOrLoss = 'Loss';
+                                row.bankroll = Number(curr_rack);
+                                data.push(row);
+                                s = 1;
+                                break;
+                            }
+                            if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                row.wonOrLoss = '';
+                                row.bankroll = Number(curr_rack);
+                                data.push(row);
+                                continue;
+                            }
+                            if (roll === 4 || roll === 10) {
+                                curr_rack += Number(multiplier) * 9;
+                                row.wonOrLoss = 'Win';
+                                row.bankroll = Number(curr_rack);
+                                data.push(row);
+                                // w = 1;
+                                break;
+                            }
+                            else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
+                                curr_rack += Number(multiplier) * 7;
+                                row.wonOrLoss = 'Win';
+                                row.bankroll = Number(curr_rack);
+                                data.push(row);
+                                // w = 1;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                } else {
+                    row.betAmount = 'No bet';
+                    row.wonOrLoss = '';
+                    row.bankroll = Number(curr_rack);
+                    data.push(row);
+                    continue;
+                }    
+                break;
+            }
+            round_count += 1;
+            let row = {};
+            row.spinNumber = '-------';
+            row.rollNumber = '------';
+            row.betAmount = '-------';
+            row.wonOrLoss = '-------';
+            row.bankroll = '-------';
+            if (p === 1) {
+                row.spinNumber = 'Point won';
+            }
+            if (s === 1) {
+                row.betAmount = 'Seven out';
+            }
+            data.push(row);
+        }
         setOutput(data);
     };
 
@@ -619,7 +746,7 @@ function Place1() {
                     <p>Enter some values to get started</p>
                     Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -638,7 +765,7 @@ function Place1() {
                             {output.map((row, index) => (
                             <tr key={index}>
                                 <td>{row.spinNumber}</td>
-                                <td>{row.actualNumber}</td>
+                                <td>{row.rollNumber}</td>
                                 <td>{row.betAmount}</td>
                                 <td>{row.wonOrLoss}</td>
                                 <td>{row.bankroll}</td>
@@ -652,11 +779,10 @@ function Place1() {
     )
 }
 
-function Place2() {
+function TwoAndRegress() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
-    const [value4, setValue4] = useState('');
     const [output, setOutput] = useState([]);
 
     const handleChange = (event) => {
@@ -671,18 +797,123 @@ function Place2() {
         setValue3(event.target.value);
     };
 
-    const handleChange4 = (event) => {
-        setValue4(event.target.value);
-    };
-
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        anotherFunction(value, value2, value3, value4);
+        anotherFunction(value, value2, value3);
     };
     
-    const anotherFunction = (spins, roll, unit, levels) => {
+    const anotherFunction = (shooters, rack, multiplier) => {
         const data = [];
-        
+        let outcomes = [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12];
+        let round_count = 0;
+        let curr_rack = Number(rack);
+        let i = 1;
+        let sh = 0;
+        let roll = 0;
+        let r = 0;
+        rack = 160; // remove this later or fix
+        let p = 0;
+        let s = 0;
+        let w = 0;
+
+        // 9:5 7:5 7:6     25 25 30 30 25 25
+        // After 2 wins regress to 64 across     10 10 12 12 10 10
+        while (sh < shooters) {
+            p = 0;
+            s = 0;
+            w = 0;
+            while (true) {
+                r = Math.floor(Math.random() * 36);
+                roll = outcomes[r];
+                let point = roll;
+                if (roll >= 4 && roll <= 10 && roll !== 7) {
+                    while (true) {
+                        r = Math.floor(Math.random() * 36);
+                        roll = outcomes[r];
+                        if (roll === 7) {
+                            rack -= 160;
+                            s = 1;
+                            break;
+                        }
+                        if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                            continue;
+                        }
+                        if (roll === 4 || roll === 10) {
+                            rack += 45;
+                        }
+                        else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
+                            rack += 35;
+                        }
+                        if (roll === point) {
+                            p = 1;
+                            break;
+                        }
+                        while (true) {
+                            r = Math.floor(Math.random() * 36);
+                            roll = outcomes[r];
+                            if (roll === 7) {
+                                rack -= 160;
+                                s = 1;
+                                break;
+                            }
+                            if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                continue;
+                            }
+                            if (roll === 4 || roll === 10) {
+                                rack += 45;
+                            }
+                            else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
+                                rack += 35;
+                            }
+                            if (roll === point) {
+                                p = 1;
+                                break;
+                            }
+                            while (true) {
+                                r = Math.floor(Math.random() * 36);
+                                roll = outcomes[r];
+                                if (roll === 7) {
+                                    rack -= 64;
+                                    s = 1;
+                                    break;
+                                }
+                                if (roll === 2 || roll === 3 || roll === 11 || roll === 12) {
+                                    continue;
+                                }
+                                if (roll === 4 || roll === 10) {
+                                    rack += 18;
+                                }
+                                else if (roll === 5 || roll === 9 || roll === 6 || roll === 8) {
+                                    rack += 14;
+                                }
+                                if (roll === point) {
+                                    p = 1;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    }
+                } else {
+                    continue;
+                }    
+                break;
+            }
+            
+            /*
+            print()
+            if (p == 1):
+                print('Point won\nRack: ', rack, '\n')
+            if (s == 1):
+                print('Seven out\nRack: ', rack, '\n')
+            if (w == 1):
+                print('Winner\nRack: ', rack, '\n')
+            */
+        }
+
+        // print()
+        // print('Final rack after', int(shooters), 'shooters: ', rack)
         setOutput(data);
     };
 
@@ -732,7 +963,7 @@ function Place2() {
                     <p>Enter some values to get started</p>
                     Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
                     Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
