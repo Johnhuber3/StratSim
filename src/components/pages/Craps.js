@@ -93,6 +93,8 @@ export default function Craps() {
     )
 }
 // still issues with stopping point and need to do a dry run to verify correctness - https://www.youtube.com/watch?v=jtYQfXjQ4rQ
+// also add waiting for a point to be made before betting
+// seems like it is not stopping like a go system would so need to double check on that
 function SeeSawGo() {
     const [value, setValue] = useState('');
     const [value2, setValue2] = useState('');
@@ -270,25 +272,24 @@ function SeeSawGo() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    Description 
+                    This strategy involves waiting until the point is established and then placing bets on the 6 and 8. Once you win one of them then place bets on the 4 and 5. Then after winning another bet place bets on the remaining numbers of 9 and 10. After all bets are out then just collect the winning after a place bet win until the point is made or a seven out.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    Playing with a base unit of $10 then it would look like this:
+                    Playing with a base of $12 each on the 6 and 8 then it would look like this:
                     <ul>
-                        <li>Step 1: </li>
-                        <li>Step 2: </li>
-                        <li>Step 3: </li>
-                        <li>Step 4: </li>
+                        <li>Step 1: Bet $12 on the 6 and $12 on the $8. Leave them until they win, point is made or a seven out.</li>
+                        <li>Step 2: Bet $10 on the 5 and $5 on the 4. Stay here for the same reasons as step 1.</li>
+                        <li>Step 3: Bet $10 on the 9 and $5 on the 10. Collect your bets until the point is made or a seven out.</li>
                     </ul>
-                    You will do this same process.
+                    You will do this same process for every shooter.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
-                        <li>Shooters: </li>
+                        <li>Shooters: How many different rounds you want to play.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be. Must be divisble.</li>
+                        <li>Unit Multiplier: Base is a $12 bet on the 6 and 8 each. So a multiplier of 3 would mean a bet of $36 on the 6 and 8.</li>
                     </ul>
                 </p><br />
             </div>
@@ -297,7 +298,7 @@ function SeeSawGo() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Will fill in later
+                    I prefer the other strategies that don't take as long to set up. I feel that you would lose playing this system often before you even get to the point where you have all the numbers covered.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -467,25 +468,26 @@ function FieldMG() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    Description 
+                    This strategy involves soley playing the field bet and doubling your bet each time you lose. This is the same as the tradition Martingale system that you see played on Roulette just this time being played on Craps with the field bet.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    Playing with a base unit of $10 then it would look like this:
+                    Playing with a base unit of $10 and three levels of Martingale then it would look like this:
                     <ul>
-                        <li>Step 1: </li>
-                        <li>Step 2: </li>
-                        <li>Step 3: </li>
-                        <li>Step 4: </li>
+                        <li>Step 1: Bet $10 on the field bet. Do this until you lose.</li>
+                        <li>Step 2: Bet $20 on the field bet.</li>
+                        <li>Step 3: Bet $40 on the field bet.</li>
+                        <li>Step 4: Bet $80 on the field bet. This is the final bet win or lose.</li>
                     </ul>
-                    You will do this same process.
+                    You will do this same process everytime and any point that you win you reset back down to step 1 for the next roll.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
-                        <li>Shooters: </li>
+                        <li>Rolls: How many rolls you want to simulate.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be.</li>
+                        <li>Unit size: How much is your original bet going to be.</li>
+                        <li>Levels: How many times you are going to keep doubling your bet when you lose.</li>
                     </ul>
                 </p><br />
             </div>
@@ -494,7 +496,7 @@ function FieldMG() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Will fill in later
+                    This is just like other Martingale systems. It works everytime until it does't. Doing Martingale on the field bet has some benifits compared to say Roulette because you can get lucky and roll a 2 or 12 on a  losing streak and get paid 2 or even 3 to 1 on your bet. But as always with Martingale proceed with caution.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -708,25 +710,23 @@ function TwoAndOut() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    Description 
+                    This strategy involves waiting until the point is made and then making place bets on all the numbers. So 4, 5, 6, 8, 9, and 10. You keep them up until you win twice. THey can be any combination of the numbers. When you win two times then you pull your bets off and wait for the next shooter. 
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    Playing with a base unit of $10 then it would look like this:
+                    Playing with $32 across then it would look like this:
                     <ul>
-                        <li>Step 1: </li>
-                        <li>Step 2: </li>
-                        <li>Step 3: </li>
-                        <li>Step 4: </li>
+                        <li>Step 1: Make a $5 place bet on 4, 5, 9, and 10. $6 on 6 and 8. Leave them until two wins or a seven out.</li>
+                        <li>Step 2: Once you win twice take all your bets off and wait for the next shooter.</li>
                     </ul>
-                    You will do this same process.
+                    You will do this same process for every new shooter.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
-                        <li>Shooters: </li>
+                        <li>Shooters: How many different rounds you want to play. </li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be.</li>
+                        <li>Unit Multiplier: Base is $32 across. So whatever the multiplier is will as the name suggest multiply that amount. so if you put 3 then you will play $96 across.</li>
                     </ul>
                 </p><br />
             </div>
@@ -735,7 +735,7 @@ function TwoAndOut() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Will fill in later
+                    This is not bad because you would hope that 4, 5, 6, 8, 9, or 10 would come twice before 1 7 but that's gambling.
                 </p>
             </div>
             <div className="r-intro-box-title">
@@ -988,25 +988,23 @@ function TwoAndRegress() {
             <div className="r-intro-box-info">
                 <h2>Overview:</h2>
                 <p>
-                    Description 
+                    This strategy involves waiting until the point is made and then making place bets on all the numbers. So 4, 5, 6, 8, 9, and 10. You keep them up until you win twice. THey can be any combination of the numbers. When you win two times then you reduce your bets to half of what you started with and continue until the point is made or seven out.
                 </p>
                 <h2>How to play:</h2>
                 <p>
-                    Playing with a base unit of $10 then it would look like this:
+                    Playing with a base of $64 across then it would look like this:
                     <ul>
-                        <li>Step 1: </li>
-                        <li>Step 2: </li>
-                        <li>Step 3: </li>
-                        <li>Step 4: </li>
+                        <li>Step 1: Make a $10 place bet on 4, 5, 9, and 10. $12 on 6 and 8. Leave them until two wins or a seven out.</li>
+                        <li>Step 2: Once you win twice then reduce your bets to half of what you had previously. So $10 goes to $5 and $12 goes to $6. Leave the bets like this until the point is made or a seven out.</li>
                     </ul>
-                    You will do this same process.
+                    You will do this same process for every shooter and collect your winnings each time a place bet wins.
                 </p>
                 <h2>Input fields for simulator:</h2>
                 <p>
                     <ul>
-                        <li>Shooters: </li>
+                        <li>Shooters: How many different rounds you want to play.</li>
                         <li>Bankroll: How much money you are bringing to the table.</li>
-                        <li>Unit Size: How much is your original bet going to be.</li>
+                        <li>Unit Multiplier: Base is $32 across. So whatever the multiplier is will as the name suggest multiply that amount. so if you put 2 then you will play $128 across.</li>
                     </ul>
                 </p><br />
             </div>
@@ -1015,7 +1013,7 @@ function TwoAndRegress() {
             </div>
             <div className="r-intro-box-info">
                 <p>
-                    Will fill in later
+                    This strategy seems to work better than 2 and out. I think that may be due to how this method rewards you for catching a long roll where 2 and out stops after 2 wins no matter what.
                 </p>
             </div>
             <div className="r-intro-box-title">
