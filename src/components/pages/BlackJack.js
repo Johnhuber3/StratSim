@@ -1,7 +1,80 @@
 import { Footer } from "../Footer";
 import '../Roulette.css';
+import React from 'react';
+import { useState } from 'react';
 
-export default function Craps() {
+export default function Blackjack() {
+
+    const cardImages = {
+        'Ace of Clubs': 'Ace of Clubs.png',
+        'Two of Clubs': 'Two of Clubs.png',
+        'Three of Clubs': 'Three of Clubs.png',
+        'Four of Clubs': 'Four of Clubs.png',
+        'Five of Clubs': 'Five of Clubs.png',
+        'Six of Clubs': 'Six of Clubs.png',
+        'Seven of Clubs': 'Seven of Clubs.png',
+        'Eight of Clubs': 'Eight of Clubs.png',
+        'Nine of Clubs': 'Nine of Clubs.png',
+        'Ten of Clubs': 'Ten of Clubs.png',
+        'Jack of Clubs': 'Jack of Clubs.png',
+        'Queen of Clubs': 'Queen of Clubs.png',
+        'King of Clubs': 'King of Clubs.png',
+        'Ace of Spades': 'Ace of Spades.png',
+        'Two of Spades': 'Two of Spades.png',
+        'Three of Spades': 'Three of Spades.png',
+        'Four of Spades': 'Four of Spades.png',
+        'Five of Spades': 'Five of Spades.png',
+        'Six of Spades': 'Six of Spades.png',
+        'Seven of Spades': 'Seven of Spades.png',
+        'Eight of Spades': 'Eight of Spades.png',
+        'Nine of Spades': 'Nine of Spades.png',
+        'Ten of Spades': 'Ten of Spades.png',
+        'Jack of Spades': 'Jack of Spades.png',
+        'Queen of Spades': 'Queen of Spades.png',
+        'King of Spades': 'King of Spades.png',
+        'Ace of Hearts': 'Ace of Hearts.png',
+        'Two of Hearts': 'Two of Hearts.png',
+        'Three of Hearts': 'Three of Hearts.png',
+        'Four of Hearts': 'Four of Hearts.png',
+        'Five of Hearts': 'Five of Hearts.png',
+        'Six of Hearts': 'Six of Hearts.png',
+        'Seven of Hearts': 'Seven of Hearts.png',
+        'Eight of Hearts': 'Eight of Hearts.png',
+        'Nine of Hearts': 'Nine of Hearts.png',
+        'Ten of Hearts': 'Ten of Hearts.png',
+        'Jack of Hearts': 'Jack of Hearts.png',
+        'Queen of Hearts': 'Queen of Hearts.png',
+        'King of Hearts': 'King of Hearts.png',
+        'Ace of Diamonds': 'Ace of Diamonds.png',
+        'Two of Diamonds': 'Two of Diamonds.png',
+        'Three of Diamonds': 'Three of Diamonds.png',
+        'Four of Diamonds': 'Four of Diamonds.png',
+        'Five of Diamonds': 'Five of Diamonds.png',
+        'Six of Diamonds': 'Six of Diamonds.png',
+        'Seven of Diamonds': 'Seven of Diamonds.png',
+        'Eight of Diamonds': 'Eight of Diamonds.png',
+        'Nine of Diamonds': 'Nine of Diamonds.png',
+        'Ten of Diamonds': 'Ten of Diamonds.png',
+        'Jack of Diamonds': 'Jack of Diamonds.png',
+        'Queen of Diamonds': 'Queen of Diamonds.png',
+        'King of Diamonds': 'King of Diamonds.png'
+    };
+
+    const [value, setValue] = useState('');
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        blackjackHand(value);
+    };
+
+    const blackjackHand = (bet) => {
+
+    }
+
     return (
         <>
             <nav className="r-page">
@@ -57,11 +130,21 @@ export default function Craps() {
                 <div className="r-intro-box-title">
                     <p>Simulator</p>
                 </div>
-                <div className="r-intro-box-info">
-                    <p>Coming Soon</p>
+                <div className="r-strat-box-info">
+                <p>*** Place a wager and select deal to start the hand ***</p>
+                    <form onSubmit={handleFormSubmit}>
+                        Bet amount: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                        <br /><br />
+                        <div className="buttons">
+                            <button type="submit" className="sub-button">Deal</button>
+                        </div>
+                    </form>
                 </div>
             </nav>
             <Footer />
         </>
     )
 }
+
+
+// up to three splits creating 4 hands
