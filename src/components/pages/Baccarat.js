@@ -245,8 +245,8 @@ export default function Baccarat() {
         bankertotal += banker3value;
         playertotal = playertotal%10;
         bankertotal = bankertotal%10;
-        setPlayerInfo("Player: " + player1card + " - " + player2card + " - " + player3card + " --- Score: " + playertotal);
-        setBankerInfo("Banker: " + banker1card + " - " + banker2card + " - " + banker3card + " --- Score: " + bankertotal);
+        setPlayerInfo(playertotal);
+        setBankerInfo(bankertotal);
         if (playertotal > bankertotal) {
             setResultInfo("Player wins");
             if (buttonValue === 'Player') {
@@ -332,21 +332,41 @@ export default function Baccarat() {
                             <button type="submit" className="sub-button" onClick={event => handleFormSubmit(event, 'Bank', value)}>Bank</button>
                         </div>
                     </form>
-                    <div>{playerInfo}</div><br />
-                    <div>{bankerInfo}</div><br />
-                    <div>{resultInfo}</div><br />
-                    <div>{profitInfo}</div>
-                    <div style={{ display: 'flex' }}>
-                        {playerHand.map((card) => (
-                            <img key='' src={cardImages[card]} alt='' style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white'}}/>
-                        ))}
+                    <div>
+                        <h1 style={{ textAlign: 'center' }}>Player: {playerInfo} &nbsp;&nbsp;&nbsp;&nbsp;vs &nbsp;&nbsp;&nbsp;&nbsp;Bank: {bankerInfo}</h1>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            {playerHand.map((card) => (
+                                <img
+                                src={cardImages[card]}
+                                alt=''
+                                style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                                />
+                            ))}
+                            </div>
+                            <div
+                            style={{
+                                borderLeft: '2px solid white',
+                                height: '100px',
+                                margin: '0 20px',
+                            }}
+                            />
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            {bankHand.map((card) => (
+                                <img
+                                src={cardImages[card]}
+                                alt=''
+                                style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                                />
+                            ))}
+                            </div>
+                        </div>
                     </div>
-                    <div style={{ display: 'flex'}}>
-                        {bankHand.map((card) => (
-                            <img key='' src={cardImages[card]} alt='' style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white'}}/>
-                        ))}
+                    <div>
+                        <h2>{resultInfo}<br /></h2>
+                        <h2>{profitInfo}</h2>
                     </div>
-                    <br /><br />
+                    <br />
                 </div>
             </nav>
             <Footer />
