@@ -91,6 +91,7 @@ export default function Blackjack() {
 function SimulateGame() {
 
     const [optionInfo, setOptionInfo] = useState('');
+    const [resultInfo, setResultInfo] = useState('');
 
     const cardImages = {
         'Ace of Clubs': 'Ace of Clubs.png',
@@ -316,26 +317,37 @@ function SimulateGame() {
     playerTotal = getTotal(playerValues);
 
     // later on offer incurance if I have time to add it
-
+    /*
     if (dealerTotal === 21 || playerTotal === 21) {
         if (dealerTotal === 21 && playerTotal === 21) {
-            // push
+            setResultInfo('Push');
         } else if (dealerTotal === 21) {
-            // lose - dealer has blackjack
+            setResultInfo('Dealer Wins wiith Blackjack' + dealerTotal);
         } else {
-            // win - player has blackjack
+            setResultInfo('You win with Blackjack');
         }
     }
-
+    */
     // later on check for splits if I have time to add it
 
     if (dealerTotal > playerTotal) {
-        // dealer wins
+        setResultInfo('Dealer Wins with ' + dealerTotal + dealerCards);
     } else if (playerTotal > dealerTotal) {
         // player wins
     } else {
-        // push
+        setResultInfo('Push');
     }
+
+    const renderDealerCards = () => {
+        return dealerCards.map((card, index) => (
+          <img
+            key={index}
+            src={cardImages[card]}
+            alt={card}
+            className="card-image"
+          />
+        ));
+    };
     
     return (
         <div>
@@ -348,13 +360,7 @@ function SimulateGame() {
                     <div style={{ justifyContent: 'center' }}>
                         <h1>Dealer</h1>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        {dealerCards.map((card) => (
-                            <img
-                            src={cardImages[card]}
-                            alt=''
-                            style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
-                            />
-                        ))}
+                        <div>{renderDealerCards()}</div>
                         </div>
                         <h1>Player</h1>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -382,6 +388,7 @@ function SimulateGame() {
                     {/* Render player's hand, dealer's hand, and game results  disabled={gameOver}*/ }
                 </div>
                 <p>{optionInfo}</p>
+                <p>{resultInfo}</p>
             </div>
         </div>
     )
