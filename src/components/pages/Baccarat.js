@@ -97,7 +97,12 @@ export default function Baccarat() {
         }
 
         for (let j = 0; j < 6; j++) {
-            let cardidx = Math.floor(Math.random() * (52 * 8));
+
+            let cardidx = -1;
+
+            do {
+                cardidx = Math.floor(Math.random() * (52 * 8));
+            } while (shoe[cardidx] === 0)
 
             shoe[cardidx] = 0;
 

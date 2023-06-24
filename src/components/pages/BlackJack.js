@@ -5,75 +5,16 @@ import { useState } from 'react';
 
 export default function Blackjack() {
 
-    const cardImages = {
-        'Ace of Clubs': 'Ace of Clubs.png',
-        'Two of Clubs': 'Two of Clubs.png',
-        'Three of Clubs': 'Three of Clubs.png',
-        'Four of Clubs': 'Four of Clubs.png',
-        'Five of Clubs': 'Five of Clubs.png',
-        'Six of Clubs': 'Six of Clubs.png',
-        'Seven of Clubs': 'Seven of Clubs.png',
-        'Eight of Clubs': 'Eight of Clubs.png',
-        'Nine of Clubs': 'Nine of Clubs.png',
-        'Ten of Clubs': 'Ten of Clubs.png',
-        'Jack of Clubs': 'Jack of Clubs.png',
-        'Queen of Clubs': 'Queen of Clubs.png',
-        'King of Clubs': 'King of Clubs.png',
-        'Ace of Spades': 'Ace of Spades.png',
-        'Two of Spades': 'Two of Spades.png',
-        'Three of Spades': 'Three of Spades.png',
-        'Four of Spades': 'Four of Spades.png',
-        'Five of Spades': 'Five of Spades.png',
-        'Six of Spades': 'Six of Spades.png',
-        'Seven of Spades': 'Seven of Spades.png',
-        'Eight of Spades': 'Eight of Spades.png',
-        'Nine of Spades': 'Nine of Spades.png',
-        'Ten of Spades': 'Ten of Spades.png',
-        'Jack of Spades': 'Jack of Spades.png',
-        'Queen of Spades': 'Queen of Spades.png',
-        'King of Spades': 'King of Spades.png',
-        'Ace of Hearts': 'Ace of Hearts.png',
-        'Two of Hearts': 'Two of Hearts.png',
-        'Three of Hearts': 'Three of Hearts.png',
-        'Four of Hearts': 'Four of Hearts.png',
-        'Five of Hearts': 'Five of Hearts.png',
-        'Six of Hearts': 'Six of Hearts.png',
-        'Seven of Hearts': 'Seven of Hearts.png',
-        'Eight of Hearts': 'Eight of Hearts.png',
-        'Nine of Hearts': 'Nine of Hearts.png',
-        'Ten of Hearts': 'Ten of Hearts.png',
-        'Jack of Hearts': 'Jack of Hearts.png',
-        'Queen of Hearts': 'Queen of Hearts.png',
-        'King of Hearts': 'King of Hearts.png',
-        'Ace of Diamonds': 'Ace of Diamonds.png',
-        'Two of Diamonds': 'Two of Diamonds.png',
-        'Three of Diamonds': 'Three of Diamonds.png',
-        'Four of Diamonds': 'Four of Diamonds.png',
-        'Five of Diamonds': 'Five of Diamonds.png',
-        'Six of Diamonds': 'Six of Diamonds.png',
-        'Seven of Diamonds': 'Seven of Diamonds.png',
-        'Eight of Diamonds': 'Eight of Diamonds.png',
-        'Nine of Diamonds': 'Nine of Diamonds.png',
-        'Ten of Diamonds': 'Ten of Diamonds.png',
-        'Jack of Diamonds': 'Jack of Diamonds.png',
-        'Queen of Diamonds': 'Queen of Diamonds.png',
-        'King of Diamonds': 'King of Diamonds.png'
-    };
-
+    const [isShown, setIsShown] = useState(false);
     const [value, setValue] = useState('');
+
+    const handleClick = event => {
+        setIsShown(current => !current);
+    };
 
     const handleChange = (event) => {
         setValue(event.target.value);
     };
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        blackjackHand(value);
-    };
-
-    const blackjackHand = (bet) => {
-
-    }
 
     return (
         <>
@@ -132,17 +73,317 @@ export default function Blackjack() {
                 </div>
                 <div className="r-strat-box-info">
                 <p>*** Place a wager and select deal to start the hand ***</p>
-                    <form onSubmit={handleFormSubmit}>
+                    <div>
                         Bet amount: <input className='input-box' type="text" value={value} onChange={handleChange} />
                         <br /><br />
                         <div className="buttons">
-                            <button type="submit" className="sub-button">Deal</button>
+                            <button style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }} class="b-1" onClick={handleClick}>Start</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
+                {isShown && <SimulateGame />}
             </nav>
             <Footer />
         </>
+    )
+}
+
+function SimulateGame() {
+
+    const [optionInfo, setOptionInfo] = useState('');
+
+    const cardImages = {
+        'Ace of Clubs': 'Ace of Clubs.png',
+        'Two of Clubs': 'Two of Clubs.png',
+        'Three of Clubs': 'Three of Clubs.png',
+        'Four of Clubs': 'Four of Clubs.png',
+        'Five of Clubs': 'Five of Clubs.png',
+        'Six of Clubs': 'Six of Clubs.png',
+        'Seven of Clubs': 'Seven of Clubs.png',
+        'Eight of Clubs': 'Eight of Clubs.png',
+        'Nine of Clubs': 'Nine of Clubs.png',
+        'Ten of Clubs': 'Ten of Clubs.png',
+        'Jack of Clubs': 'Jack of Clubs.png',
+        'Queen of Clubs': 'Queen of Clubs.png',
+        'King of Clubs': 'King of Clubs.png',
+        'Ace of Spades': 'Ace of Spades.png',
+        'Two of Spades': 'Two of Spades.png',
+        'Three of Spades': 'Three of Spades.png',
+        'Four of Spades': 'Four of Spades.png',
+        'Five of Spades': 'Five of Spades.png',
+        'Six of Spades': 'Six of Spades.png',
+        'Seven of Spades': 'Seven of Spades.png',
+        'Eight of Spades': 'Eight of Spades.png',
+        'Nine of Spades': 'Nine of Spades.png',
+        'Ten of Spades': 'Ten of Spades.png',
+        'Jack of Spades': 'Jack of Spades.png',
+        'Queen of Spades': 'Queen of Spades.png',
+        'King of Spades': 'King of Spades.png',
+        'Ace of Hearts': 'Ace of Hearts.png',
+        'Two of Hearts': 'Two of Hearts.png',
+        'Three of Hearts': 'Three of Hearts.png',
+        'Four of Hearts': 'Four of Hearts.png',
+        'Five of Hearts': 'Five of Hearts.png',
+        'Six of Hearts': 'Six of Hearts.png',
+        'Seven of Hearts': 'Seven of Hearts.png',
+        'Eight of Hearts': 'Eight of Hearts.png',
+        'Nine of Hearts': 'Nine of Hearts.png',
+        'Ten of Hearts': 'Ten of Hearts.png',
+        'Jack of Hearts': 'Jack of Hearts.png',
+        'Queen of Hearts': 'Queen of Hearts.png',
+        'King of Hearts': 'King of Hearts.png',
+        'Ace of Diamonds': 'Ace of Diamonds.png',
+        'Two of Diamonds': 'Two of Diamonds.png',
+        'Three of Diamonds': 'Three of Diamonds.png',
+        'Four of Diamonds': 'Four of Diamonds.png',
+        'Five of Diamonds': 'Five of Diamonds.png',
+        'Six of Diamonds': 'Six of Diamonds.png',
+        'Seven of Diamonds': 'Seven of Diamonds.png',
+        'Eight of Diamonds': 'Eight of Diamonds.png',
+        'Nine of Diamonds': 'Nine of Diamonds.png',
+        'Ten of Diamonds': 'Ten of Diamonds.png',
+        'Jack of Diamonds': 'Jack of Diamonds.png',
+        'Queen of Diamonds': 'Queen of Diamonds.png',
+        'King of Diamonds': 'King of Diamonds.png'
+    };
+
+    const getCard = (shoe, cardData) => {
+        
+        let cardidx = -1;
+
+        do {
+            cardidx = Math.floor(Math.random() * (52 * 8));
+        } while (shoe[cardidx] === 0)
+
+        shoe[cardidx] = 0;
+
+        if (cardidx < 52) {
+            cardData.cardpos = cardidx + 1;
+        } else if (cardidx < (52 * 2)) {
+            cardData.cardpos = (cardidx - 52) + 1;
+        } else if (cardidx < (52 * 3)) {
+            cardData.cardpos = (cardidx - 52 * 2) + 1;
+        } else if (cardidx < (52 * 4)) {
+            cardData.cardpos = (cardidx - 52 * 3) + 1;
+        } else if (cardidx < (52 * 5)) {
+            cardData.cardpos = (cardidx - 52 * 4) + 1;
+        } else if (cardidx < (52 * 6)) {
+            cardData.cardpos = (cardidx - 52 * 5) + 1;
+        } else if (cardidx < (52 * 7)) {
+            cardData.cardpos = (cardidx - 52 * 6) + 1;
+        } else if (cardidx < (52 * 8)) {
+            cardData.cardpos = (cardidx - 52 * 7) + 1;
+        }
+
+        if (cardData.cardpos <= 13) {
+            cardData.cardrank = cardData.cardpos;
+            cardData.cardsuit = 'Spades';
+        } else if (cardData.cardpos <= (13 * 2)) {
+            cardData.cardrank = cardData.cardpos - 13;
+            cardData.cardsuit = 'Diamonds';
+        } else if (cardData.cardpos <= (13 * 3)) {
+            cardData.cardrank = cardData.cardpos - (13 * 2);
+            cardData.cardsuit = 'Clubs';
+        } else if (cardData.cardpos <= (13 * 4)) {
+            cardData.cardrank = cardData.cardpos - (13 * 3);
+            cardData.cardsuit = 'Hearts';
+        }
+
+        if (cardData.cardrank === 1) {
+            cardData.cardvalue = 11;
+            cardData.card = 'Ace of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 2) {
+            cardData.cardvalue = 2;
+            cardData.card = 'Two of ' + cardData.cardsuit; 
+        } else if (cardData.cardrank === 3) {
+            cardData.cardvalue = 3;
+            cardData.card = 'Three of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 4) {
+            cardData.cardvalue = 4;
+            cardData.card = 'Four of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 5) {
+            cardData.cardvalue = 5;
+            cardData.card = 'Five of ' + cardData.cardsuit; 
+        } else if (cardData.cardrank === 6) {
+            cardData.cardvalue = 6;
+            cardData.card = 'Six of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 7) {
+            cardData.cardvalue = 7;
+            cardData.card = 'Seven of ' + cardData.cardsuit; 
+        } else if (cardData.cardrank === 8) {
+            cardData.cardvalue = 8;
+            cardData.card = 'Eight of ' + cardData.cardsuit; 
+        } else if (cardData.cardrank === 9) {
+            cardData.cardvalue = 9;
+            cardData.card = 'Nine of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 10) {
+            cardData.cardvalue = 10;
+            cardData.card = 'Ten of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 11) {
+            cardData.cardvalue = 10;
+            cardData.card = 'Jack of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 12) {
+            cardData.cardvalue = 10;
+            cardData.card = 'Queen of ' + cardData.cardsuit;
+        } else if (cardData.cardrank === 13) {
+            cardData.cardvalue = 10;
+            cardData.card = 'King of ' + cardData.cardsuit; 
+        }
+    }
+
+    const getTotal = (hand) => {
+
+        let value = hand.reduce((sum, cardValue) => sum + cardValue, 0);
+        let numAces = hand.filter(cardValue => cardValue === 11).length;
+
+        while (value > 21 && numAces > 0) {
+            value -= 10;
+            numAces--;
+        }
+
+        return value;
+    }
+
+    const handleMove = (move) => {
+        if (move === 'hit') {
+            let option = 'Hit';
+            setOptionInfo(option);
+            //const card = dealCard(deck);
+            //setPlayerHand([...playerHand, card]);
+        } else if (move === 'stand') {
+            let option = 'Stand';
+            setOptionInfo(option);
+            //setGameOver(true);
+            // Proceed to dealer's turn
+            // ...
+        } else if (move === 'double') {
+            let option = 'Double';
+            setOptionInfo(option);
+            // Handle doubling down logic
+            // ...
+        } else if (move === 'split') {
+            let option = 'Split';
+            setOptionInfo(option);
+            // Handle splitting logic
+            // ...
+        }
+    };
+
+    let shoe = [];
+
+    let cardData = {
+        cardvalue: 0,
+        card: '',
+        cardpos: 0,
+        cardrank: 0,
+        cardsuit: ''
+    };
+
+    let dealerValues = [];
+    let playerValues = [];
+    //let playerValuesS1 = [];
+    //let playerValuesS2 = [];
+    //let playerValuesS3 = [];
+    let dealerCards = [];
+    let playerCards = [];
+    //let playerCardsS1 = [];
+    //let playerCardsS2 = [];
+    //let playerCardsS3 = [];
+    let dealerTotal = 0;
+    let playerTotal = 0;
+    //let playerTotalS1 = 0;
+    //let playerTotalS2 = 0;
+    //let playerTotalS3 = 0;
+
+    for (let i = 1; i <= (52 * 8); i++) {
+        shoe.push(Number(i));
+    }
+
+    getCard(shoe, cardData);
+    playerValues.push(cardData.cardvalue);
+    playerCards.push(cardData.card);
+    getCard(shoe, cardData);
+    dealerValues.push(cardData.cardvalue);
+    dealerCards.push(cardData.card);
+    getCard(shoe, cardData);
+    playerValues.push(cardData.cardvalue);
+    playerCards.push(cardData.card);
+    getCard(shoe, cardData);
+    dealerValues.push(cardData.cardvalue);
+    dealerCards.push(cardData.card);
+
+    dealerTotal = getTotal(dealerValues);
+    playerTotal = getTotal(playerValues);
+
+    // later on offer incurance if I have time to add it
+
+    if (dealerTotal === 21 || playerTotal === 21) {
+        if (dealerTotal === 21 && playerTotal === 21) {
+            // push
+        } else if (dealerTotal === 21) {
+            // lose - dealer has blackjack
+        } else {
+            // win - player has blackjack
+        }
+    }
+
+    // later on check for splits if I have time to add it
+
+    if (dealerTotal > playerTotal) {
+        // dealer wins
+    } else if (playerTotal > dealerTotal) {
+        // player wins
+    } else {
+        // push
+    }
+    
+    return (
+        <div>
+            <div className="r-intro-box-title">
+                <p>Blackjack Game</p>
+            </div>
+            <div className="r-intro-box-info">
+                <div>
+                    <h1>Blackjack Game</h1>
+                    <div style={{ justifyContent: 'center' }}>
+                        <h1>Dealer</h1>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        {dealerCards.map((card) => (
+                            <img
+                            src={cardImages[card]}
+                            alt=''
+                            style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                            />
+                        ))}
+                        </div>
+                        <h1>Player</h1>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        {playerCards.map((card) => (
+                            <img
+                            src={cardImages[card]}
+                            alt=''
+                            style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                            />
+                        ))}
+                        </div>
+                    </div>
+                    <button onClick={() => handleMove('hit')}>
+                        Hit
+                    </button>
+                    <button onClick={() => handleMove('stand')}>
+                        Stand
+                    </button>
+                    <button onClick={() => handleMove('double')}>
+                        Double
+                    </button>
+                    <button onClick={() => handleMove('split')}>
+                        Split
+                    </button>
+                    {/* Render player's hand, dealer's hand, and game results  disabled={gameOver}*/ }
+                </div>
+                <p>{optionInfo}</p>
+            </div>
+        </div>
     )
 }
 
