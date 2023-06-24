@@ -220,8 +220,9 @@ export default function Blackjack() {
         setPlayerValues(newPlayerValues);
 
         const handValue = calculateHandValue(newPlayerValues);
-            if (handValue > 21) {
-                setGameState('busted'); // Set the game state to 'busted' if the player busts
+
+        if (handValue > 21) {
+            setGameState('busted'); // Set the game state to 'busted' if the player busts
         }
     };
     
@@ -229,17 +230,19 @@ export default function Blackjack() {
         // Implement logic for the dealer's turn
         if (gameState === 'playing') { // Only allow standing when the game is in the playing state
             // Implement logic for the dealer's turn
-
             setGameState('stand'); // Set the game state to 'stand' after the player stands
+            handleDealer();
         }
     };
     
     const handleDoubleDown = () => {
-        // Implement logic for doubling down
+        // Implement logic for doubling down\
+        handleHit();
+
         if (gameState === 'playing') { // Only allow doubling down when the game is in the playing state
             // Implement logic for doubling down
-
             setGameState('doubled'); // Set the game state to 'doubled' after the player doubles down
+            handleDealer();
         }
     };
 
@@ -262,7 +265,25 @@ export default function Blackjack() {
         }
 
         return result;
-    }
+    };
+
+    const handleDealer = () => {
+
+        const newDealerHand = [...dealerHand];
+        const newDealerValues = [...dealerValues];
+        let handValue = calculateHandValue(newDealerValues);
+
+        while (handValue < 17) {
+            let tempCard = drawCard(shoe);
+            const newDealerHand = [...dealerHand, tempCard.card];
+            const newDealerValues = [...dealerValues, tempCard.cardvalue];
+            setDealerHand(newDealerHand);
+            setDealerValues(newDealerValues);
+            handValue = calculateHandValue(newDealerValues);
+        }
+
+        setGameState('completed');
+    };
 
     return (
         <>
