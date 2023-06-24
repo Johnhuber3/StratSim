@@ -66,10 +66,12 @@ export default function Blackjack() {
     const [dealerHand, setDealerHand] = useState([]);
     const [playerValues, setPlayerValues] = useState([]);
     const [dealerValues, setDealerValues] = useState([]);
+    const [gameState, setGameState] = useState('playing');
 
     const handleClick = event => {
         setIsShown(current => !current);
         handleDeal();
+        setGameState('playing');
     };
 
     var shoe = [];
@@ -88,7 +90,6 @@ export default function Blackjack() {
         setDealerHand(newDealerHand);
         setPlayerValues(newPlayerValues);
         setDealerValues(newDealerValues);
-        console.log(newPlayerHand + " - " + newDealerHand);
     };
 
     const createShoe = () => {
@@ -200,7 +201,6 @@ export default function Blackjack() {
     };
 
     const calculateHandValue = (hand) => {
-        console.log(hand);
         let value = hand.reduce((sum, card) => sum + card, 0);
         let numAces = hand.filter(card => card === 11).length;
 
@@ -215,18 +215,54 @@ export default function Blackjack() {
     const handleHit = () => {
         let tempCard = drawCard(shoe);
         const newPlayerHand = [...playerHand, tempCard.card];
-        const newPlayerValues = [...playerValues, tempCard.value];
+        const newPlayerValues = [...playerValues, tempCard.cardvalue];
         setPlayerHand(newPlayerHand);
         setPlayerValues(newPlayerValues);
+
+        const handValue = calculateHandValue(newPlayerValues);
+            if (handValue > 21) {
+                setGameState('busted'); // Set the game state to 'busted' if the player busts
+        }
     };
     
     const handleStand = () => {
         // Implement logic for the dealer's turn
+        if (gameState === 'playing') { // Only allow standing when the game is in the playing state
+            // Implement logic for the dealer's turn
+
+            setGameState('stand'); // Set the game state to 'stand' after the player stands
+        }
     };
     
     const handleDoubleDown = () => {
         // Implement logic for doubling down
+        if (gameState === 'playing') { // Only allow doubling down when the game is in the playing state
+            // Implement logic for doubling down
+
+            setGameState('doubled'); // Set the game state to 'doubled' after the player doubles down
+        }
     };
+
+    const determineWinner = (player, dealer) => {
+        let result = '';
+        if (Number(player) > 21) {
+            result += 'Player Busts';
+            return result;
+        }
+        if (Number(dealer) > 21) {
+            result += 'Dealer Busts';
+            return result;
+        }
+        if (Number(player) > Number(dealer)) {
+            result += 'Player wins';
+        } else if (Number(dealer) > Number(player)) {
+            result += 'Dealer wins';
+        } else {
+            result += 'Push';
+        }
+
+        return result;
+    }
 
     return (
         <>
@@ -302,13 +338,13 @@ export default function Blackjack() {
                         >
                             Deal
                         </button>
-                        <button className="b-1" onClick={handleHit}>
+                        <button className="b-1" onClick={handleHit} disabled={gameState !== 'playing'}>
                             Hit
                         </button>
-                        <button className="b-1" onClick={handleStand}>
+                        <button className="b-1" onClick={handleStand} disabled={gameState !== 'playing'}>
                             Stand
                         </button>
-                        <button className="b-1" onClick={handleDoubleDown}>
+                        <button className="b-1" onClick={handleDoubleDown} disabled={gameState !== 'playing'}>
                             Double Down
                         </button>
                         </div>
@@ -321,6 +357,7 @@ export default function Blackjack() {
                         dealerValues={dealerValues}
                         getCardImage={getCardImage}
                         calculateHandValue={calculateHandValue}
+                        determineWinner={determineWinner}
                         />
                     )}
                 </div>
@@ -330,11 +367,11 @@ export default function Blackjack() {
     )
 }
 
-function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue }) {
+function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner }) {
 
     const renderHand = (hand) => {
         return hand.map((card, index) => (
-          <img src={getCardImage(card)} alt={card} key={index} />
+          <img src={getCardImage(card)} alt={card} key={index} style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}/>
         ));
     };
     
@@ -348,6 +385,9 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                 <div>
                     Player hand: {renderHand(playerHand)}
                     Value: {calculateHandValue(playerValues)} 
+                </div>
+                <div>
+                    Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}
                 </div>
             </div>
         </>
