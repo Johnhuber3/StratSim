@@ -465,6 +465,7 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                 {gameState === 'completed' && (
                     <div>
                         <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</h1>
+                        <h1>Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
                     </div>
                 )}
             </div>
