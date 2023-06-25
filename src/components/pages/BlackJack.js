@@ -361,14 +361,6 @@ export default function Blackjack() {
                 </div>
                 <div className="r-strat-box-info">
                     <div>
-                        Bet amount:
-                        <input
-                        className="input-box"
-                        type="text"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
-                        />
-                        <br />
                         <br />
                         <div className="buttons">
                         <button
@@ -408,6 +400,10 @@ export default function Blackjack() {
         </>
     )
 }
+
+// goes at top of stratboxinfo, inside first div
+// Bet amount:
+// <input className="input-box" type="text" value={betAmount} onChange={(e) => setBetAmount(e.target.value)}/>
 
 function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard, gameState}) {
 
@@ -457,15 +453,14 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
         <>
             <div>
                 <div>
-                    Dealer hand: {renderHandDealer(dealerHand)}
+                    Dealer<br />{renderHandDealer(dealerHand)}
                 </div>
                 <div>
-                    Player hand: {renderHand(playerHand)}
+                    Player<br />{renderHand(playerHand)}
                 </div>
                 {gameState === 'completed' && (
                     <div>
-                        <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</h1>
-                        <h1>Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
+                        <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))} --- Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
                     </div>
                 )}
             </div>
