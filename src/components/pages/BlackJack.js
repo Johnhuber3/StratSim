@@ -2,6 +2,7 @@ import { Footer } from "../Footer";
 import '../Roulette.css';
 import React from 'react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const cardImages = {
     'Ace of Clubs': 'Ace of Clubs.png',
@@ -55,28 +56,31 @@ const cardImages = {
     'Ten of Diamonds': 'Ten of Diamonds.png',
     'Jack of Diamonds': 'Jack of Diamonds.png',
     'Queen of Diamonds': 'Queen of Diamonds.png',
-    'King of Diamonds': 'King of Diamonds.png'
+    'King of Diamonds': 'King of Diamonds.png',
+    'Back': 'Back.png'
 };
 
 export default function Blackjack() {
 
-    const [isShown, setIsShown] = useState(false);
+    const [isShown, setIsShown] = useState(true);
     const [betAmount, setBetAmount] = useState('');
     const [playerHand, setPlayerHand] = useState([]);
     const [dealerHand, setDealerHand] = useState([]);
     const [playerValues, setPlayerValues] = useState([]);
     const [dealerValues, setDealerValues] = useState([]);
     const [gameState, setGameState] = useState('playing');
+    const [showFirstDealerCard, setShowFirstDealerCard] = useState(false);
+
 
     const handleClick = event => {
-        setIsShown(current => !current);
-        handleDeal();
         setGameState('playing');
+        handleDeal();
     };
 
     var shoe = [];
 
     const handleDeal = () => {
+        setShowFirstDealerCard(false);
         shoe = createShoe();
         let tempCard1 = drawCard(shoe);
         let tempCard2 = drawCard(shoe);
@@ -90,7 +94,19 @@ export default function Blackjack() {
         setDealerHand(newDealerHand);
         setPlayerValues(newPlayerValues);
         setDealerValues(newDealerValues);
+
+        let a = calculateHandValue(newPlayerValues);
+        let b = calculateHandValue(newDealerValues);
+        
+        if (a === 21 || b === 21) {
+            setGameState('completed');
+            return;
+        }
     };
+
+    useEffect(() => {
+        console.log(gameState);
+    }, [gameState]);
 
     const createShoe = () => {
 
@@ -223,6 +239,7 @@ export default function Blackjack() {
 
         if (handValue > 21) {
             setGameState('busted'); // Set the game state to 'busted' if the player busts
+            handleDealer();
         }
     };
     
@@ -230,6 +247,7 @@ export default function Blackjack() {
         // Implement logic for the dealer's turn
         if (gameState === 'playing') { // Only allow standing when the game is in the playing state
             // Implement logic for the dealer's turn
+            setShowFirstDealerCard(true);
             setGameState('stand'); // Set the game state to 'stand' after the player stands
             handleDealer();
         }
@@ -241,6 +259,7 @@ export default function Blackjack() {
 
         if (gameState === 'playing') { // Only allow doubling down when the game is in the playing state
             // Implement logic for doubling down
+            setShowFirstDealerCard(true);
             setGameState('doubled'); // Set the game state to 'doubled' after the player doubles down
             handleDealer();
         }
@@ -379,6 +398,7 @@ export default function Blackjack() {
                         getCardImage={getCardImage}
                         calculateHandValue={calculateHandValue}
                         determineWinner={determineWinner}
+                        showFirstDealerCard={showFirstDealerCard}
                         />
                     )}
                 </div>
@@ -388,19 +408,55 @@ export default function Blackjack() {
     )
 }
 
-function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner }) {
+function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard}) {
 
     const renderHand = (hand) => {
         return hand.map((card, index) => (
           <img src={getCardImage(card)} alt={card} key={index} style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}/>
         ));
     };
+
+    const renderHandDealer = (hand) => {
+        const firstCard = hand[0];
+      
+        if (showFirstDealerCard) {
+          // Render the first card face up
+          return hand.map((card, index) => (
+            <img
+              src={getCardImage(card)}
+              alt={card}
+              key={index}
+              style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+            />
+          ));
+        } else {
+          // Render the first card face down
+          return (
+            <>
+              <img
+                src={cardImages['Back']}
+                alt="Face Down Card"
+                style={{ borderRadius: '10px', transform: 'scale(0.8)'}}
+              />
+              {hand.slice(1).map((card, index) => (
+                <img
+                  src={getCardImage(card)}
+                  alt={card}
+                  key={index}
+                  style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                />
+              ))}
+            </>
+          );
+        }
+    };
+      
     
     return (
         <>
             <div>
                 <div>
-                    Dealer hand: {renderHand(dealerHand)}
+                    Dealer hand: {renderHandDealer(dealerHand)}
                     Value: {calculateHandValue(dealerValues)}
                 </div>
                 <div>
@@ -408,7 +464,7 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                     Value: {calculateHandValue(playerValues)} 
                 </div>
                 <div>
-                    Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}
+                    <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</h1>
                 </div>
             </div>
         </>
