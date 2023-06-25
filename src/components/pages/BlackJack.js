@@ -362,6 +362,7 @@ export default function Blackjack() {
                 <div className="r-strat-box-info">
                     <div>
                         <br />
+                        <p>*** The simulator only lets you play a hand of Blackjack, no splits or betting, press Deal to start a new hand ***</p>
                         <div className="buttons">
                         <button
                             style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }}
