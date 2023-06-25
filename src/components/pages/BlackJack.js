@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 let bankRoll = 1000;
-let betNum = 25;
 let flag = 0;
+let bjflag = 0;
 
 const cardImages = {
     'Ace of Clubs': 'Ace of Clubs.png',
@@ -91,11 +91,6 @@ export default function Blackjack() {
         //forceUpdate();
     };
 
-    const handleBetChange = (event) => {
-        betNum = Number(event.target.value);
-        //forceUpdate();
-    };
-
     //const forceUpdate = useState()[1].bind(null, {});
 
     //var shoe = [];
@@ -124,6 +119,7 @@ export default function Blackjack() {
         if (a === 21 || b === 21) {
             setGameState('completed');
             setShowFirstDealerCard(true);
+            bjflag = 1;
             return;
         }
     };
@@ -293,6 +289,20 @@ export default function Blackjack() {
 
     const determineWinner = (player, dealer) => {
         let result = '';
+        if (bjflag === 1) {
+            if (Number(player) === Number(dealer)) {
+                result += 'Push - Both have Blackjack';
+                return result;
+            } else if (Number(player) > Number(dealer)) {
+                result += 'Player wins with Blackjack';
+                bankRoll += (Number(value) * 3)/2;
+                return result;
+            } else {
+                result += 'Dealer wins with Blackjack';
+                bankRoll -= Number(value);
+                return result;
+            }
+        }
         if (Number(player) > 21) {
             result += 'Player Busts';
             bankRoll -= Number(value);
@@ -393,9 +403,8 @@ export default function Blackjack() {
                     <div>
                         <br />
                         <p>*** The simulator only lets you play a hand of Blackjack, no splits or betting, press Deal to start a new hand ***</p>
-                        <input type="number" value={bankRoll} onChange={handleBankrollChange}/>
-                        <input type="number" value={betNum} onChange={handleBetChange}/>
-                        Bet Amount: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                        Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/>
+                        Bet Amount: <input className='input-box' type="number" value={value} onChange={handleChange} />
                         <div className="buttons">
                         <button
                             style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }}
@@ -495,7 +504,7 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                 {flag === 0 && gameState === 'completed' && (
                     <div>
                         <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))} --- Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
-                        <h1>Bankroll: ${bankRoll} | Bet: ${betNum} | {value}</h1>
+                        <h1>Updated Bankroll: ${bankRoll} | Total Bet: ${value}</h1>
                     </div>
                 )}
             </div>
