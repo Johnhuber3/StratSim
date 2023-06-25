@@ -71,7 +71,6 @@ export default function Blackjack() {
     const [gameState, setGameState] = useState('playing');
     const [showFirstDealerCard, setShowFirstDealerCard] = useState(false);
 
-
     const handleClick = event => {
         setGameState('playing');
         handleDeal();
@@ -100,6 +99,7 @@ export default function Blackjack() {
         
         if (a === 21 || b === 21) {
             setGameState('completed');
+            setShowFirstDealerCard(true);
             return;
         }
     };
@@ -399,6 +399,7 @@ export default function Blackjack() {
                         calculateHandValue={calculateHandValue}
                         determineWinner={determineWinner}
                         showFirstDealerCard={showFirstDealerCard}
+                        gameState={gameState}
                         />
                     )}
                 </div>
@@ -408,7 +409,7 @@ export default function Blackjack() {
     )
 }
 
-function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard}) {
+function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard, gameState}) {
 
     const renderHand = (hand) => {
         return hand.map((card, index) => (
@@ -457,15 +458,15 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
             <div>
                 <div>
                     Dealer hand: {renderHandDealer(dealerHand)}
-                    Value: {calculateHandValue(dealerValues)}
                 </div>
                 <div>
                     Player hand: {renderHand(playerHand)}
-                    Value: {calculateHandValue(playerValues)} 
                 </div>
-                <div>
-                    <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</h1>
-                </div>
+                {gameState === 'completed' && (
+                    <div>
+                        <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</h1>
+                    </div>
+                )}
             </div>
         </>
     );
