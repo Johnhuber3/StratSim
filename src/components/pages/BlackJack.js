@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 let bankRoll = 1000;
 let betNum = 25;
+let flag = 0;
 
 const cardImages = {
     'Ace of Clubs': 'Ace of Clubs.png',
@@ -82,6 +83,7 @@ export default function Blackjack() {
 
     const handleChange = (event) => {
         setValue(event.target.value);
+        flag = 1;
     };
 
     const handleBankrollChange = (event) => {
@@ -99,6 +101,7 @@ export default function Blackjack() {
     //var shoe = [];
 
     const handleDeal = () => {
+        flag = 0;
         setShowFirstDealerCard(false);
         setShoe(createShoe());
         console.log(shoe);
@@ -281,7 +284,7 @@ export default function Blackjack() {
 
         if (gameState === 'playing') { // Only allow doubling down when the game is in the playing state
             // Implement logic for doubling down
-            betNum *= 2;
+            setValue(Number(value) * 2);
             setShowFirstDealerCard(true);
             setGameState('doubled'); // Set the game state to 'doubled' after the player doubles down
             handleDealer();
@@ -292,20 +295,20 @@ export default function Blackjack() {
         let result = '';
         if (Number(player) > 21) {
             result += 'Player Busts';
-            bankRoll -= Number(betNum);
+            bankRoll -= Number(value);
             return result;
         }
         if (Number(dealer) > 21) {
             result += 'Dealer Busts';
-            bankRoll += Number(betNum);
+            bankRoll += Number(value);
             return result;
         }
         if (Number(player) > Number(dealer)) {
             result += 'Player wins';
-            bankRoll += Number(betNum);
+            bankRoll += Number(value);
         } else if (Number(dealer) > Number(player)) {
             result += 'Dealer wins';
-            bankRoll -= Number(betNum);
+            bankRoll -= Number(value);
         } else {
             result += 'Push';
         }
@@ -423,6 +426,7 @@ export default function Blackjack() {
                         determineWinner={determineWinner}
                         showFirstDealerCard={showFirstDealerCard}
                         gameState={gameState}
+                        value={value}
                         />
                     )}
                 </div>
@@ -436,7 +440,7 @@ export default function Blackjack() {
 // Bet amount:
 // <input className="input-box" type="text" value={betAmount} onChange={(e) => setBetAmount(e.target.value)}/>
 
-function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard, gameState, bankroll, betAmount}) {
+function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getCardImage, calculateHandValue, determineWinner, showFirstDealerCard, gameState, value}) {
 
     const renderHand = (hand) => {
         return hand.map((card, index) => (
@@ -488,10 +492,10 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                 <div>
                     Player<br />{renderHand(playerHand)}
                 </div>
-                {gameState === 'completed' && (
+                {flag === 0 && gameState === 'completed' && (
                     <div>
                         <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))} --- Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
-                        <h1>Bankroll: ${bankRoll} | Bet: ${betNum}</h1>
+                        <h1>Bankroll: ${bankRoll} | Bet: ${betNum} | {value}</h1>
                     </div>
                 )}
             </div>
