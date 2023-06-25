@@ -4,6 +4,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+let bankRoll = 1000;
+
 const cardImages = {
     'Ace of Clubs': 'Ace of Clubs.png',
     'Two of Clubs': 'Two of Clubs.png',
@@ -71,18 +73,24 @@ export default function Blackjack() {
     const [dealerValues, setDealerValues] = useState([]);
     const [gameState, setGameState] = useState('playing');
     const [showFirstDealerCard, setShowFirstDealerCard] = useState(false);
+    const [shoe, setShoe] = useState([]);
 
     const handleClick = event => {
         setGameState('playing');
         handleDeal();
     };
 
-    var shoe = [];
+    const handleBankrollChange = (event) => {
+        bankRoll = Number(event.target.value);
+    };
+
+    //var shoe = [];
 
     const handleDeal = () => {
         setShowFirstDealerCard(false);
-        //setBankroll(prevBankroll => prevBankroll - betAmount);
-        shoe = createShoe();
+        setShoe(createShoe());
+        console.log(shoe);
+        //shoe = createShoe();
         let tempCard1 = drawCard(shoe);
         let tempCard2 = drawCard(shoe);
         let tempCard3 = drawCard(shoe);
@@ -137,6 +145,7 @@ export default function Blackjack() {
         } while (shoe[cardidx] === 0)
 
         shoe[cardidx] = 0;
+        setShoe(shoe);
 
         if (cardidx < 52) {
             cardData.cardpos = cardidx + 1;
@@ -261,6 +270,7 @@ export default function Blackjack() {
 
         if (gameState === 'playing') { // Only allow doubling down when the game is in the playing state
             // Implement logic for doubling down
+            setBetAmount(Number(betAmount) * 2);
             setShowFirstDealerCard(true);
             setGameState('doubled'); // Set the game state to 'doubled' after the player doubles down
             handleDealer();
@@ -271,21 +281,22 @@ export default function Blackjack() {
         let result = '';
         if (Number(player) > 21) {
             result += 'Player Busts';
+            bankRoll -= Number(betAmount);
             return result;
         }
         if (Number(dealer) > 21) {
             result += 'Dealer Busts';
-            //setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
+            bankRoll += Number(betAmount);
             return result;
         }
         if (Number(player) > Number(dealer)) {
             result += 'Player wins';
-            //setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
+            bankRoll += Number(betAmount);
         } else if (Number(dealer) > Number(player)) {
             result += 'Dealer wins';
+            bankRoll -= Number(betAmount);
         } else {
             result += 'Push';
-            //setBankroll(prevBankroll => prevBankroll + betAmount);
         }
 
         return result;
@@ -368,7 +379,7 @@ export default function Blackjack() {
                     <div>
                         <br />
                         <p>*** The simulator only lets you play a hand of Blackjack, no splits or betting, press Deal to start a new hand ***</p>
-                        <input type="number" value={bankroll} onChange={event => setBankroll(Number(event.target.value))} />
+                        <input type="number" value={bankroll} onChange={handleBankrollChange}/>
                         <input type="number" value={betAmount} onChange={event => setBetAmount(Number(event.target.value))} />
                         <div className="buttons">
                         <button
@@ -470,7 +481,7 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                 {gameState === 'completed' && (
                     <div>
                         <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))} --- Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
-                        <h1>{bankroll} - {betAmount}</h1>
+                        <h1>{bankRoll} - {betAmount}</h1>
                     </div>
                 )}
             </div>
