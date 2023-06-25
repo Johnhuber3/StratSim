@@ -412,7 +412,7 @@ export default function Blackjack() {
                 <div className="r-strat-box-info">
                     <div>
                         <br />
-                        <p>*** The simulator only lets you play a hand of Blackjack, no splits or betting, press Deal to start a new hand ***</p>
+                        <p>*** Free play Blackjack, press Deal to start a new hand ***</p>
                         Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/>
                         Bet Amount: <input className='input-box' type="number" value={value} onChange={handleChange} />
                         <div className="buttons">
