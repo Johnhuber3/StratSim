@@ -7,6 +7,9 @@ import { useEffect } from 'react';
 let bankRoll = 1000;
 let flag = 0;
 let bjflag = 0;
+let shoeflag = 0;
+let shoe = [];
+let handCount = 1;
 
 const cardImages = {
     'Ace of Clubs': 'Ace of Clubs.png',
@@ -73,11 +76,15 @@ export default function Blackjack() {
     const [dealerValues, setDealerValues] = useState([]);
     const [gameState, setGameState] = useState('playing');
     const [showFirstDealerCard, setShowFirstDealerCard] = useState(false);
-    const [shoe, setShoe] = useState([]);
     const [value, setValue] = useState('');
 
     const handleClick = event => {
         setGameState('playing');
+        do {
+            createShoe();
+            //setShoe(createShoe());
+            shoeflag = 1;
+        } while (shoeflag === 0);
         handleDeal();
     };
 
@@ -88,22 +95,23 @@ export default function Blackjack() {
 
     const handleBankrollChange = (event) => {
         bankRoll = Number(event.target.value);
-        //forceUpdate();
     };
 
-    //const forceUpdate = useState()[1].bind(null, {});
-
-    //var shoe = [];
-
     const handleDeal = () => {
+        handCount += 1;
         flag = 0;
         setShowFirstDealerCard(false);
-        setShoe(createShoe());
+        if (handCount === 45) {
+            createShoe();
+            console.log('New shoe');
+            handCount = 1;
+        }
+        console.log(handCount);
         console.log(shoe);
-        let tempCard1 = drawCard(shoe);
-        let tempCard2 = drawCard(shoe);
-        let tempCard3 = drawCard(shoe);
-        let tempCard4 = drawCard(shoe);
+        let tempCard1 = drawCard();
+        let tempCard2 = drawCard();
+        let tempCard3 = drawCard();
+        let tempCard4 = drawCard();
         const newPlayerHand = [tempCard1.card, tempCard3.card];
         const newDealerHand = [tempCard2.card, tempCard4.card];
         const newPlayerValues = [tempCard1.cardvalue, tempCard3.cardvalue];
@@ -130,15 +138,14 @@ export default function Blackjack() {
 
     const createShoe = () => {
 
-        var shoe1 = [];
-
+        shoe = [];
         for (let i = 1; i <= (52 * 8); i++) {
-            shoe1.push(Number(i));
+            shoe.push(Number(i));
         }
-        return shoe1;
+        
     };
 
-    const drawCard = (shoe) => {
+    const drawCard = () => {
         
         let cardData = {
             cardvalue: 0,
@@ -155,7 +162,6 @@ export default function Blackjack() {
         } while (shoe[cardidx] === 0)
 
         shoe[cardidx] = 0;
-        setShoe(shoe);
 
         if (cardidx < 52) {
             cardData.cardpos = cardidx + 1;
@@ -250,7 +256,7 @@ export default function Blackjack() {
     };
 
     const handleHit = () => {
-        let tempCard = drawCard(shoe);
+        let tempCard = drawCard();
         const newPlayerHand = [...playerHand, tempCard.card];
         const newPlayerValues = [...playerValues, tempCard.cardvalue];
         setPlayerHand(newPlayerHand);
@@ -259,6 +265,7 @@ export default function Blackjack() {
         const handValue = calculateHandValue(newPlayerValues);
 
         if (handValue > 21) {
+            setShowFirstDealerCard(true);
             setGameState('busted'); // Set the game state to 'busted' if the player busts
             handleDealer();
         }
@@ -292,14 +299,17 @@ export default function Blackjack() {
         if (bjflag === 1) {
             if (Number(player) === Number(dealer)) {
                 result += 'Push - Both have Blackjack';
+                bjflag = 0;
                 return result;
             } else if (Number(player) > Number(dealer)) {
                 result += 'Player wins with Blackjack';
                 bankRoll += (Number(value) * 3)/2;
+                bjflag = 0;
                 return result;
-            } else {
+            } else if (Number(player) < Number(dealer)) {
                 result += 'Dealer wins with Blackjack';
                 bankRoll -= Number(value);
+                bjflag = 0;
                 return result;
             }
         }
@@ -333,7 +343,7 @@ export default function Blackjack() {
         let handValue = calculateHandValue(newDealerValues);
 
         while (handValue < 17) {
-            let tempCard = drawCard(shoe);
+            let tempCard = drawCard();
             const newDealerHand = [...dealerHand, tempCard.card];
             const newDealerValues = [...dealerValues, tempCard.cardvalue];
             setDealerHand(newDealerHand);
