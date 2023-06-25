@@ -81,7 +81,7 @@ export default function Blackjack() {
 
     const handleDeal = () => {
         setShowFirstDealerCard(false);
-        setBankroll(prevBankroll => prevBankroll - betAmount);
+        //setBankroll(prevBankroll => prevBankroll - betAmount);
         shoe = createShoe();
         let tempCard1 = drawCard(shoe);
         let tempCard2 = drawCard(shoe);
@@ -275,24 +275,24 @@ export default function Blackjack() {
         }
         if (Number(dealer) > 21) {
             result += 'Dealer Busts';
-            setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
+            //setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
             return result;
         }
         if (Number(player) > Number(dealer)) {
             result += 'Player wins';
-            setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
+            //setBankroll(prevBankroll => prevBankroll + (betAmount * 2));
         } else if (Number(dealer) > Number(player)) {
             result += 'Dealer wins';
         } else {
             result += 'Push';
-            setBankroll(prevBankroll => prevBankroll + betAmount);
+            //setBankroll(prevBankroll => prevBankroll + betAmount);
         }
 
         return result;
     };
 
     const handleDealer = () => {
-        
+
         const newDealerHand = [...dealerHand];
         const newDealerValues = [...dealerValues];
         let handValue = calculateHandValue(newDealerValues);
@@ -458,7 +458,6 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
         }
     };
       
-    
     return (
         <>
             <div>
