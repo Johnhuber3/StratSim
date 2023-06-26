@@ -3,6 +3,9 @@ import '../Roulette.css';
 import React from 'react';
 import { useState } from 'react';
 
+let bankRoll = 1000;
+let flag = 0;
+
 export default function Baccarat() {
 
     const cardImages = {
@@ -60,7 +63,7 @@ export default function Baccarat() {
         'King of Diamonds': 'King of Diamonds.png'
     };
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(25);
     const [playerInfo, setPlayerInfo] = useState('');
     const [bankerInfo, setBankerInfo] = useState('');
     const [resultInfo, setResultInfo] = useState('');
@@ -70,7 +73,16 @@ export default function Baccarat() {
 
     const handleChange = (event) => {
         setValue(event.target.value);
+        flag = 1;
     };
+
+    const handleBankrollChange = (event) => {
+        bankRoll = Number(event.target.value);
+        flag = 1;
+        forceUpdate();
+    };
+
+    const forceUpdate = useState()[1].bind(null, {});
 
     const handleFormSubmit = (event, buttonValue, bet) => {
         event.preventDefault();
@@ -85,6 +97,7 @@ export default function Baccarat() {
 
     const baccaratHand = (buttonValue, bet) => {
 
+        flag = 0;
         let shoe = [];
         let cardvalues = [];
         let cards = [];
@@ -255,23 +268,29 @@ export default function Baccarat() {
         if (playertotal > bankertotal) {
             setResultInfo("Player wins");
             if (buttonValue === 'Player') {
-                setProfitInfo('Win of $ ' + bet);
+                setProfitInfo('Win of $' + (bet) * 2);
+                bankRoll += Number(bet);
             } else {
-                setProfitInfo('Loss of $ ' + bet);
+                setProfitInfo('Loss of $' + bet);
+                bankRoll -= Number(bet);
             }
         } else if (bankertotal > playertotal) {
             setResultInfo("Bank wins");
             if (buttonValue === 'Bank') {
-                setProfitInfo('Win of $ ' + (Number(bet) * 0.95));
+                setProfitInfo('Win of $' + (Number(bet) * 1.95));
+                bankRoll += (Number(bet) * 0.95);
             } else {
-                setProfitInfo('Loss of $ ' + bet);
+                setProfitInfo('Loss of $' + bet);
+                bankRoll -= Number(bet);
             }
         } else {
             setResultInfo("Tie");
             if (buttonValue === 'Tie') {
-                setProfitInfo('Win of $ ' + (Number(bet) * 8));
+                setProfitInfo('Win of $' + (Number(bet) * 9));
+                bankRoll += (Number(bet) * 8);
             } else {
-                setProfitInfo('Loss of $ ' + bet);
+                setProfitInfo('Loss of $' + bet);
+                bankRoll -= Number(bet);
             }
         }
         
@@ -329,6 +348,7 @@ export default function Baccarat() {
                 <div className="r-strat-box-info">
                     <p>Place a wager and select an outcome</p>
                     <form onSubmit={event => handleFormSubmit(event, 'Player', value)}>
+                        Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/>
                         Bet amount: <input className='input-box' type="text" value={value} onChange={handleChange} />
                         <br /><br />
                         <div className="buttons">
@@ -368,8 +388,7 @@ export default function Baccarat() {
                         </div>
                     </div>
                     <div>
-                        <h2>{resultInfo}<br /></h2>
-                        <h2>{profitInfo}</h2>
+                        <h2>Outcome: {resultInfo} --- {profitInfo} --- Updated Bankroll: ${bankRoll}</h2>
                     </div>
                     <br />
                 </div>
