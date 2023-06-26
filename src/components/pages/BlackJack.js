@@ -76,7 +76,7 @@ export default function Blackjack() {
     const [dealerValues, setDealerValues] = useState([]);
     const [gameState, setGameState] = useState('playing');
     const [showFirstDealerCard, setShowFirstDealerCard] = useState(false);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(25);
 
     const handleClick = event => {
         setGameState('playing');
@@ -95,7 +95,11 @@ export default function Blackjack() {
 
     const handleBankrollChange = (event) => {
         bankRoll = Number(event.target.value);
+        flag = 1;
+        forceUpdate();
     };
+
+    const forceUpdate = useState()[1].bind(null, {});
 
     const handleDeal = () => {
         handCount += 1;
