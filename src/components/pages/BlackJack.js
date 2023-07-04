@@ -274,8 +274,8 @@ export default function Blackjack() {
 
         if (handValue > 21) {
             setShowFirstDealerCard(true);
-            setGameState('busted'); // Set the game state to 'busted' if the player busts
-            //handleDealer();
+            setGameState('busted'); 
+            setGameState('completed');
         }
     };
     
