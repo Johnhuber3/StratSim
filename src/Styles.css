@@ -1,3 +1,4 @@
+/*
 * {
     box-sizing: border-box;
 }
@@ -15,21 +16,21 @@ body {
 }
 
 .nav {
-    background-color: rgb(27, 26, 26); /* #333 */
+    background-color: rgb(27, 26, 26); /* #333 
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
     padding: 0 5rem;
-    box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.5); /* 52, 6, 236, 0.6  ---- 42, 41, 44, 0.6*/
+    box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.5); /* 52, 6, 236, 0.6  ---- 42, 41, 44, 0.6
     position: fixed;
     width: 100%;
 }
 
 .site-title {
     font-size: 2.5rem;
-    font-family: monospace; /* lucida sans*/
+    font-family: monospace; /* lucida sans
 }
 
 .nav h1 {
@@ -76,4 +77,344 @@ body {
     margin: 13rem;
     font-size: 1.4rem;
     color: white;
+}
+*/
+/*
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll 
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    text-align: center;
+    padding-top: 59.5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    text-align: center;
+    padding-top: 59.5px;
+    width: 100%; /* Add this 
+}
+
+
+.nav {
+    background-color: rgb(27, 26, 26); /* #333 
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+    box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.5);
+    position: fixed;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    font-size: 2.5rem;
+    font-family: monospace;
+}
+
+.nav h1 {
+    font-size: 1.25rem;
+    font-family: "Times New Roman", serif;
+    color: rgb(92, 93, 98);
+    flex: 1;
+    text-align: center;
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.7rem;
+    font-size: 1.5rem;
+    font-family: monospace;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+}
+
+.nav li.active {
+    border-bottom: 4px solid white;
+    color: rgb(89, 0, 255);
+}
+
+.nav li:hover {
+    border-bottom: 4px solid white;
+    transition: all 0.2s ease-out;
+    color: rgb(89, 0, 255);
+}
+
+.h-page-intro {
+    border: 2px solid white;
+    border-radius: 70px;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin: 13rem;
+    font-size: 1.4rem;
+    color: white;
+}
+
+/* Media Queries for Responsive Design 
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+
+    .site-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .nav h1 {
+        display: none; /* Hide Chinese text on mobile 
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav li.active, .nav li:hover {
+        border-bottom: none;
+        border-right: 4px solid white;
+    }
+
+    .nav a {
+        padding: 0.5rem;
+    }
+}
+
+/* Additional CSS for Mobile Menu Toggle 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+}
+*/
+
+/* Existing and additional CSS for the Navbar 
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem;
+    }
+
+    .nav h1 {
+        display: none; /* Hide the large Chinese text on mobile 
+    }
+
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav a {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block; /* Display hamburger icon 
+        cursor: pointer;
+    }
+
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        background-color: white;
+    }
+
+    .nav.active .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu {
+        display: none; /* Hide menu initially 
+    }
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Navbar Styles */
+.nav {
+    background-color: rgba(27, 26, 26, 1); /* #333 */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 5rem; /* 1 5 */
+    box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.site-title {
+    font-size: 2.7rem;
+    font-family: monospace;
+}
+
+.site-title:hover {
+    transition: all 0.1s ease-out;
+    color: rgb(89, 0, 255);
+}
+
+.nav h1 {
+    font-size: 1.25rem;
+    font-family: times new roman;
+    color: rgb(92, 93, 98);
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.7rem;
+    font-size: 2.4rem;
+    font-family: monospace;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.55rem;
+}
+
+.nav li.active {
+    color: rgb(89, 0, 255);
+}
+
+.nav li:hover {
+    transition: all 0.1s ease-out;
+    color: rgb(89, 0, 255);
+    font-size: 2.5rem;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: auto; /* Add this */
+    padding-right: 1rem;
+}
+
+.menu {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: center;
+    padding-top: 0px;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+    }
+
+    .nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: rgb(27, 26, 26);
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    .menu.open ul {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .hidden {
+        display: none;
+    }
 }

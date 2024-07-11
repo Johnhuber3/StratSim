@@ -18,7 +18,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-        <h1>© 2022 StratSim, LLC. Site Created by John Huber</h1>
+        <h1>2022 StratSim. Site Created by John Huber</h1>
     </div>
   )
 }

@@ -1,5 +1,6 @@
+/*
 .footer-container {
-    background-color: #0d1117; /* 37, 36, 36 */
+    background-color: #0d1117; /* 37, 36, 36 
     font-family: monospace;
     color: rgb(89, 0, 255);
     font-size: 1rem;
@@ -45,4 +46,56 @@
 .footer-link-items a:hover {
     color: #ffffff;
     transition: 0.3s ease-out;
-}  
+}
+*/
+
+.footer-container {
+    background-color: #0d1117;
+    font-family: monospace;
+    color: rgb(89, 0, 255);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: .5rem;
+    width: 100%; /* Add this */
+}
+
+.footer-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Add this to allow wrapping on smaller screens */
+}
+  
+.footer-link-wrapper {
+    display: flex;
+    flex-direction: column; /* Change this for better stacking on mobile */
+    align-items: center;
+    width: 100%; /* Add this */
+}
+
+.footer-link-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 0; /* Remove large padding */
+    margin: 26px;
+    box-sizing: border-box;
+    justify-content: center; /* Center the items */
+    width: 100%; /* Add this */
+}
+
+.footer-link-items a {
+    color: rgb(88, 88, 88);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+.footer-link-items a:hover {
+    color: #ffffff;
+    transition: 0.3s ease-out;
+}
