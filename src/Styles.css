@@ -384,7 +384,6 @@ body {
     margin: 0px;
     text-align: center;
     padding-top: 0px;
-    width: 110%;
 }
 
 @media (max-width: 768px) {
@@ -417,5 +416,14 @@ body {
 
     .hidden {
         display: none;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        text-align: center;
+        padding-top: 0px;
+        width: 110%;
     }
 }
