@@ -307,9 +307,11 @@ function SeeSawGo() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -317,10 +319,10 @@ function SeeSawGo() {
                     <table className="output-table">
                         <thead>
                             <tr>
-                            <th>Roll #</th>
+                            <th>Roll</th>
                             <th>Outcome</th>
-                            <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Amount</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -505,10 +507,12 @@ function FieldMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Rolls: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
+                    <div className="r-sim-box-input">
+                        <label>Rolls: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                        <label>Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -516,10 +520,10 @@ function FieldMG() {
                     <table className="output-table">
                         <thead>
                             <tr>
-                            <th>Roll #</th>
+                            <th>Roll</th>
                             <th>Outcome</th>
-                            <th>Bet Amount</th>
-                            <th>Win/Loss</th>
+                            <th>Amount</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -744,9 +748,11 @@ function TwoAndOut() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -755,9 +761,9 @@ function TwoAndOut() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
-                            <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Outcome</th>
+                            <th>Amount</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1022,9 +1028,11 @@ function TwoAndRegress() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Shooters: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit Multiplier: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1033,9 +1041,9 @@ function TwoAndRegress() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
-                            <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Outcome</th>
+                            <th>Amount</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>

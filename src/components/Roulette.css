@@ -355,7 +355,7 @@ body {
 }
 
 .input-box {
-    width: 15%;
+    width: 35%;
     padding: 4px;
     margin-top: 10px;
     margin-left: 10px;
@@ -406,6 +406,15 @@ body {
     color: white;
 }
 
+.r-sim-box-input {
+    display: flex;
+    gap: 0px; /* Add some space between items */
+}
+
+.r-sim-box-input label {
+    display: inline-block;
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .r-page {
@@ -444,5 +453,50 @@ body {
 
     .input-box {
         font-size: 0.9rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .b-1 {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    .sub-button {
+        width: 50%;
+    }
+    
+    .sub-button:hover {
+        width: 50%;
+    }
+
+    .output-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .output-table th,
+    .output-table td {
+        padding: 12px;
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+
+    .r-sim-box-input {
+        flex-direction: column;
+    }
+
+    .r-sim-box-input label {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .input-box {
+        width: auto;
+        margin-left: 5px; /* Optional: to add some space between label and input */
     }
 }

@@ -340,10 +340,12 @@ function Martingale() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** For this simulation bets will be placed on the (19-36) outside bet ***</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                        <label>Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -352,9 +354,9 @@ function Martingale() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -502,9 +504,11 @@ function Hopscotch() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label># of spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -513,9 +517,9 @@ function Hopscotch() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -731,7 +735,7 @@ function MGLover() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
                             <th>Winners</th>
                             <th>Profit</th>
@@ -891,9 +895,11 @@ function Boardwalk() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -902,9 +908,9 @@ function Boardwalk() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1091,10 +1097,12 @@ function DoubleLoss() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** For this simulation bets will be placed on the (19-36) outside bet ***</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                        <label>Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1103,9 +1111,9 @@ function DoubleLoss() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1216,9 +1224,11 @@ function Rumple() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1227,9 +1237,9 @@ function Rumple() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1348,9 +1358,11 @@ function Chamba() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label># of spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1359,9 +1371,9 @@ function Chamba() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1481,9 +1493,11 @@ function Chamba2PR() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1492,9 +1506,9 @@ function Chamba2PR() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1604,11 +1618,13 @@ function MVP() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    1st #: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    2nd #: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    3rd #: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    4th #: <input className='input-box' type="text" value={value4} onChange={handleChange4} /><br />
-                    Unit size: <input className='input-box' type="text" value={value5} onChange={handleChange5} />
+                    <div className="r-sim-box-input">
+                        <label>1st #: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>2nd #: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>3rd #: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                        <label>4th #: <input className='input-box' type="text" value={value4} onChange={handleChange4} /><br /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value5} onChange={handleChange5} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1617,9 +1633,9 @@ function MVP() {
                         <thead>
                             <tr>
                             <th>Avoiding</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1786,10 +1802,12 @@ function TwoDozenMG() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** For this simulation bets will be placed on the 1st and 2nd columns. Not betting the column with 3, 6, 9, 12, etc. ***</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                        <label>Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1798,9 +1816,9 @@ function TwoDozenMG() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -1915,9 +1933,11 @@ function AnyUntil() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Number to bet: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Number to bet: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -1926,9 +1946,9 @@ function AnyUntil() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -2039,9 +2059,11 @@ function Romanovsky() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    # of Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label># of Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit amount: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2050,9 +2072,9 @@ function Romanovsky() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -2225,8 +2247,10 @@ function OneUntilMG() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** For this simulation I will automatically set the bankroll to be 273 times the starting unit ***</p>
-                    Number to bet: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Starting Unit: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
+                    <div className="r-sim-box-input">
+                        <label>Number to bet: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Starting Unit: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2235,9 +2259,9 @@ function OneUntilMG() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -2352,9 +2376,11 @@ function TaiFighter() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2363,9 +2389,9 @@ function TaiFighter() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -2574,10 +2600,12 @@ function EveryTimeMG() {
             <div className="r-sim-box-info">
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
-                    Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} />
+                    <div className="r-sim-box-input">
+                        <lable>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></lable>
+                        <lable>Bankroll: <input className='input-box' type="text" value={value2} onChange={handleChange2} /></lable>
+                        <lable>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></lable>
+                        <lable>Levels: <input className='input-box' type="text" value={value4} onChange={handleChange4} /></lable>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2586,10 +2614,10 @@ function EveryTimeMG() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Low</th>
                             <th>Bet High</th>
-                            <th>Win/Lose</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
@@ -2723,8 +2751,10 @@ function Chamba2MG() {
                 <form onSubmit={handleFormSubmit}>
                     <p>Enter some values to get started</p>
                     <p>*** Bankroll will be automatically set to 30 units to cover 1 level of Martingale ***</p>
-                    Spins: <input className='input-box' type="text" value={value} onChange={handleChange} />
-                    Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} />
+                    <div className="r-sim-box-input">
+                        <label>Spins: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        <label>Unit size: <input className='input-box' type="text" value={value3} onChange={handleChange3} /></label>
+                    </div>
                     <br /><br />
                     <button type="submit" className="sub-button">Simulate</button>
                 </form>
@@ -2733,9 +2763,9 @@ function Chamba2MG() {
                         <thead>
                             <tr>
                             <th>Spin</th>
-                            <th>Number</th>
+                            <th>#</th>
                             <th>Bet Amount</th>
-                            <th>Won/Loss</th>
+                            <th>Result</th>
                             <th>Bankroll</th>
                             </tr>
                         </thead>
