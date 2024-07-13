@@ -230,6 +230,7 @@ body {
     padding-left: 16rem;
     padding-right: 16rem;
     padding-top: 5rem;
+    width: 100%;
 }
 
 .r-intro-box-title, .r-intro-box-info, .r-strat-box-info {
@@ -433,6 +434,7 @@ body {
         padding: 0.5rem;
         padding-top: 4.5rem;
         font-size: 1.2rem;
+        width: 100%;
     }
 
     .r-intro-box-title, .r-intro-box-info, .r-strat-box-info {
