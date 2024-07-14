@@ -10,4 +10,11 @@
     object-fit: contain;
     position: fixed;
     z-index: -1;
+    background-image: url('../caesarlobby.png');
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        background-image: url('../../public/caesarspalacemobile.jpg'); 
+    }
 }

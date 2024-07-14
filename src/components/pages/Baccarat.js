@@ -345,11 +345,13 @@ export default function Baccarat() {
                 <div className="r-intro-box-title">
                     <p>Simulator</p>
                 </div>
-                <div className="r-strat-box-info">
+                <div className="r-sim-box-info">
                     <p>Place a wager and select an outcome</p>
                     <form onSubmit={event => handleFormSubmit(event, 'Player', value)}>
-                        Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/>
-                        Bet amount: <input className='input-box' type="text" value={value} onChange={handleChange} />
+                        <div className="r-sim-box-input">
+                            <label>Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/></label>
+                            <label>Bet amount: <input className='input-box' type="text" value={value} onChange={handleChange} /></label>
+                        </div>
                         <br /><br />
                         <div className="buttons">
                             <button type="submit" className="sub-button" onClick={event => handleFormSubmit(event, 'Player', value)}>Player</button>
@@ -359,36 +361,32 @@ export default function Baccarat() {
                     </form>
                     <div>
                         <h1 style={{ textAlign: 'center' }}>Player: {playerInfo} &nbsp;&nbsp;&nbsp;&nbsp;vs &nbsp;&nbsp;&nbsp;&nbsp;Bank: {bankerInfo}</h1>
-                        <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                            {playerHand.map((card) => (
-                                <img
-                                src={cardImages[card]}
-                                alt=''
-                                style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
-                                />
-                            ))}
+                        <div className="card-display">
+                            <div className="hand">
+                                {playerHand.map((card) => (
+                                    <img
+                                        src={cardImages[card]}
+                                        alt=''
+                                        className="card-image"
+                                    />
+                                ))}
                             </div>
-                            <div
-                            style={{
-                                borderLeft: '2px solid white',
-                                height: '100px',
-                                margin: '0 20px',
-                            }}
-                            />
-                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                            {bankHand.map((card) => (
-                                <img
-                                src={cardImages[card]}
-                                alt=''
-                                style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
-                                />
-                            ))}
+                            <div className="divider" />
+                            <div className="hand">
+                                {bankHand.map((card) => (
+                                    <img
+                                        src={cardImages[card]}
+                                        alt=''
+                                        className="card-image"
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h2>Outcome: {resultInfo} --- {profitInfo} --- Updated Bankroll: ${bankRoll}</h2>
+                    <div className="b-output-info">
+                            <label>Outcome: {resultInfo}</label>
+                            <label>{profitInfo}</label>
+                            <label>Updated Bankroll: ${bankRoll}</label>
                     </div>
                     <br />
                 </div>

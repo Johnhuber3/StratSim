@@ -72,6 +72,20 @@ body {
     border-radius: 25px;
 }
 
+.b-output-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: monospace;
+}
+
+.b-output-info label {
+    margin-top: 1rem;
+    width: 100%;
+}
+
 .buttons {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -175,7 +189,6 @@ body {
 }
 
 .r-sim-box-input {
-    display: flex;
     gap: 0px;
 }
 
@@ -264,7 +277,89 @@ body {
     }
 
     .input-box {
-        width: auto;
+        width: 40%;
         margin-left: 5px;
     }
 }
+
+
+
+
+
+
+
+.card-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-image {
+    border-radius: 10px;
+    border: 2px solid white;
+    max-width: 80px;
+    margin: 0.5rem;
+}
+
+.divider {
+    border-left: 2px solid white;
+    height: 100px;
+    margin: 0 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-image {
+        max-width: 60px;
+    }
+
+    .divider {
+        height: 50px;
+        margin: 0 10px;
+        display: none;
+    }
+
+    .hand {
+        justify-content: center;
+    }
+}
+
+
+
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dealer-container,
+.player-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.blackjack-card {
+    border-radius: 10px;
+    border: 2px solid white;
+    width: 80px;
+    height: 120px;
+}
+
+@media (max-width: 768px) {
+    .blackjack-card {
+        width: 50px;
+        height: 75px;
+    }
+}
+
+

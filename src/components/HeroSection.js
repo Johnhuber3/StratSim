@@ -4,7 +4,7 @@ import './HeroSection.css';
 
 function HeroSection() {
   return (
-    <div className='hero-container' style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+    <div className='hero-container' ></div>
   )
 }
 

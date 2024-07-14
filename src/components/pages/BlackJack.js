@@ -417,12 +417,14 @@ export default function Blackjack() {
                 <div className="r-intro-box-title">
                     <p>Simulator</p>
                 </div>
-                <div className="r-strat-box-info">
+                <div className="r-sim-box-info">
                     <div>
                         <br />
                         <p>*** Free play Blackjack, press Deal to start a new hand ***</p>
-                        Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/>
-                        Bet Amount: <input className='input-box' type="number" value={value} onChange={handleChange} />
+                        <div className="r-sim-box-input">
+                            <label>Bankroll: <input className='input-box' type="number" value={bankRoll} onChange={handleBankrollChange}/></label>
+                            <label>Bet Amount: <input className='input-box' type="number" value={value} onChange={handleChange} /></label>
+                        </div>
                         <div className="buttons">
                         <button
                             style={{ backgroundColor: isShown ? 'rgb(89, 0, 255)' : '' }}
@@ -471,53 +473,60 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
 
     const renderHand = (hand) => {
         return hand.map((card, index) => (
-          <img src={getCardImage(card)} alt={card} key={index} style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}/>
+            <img src={getCardImage(card)} alt={card} key={index} className="blackjack-card" />
         ));
     };
-
+    
     const renderHandDealer = (hand) => {
         const firstCard = hand[0];
-      
+    
         if (showFirstDealerCard) {
-          // Render the first card face up
-          return hand.map((card, index) => (
-            <img
-              src={getCardImage(card)}
-              alt={card}
-              key={index}
-              style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
-            />
-          ));
-        } else {
-          // Render the first card face down
-          return (
-            <>
-              <img
-                src={cardImages['Back']}
-                alt="Face Down Card"
-                style={{ borderRadius: '10px', transform: 'scale(0.8)'}}
-              />
-              {hand.slice(1).map((card, index) => (
+            // Render the first card face up
+            return hand.map((card, index) => (
                 <img
-                  src={getCardImage(card)}
-                  alt={card}
-                  key={index}
-                  style={{ borderRadius: '10px', transform: 'scale(0.8)', border: '2px solid white' }}
+                    src={getCardImage(card)}
+                    alt={card}
+                    key={index}
+                    className="blackjack-card"
                 />
-              ))}
-            </>
-          );
+            ));
+        } else {
+            // Render the first card face down
+            return (
+                <>
+                    <img
+                        src={cardImages['Back']}
+                        alt="Face Down Card"
+                        className="blackjack-card"
+                    />
+                    {hand.slice(1).map((card, index) => (
+                        <img
+                            src={getCardImage(card)}
+                            alt={card}
+                            key={index}
+                            className="blackjack-card"
+                        />
+                    ))}
+                </>
+            );
         }
     };
+    
       
     return (
         <>
             <div>
-                <div>
-                    Dealer<br />{renderHandDealer(dealerHand)}
-                </div>
-                <div>
-                    Player<br />{renderHand(playerHand)}
+                <div className="card-container">
+                    <div className="dealer-container">
+                        <span>Dealer:</span>
+                        <br />
+                        {renderHandDealer(dealerHand)}
+                    </div>
+                    <div className="player-container">
+                        <span>Player:</span>
+                        <br />
+                        {renderHand(playerHand)}
+                    </div>
                 </div>
                 {flag === 0 && gameState === 'completed' && (
                     <div>
