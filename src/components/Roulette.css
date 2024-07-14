@@ -351,8 +351,8 @@ body {
 .blackjack-card {
     border-radius: 10px;
     border: 2px solid white;
-    width: 80px;
-    height: 120px;
+    width: 150px;
+    height: 200px;
 }
 
 @media (max-width: 768px) {
