@@ -196,7 +196,7 @@ body {
     display: inline-block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
     .r-page {
         padding: 1rem;
         font-size: 1.5rem;
@@ -218,7 +218,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 780px) {
     .r-page {
         padding: 0.5rem;
         padding-top: 4.5rem;
