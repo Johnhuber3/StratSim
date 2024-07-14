@@ -529,9 +529,11 @@ function SimulateGame({ playerHand, dealerHand, playerValues, dealerValues, getC
                     </div>
                 </div>
                 {flag === 0 && gameState === 'completed' && (
-                    <div>
-                        <h1>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))} --- Dealer: {calculateHandValue(dealerValues)} vs Player: {calculateHandValue(playerValues)}</h1>
-                        <h1>Updated Bankroll: ${bankRoll} | Total Bet: ${value}</h1>
+                    <div className="b-output-info">
+                        <label>Outcome: {determineWinner(calculateHandValue(playerValues), calculateHandValue(dealerValues))}</label>
+                        <label>Dealer: {calculateHandValue(dealerValues)} - Player: {calculateHandValue(playerValues)}</label>
+                        <label>Updated Bankroll: ${bankRoll}</label>
+                        <label>Total Bet: ${value}</label>
                     </div>
                 )}
             </div>
