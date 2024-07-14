@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll position on component mount
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
