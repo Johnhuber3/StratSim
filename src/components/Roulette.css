@@ -228,8 +228,9 @@ body {
     }
 
     .b-1 {
-        width: 50%;
+        width: 40%;
         margin-bottom: 10px;
+        font-size: 1rem;
     }
 
     .sub-button {
