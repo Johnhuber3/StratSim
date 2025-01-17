@@ -1,2 +1,2 @@
 # stratsim
-Casino betting strategy simulator
+Casino betting strategy simulation engine
